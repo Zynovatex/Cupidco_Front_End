@@ -15,7 +15,7 @@ const Logo: React.FC<LogoProps> = ({ width = 164, height = 71 }) => {
         height={height}
         src="/logo/logo.png"
         alt="Cupidco Logo"
-        className=""
+        className=" max-lg:w-28"
       />
     </div>
   );
