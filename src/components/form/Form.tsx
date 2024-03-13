@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useRef } from "react";
 import TextField from "../common/inputs/Input";
@@ -32,10 +32,16 @@ const MiniForm: React.FC<MiniFormProps> = ({ isOpen, onClose }) => {
   }, [isOpen, onClose]);
 
   return (
-    <div className={`flex justify-center md:w-[50%] w-[80%] ${isOpen ? 'animate-slideUp' : 'animate-slideDown'}`}>
+    <div
+      className={`flex justify-center md:w-[50%] w-[80%] ${
+        isOpen ? "animate-slideUp" : "animate-slideDown"
+      }`}
+    >
       <div
         ref={formRef}
-        className={`bg-cover w-full rounded-2xl relative p-10 ${isOpen ? '' : 'transform -translate-y-full'}`}
+        className={`bg-cover w-full rounded-2xl relative p-10 ${
+          isOpen ? "" : "transform -translate-y-full"
+        }`}
         style={{ backgroundImage: "url(/images/FormBg.png)" }}
       >
         <div className="mb-2">
@@ -51,6 +57,8 @@ const MiniForm: React.FC<MiniFormProps> = ({ isOpen, onClose }) => {
         <div className="mt-8 px-4">
           <div className="mb-4">
             <TextField
+              name=""
+              value=""
               label="Username"
               type="text"
               id="name"
@@ -60,6 +68,8 @@ const MiniForm: React.FC<MiniFormProps> = ({ isOpen, onClose }) => {
           </div>
           <div className="mb-4">
             <TextField
+              name=""
+              value=""
               label="Password"
               type="password"
               id="password"
@@ -88,4 +98,3 @@ const MiniForm: React.FC<MiniFormProps> = ({ isOpen, onClose }) => {
 };
 
 export default MiniForm;
-
