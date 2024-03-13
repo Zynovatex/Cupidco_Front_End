@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import ProfileCard from "../pages/edit_profile/EditProfile";
-
+import ProfileCard from "../common/cards/EditProfileCard";
+ 
 interface EditProfileModalProps {
     isOpen: boolean;
     onClose: () => void;
