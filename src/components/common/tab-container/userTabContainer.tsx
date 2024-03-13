@@ -5,7 +5,6 @@ import ImageGallery from "@/components/user-container-sections/ImageGallery";
 import RequirementsAndOthers from "@/components/user-container-sections/Requirements";
 import React, { useState } from "react";
 
-
 const tabs = [
   { id: "about", label: "About" },
   { id: "photos", label: "Photos" },
@@ -13,7 +12,7 @@ const tabs = [
   { id: "Requirements & others", label: "Requirements & others" },
 ];
 
-const userContainer = () => {
+const userTabContainer = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   return (
@@ -46,4 +45,4 @@ const userContainer = () => {
   );
 };
 
-export default userContainer;
+export default userTabContainer;

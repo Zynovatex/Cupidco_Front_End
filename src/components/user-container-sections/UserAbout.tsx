@@ -23,13 +23,10 @@ const UserAbout = () => {
     gender: "Male",
   };
   return (
-    <div
-      className="container mx-auto p-4 overflow-y-auto bg-[#FFF4F1] max-h-[600px]"
-      style={{ maxWidth: "700px" }}
-    >
+    <div className="container mx-auto p-4 overflow-y-auto bg-[#FFF4F1] w-full h-full py-card">
       <div className="grid grid-cols-2 gap-2">
         {/* Column 1 */}
-        <div className="pr-6 border-r">
+        <div className="pr-6 mt-6 border-r">
           <Title
             text="About Me:"
             fontSize="text-md sm:text-xs md:text-sm lg:text-md xl:text-xl"
@@ -41,7 +38,7 @@ const UserAbout = () => {
               fontSize="text-md sm:text-xs md:text-xs lg:text-sm xl:text-md"
             />
           </div>
-          <div>
+          <div className="mt-16">
             <Title
               text="Food Preferences:"
               fontSize="text-md sm:text-xs md:text-sm lg:text-md xl:text-xl"
@@ -50,17 +47,12 @@ const UserAbout = () => {
             <div className="mb-4 text-justify w-full">
               <div className="grid grid-cols-2 gap-4">
                 {AboutDetails.foodpreferences.map((preference, index) => (
-                  <Chip
-                    key={index}
-                    text={preference}
-                    fontColor="#4D194D"
-                    backgroundColor="white"
-                  />
+                  <Chip key={index} text={preference} fontColor="#4D194D" />
                 ))}
               </div>
             </div>
           </div>
-          <div>
+          <div className="mt-16 mb-20">
             <Title
               text="Hobbies:"
               fontSize="text-md sm:text-xs md:text-sm lg:text-md xl:text-xl"
@@ -73,7 +65,8 @@ const UserAbout = () => {
                     key={index}
                     text={hobbies}
                     fontColor="#4D194D"
-                    backgroundColor="white"
+                    width="w-50"
+                    height="h-15"
                   />
                 ))}
               </div>

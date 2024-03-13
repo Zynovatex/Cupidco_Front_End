@@ -2,10 +2,10 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import Title from "../../../../components/common/texts/Title";
-import Description from "../../../../components/common/texts/Description";
-import Logo from "../../../../components/common/logo/Logo";
-import PrimaryButton from "../../../../components/common/buttons/PrimaryButton";
+import Title from "../../../components/common/texts/Title";
+import Description from "../../../components/common/texts/Description";
+import Logo from "../../../components/common/logo/Logo";
+import PrimaryButton from "../../../components/common/buttons/PrimaryButton";
 import { IoChevronBackCircle } from "react-icons/io5";
 
 export default function PrivacyPolicy() {

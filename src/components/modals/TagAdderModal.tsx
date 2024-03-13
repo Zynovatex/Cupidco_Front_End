@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import TagAdder from "./TagAdder";
-import Title from "../texts/Title";
+import TagAdder from "../common/tagAdder/TagAdder";
+import Title from "../common/texts/Title";
 
 interface TagAdderModalProps {
   title: string;
