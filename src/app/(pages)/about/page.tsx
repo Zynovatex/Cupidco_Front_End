@@ -4,6 +4,13 @@ import AboutSection3 from "../_page-components/about/AboutSection3";
 import AboutSection4 from "../_page-components/about/AboutSection4";
 import AboutSection5 from "../_page-components/about/AboutSection5";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About us",
+  description: "...",
+};
+
 export default function About() {
   return (
     <>

@@ -1,8 +1,8 @@
 "use cliet";
-import About from "@/components/container-sections/About";
-import VideoGallery from "@/components/container-sections/FullVideoGallery";
-import ImageGallery from "@/components/container-sections/ImageGallery";
-import RequirementsAndOthers from "@/components/container-sections/Requirements";
+import About from "@/components/user-container-sections/UserAbout";
+import VideoGallery from "@/components/user-container-sections/FullVideoGallery";
+import ImageGallery from "@/components/user-container-sections/ImageGallery";
+import RequirementsAndOthers from "@/components/user-container-sections/Requirements";
 import React, { useState } from "react";
 
 
@@ -13,7 +13,7 @@ const tabs = [
   { id: "Requirements & others", label: "Requirements & others" },
 ];
 
-const ContainerWithTabs = () => {
+const userContainer = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   return (
@@ -40,12 +40,10 @@ const ContainerWithTabs = () => {
         {activeTab === "about" && <About />}
         {activeTab === "photos" && <ImageGallery />}
         {activeTab === "Videos" && <VideoGallery />}
-        {activeTab === "requirements & others" && (
-          <RequirementsAndOthers />
-        )}
+        {activeTab === "requirements & others" && <RequirementsAndOthers />}
       </div>
     </div>
   );
 };
 
-export default ContainerWithTabs;
+export default userContainer;

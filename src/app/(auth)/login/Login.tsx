@@ -79,6 +79,8 @@ const Login: React.FC<LoginProps> = ({ onClose }) => {
         <div className="flex flex-col gap-4 xs:gap-3 sm:gap-3 lg:gap-5 md:gap-4 xl:gap-5">
           <div className="space-y-4">
             <TextField
+              name=""
+              value=""
               label="Username"
               type="text"
               id="name"
@@ -87,6 +89,8 @@ const Login: React.FC<LoginProps> = ({ onClose }) => {
               height="lg:h-1 md:h-1"
             />
             <TextField
+              name=""
+              value=""
               label="Password"
               type="password"
               id="password"
@@ -156,7 +160,7 @@ const Login: React.FC<LoginProps> = ({ onClose }) => {
             onPrimaryClick={() => {}}
             onClose={() => setIsModalOpen(false)}
           />
-          
+
           <div className="lg:space-y-2">
             <div className="flex flex-col sm:flex-row justify-center items-center space-x-2">
               <Description
