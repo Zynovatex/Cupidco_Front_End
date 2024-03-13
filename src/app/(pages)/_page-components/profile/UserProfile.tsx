@@ -1,8 +1,7 @@
 "use client";
-
-import React from "react";
 import Usertab from "@/components/common/user account/Usertab";
 import UserTabContainer from "@/components/tab-container/UserTabConatiner";
+import React from "react";
 
 const UserProfile = () => {
   const backgroundImageStyle = {
@@ -10,7 +9,7 @@ const UserProfile = () => {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    height: "h-screen",
+    height: "100vh",
   };
 
   const handleBackButtonClick = () => {
@@ -18,7 +17,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 p-8 relative" style={backgroundImageStyle}>
+    <div className="flex p-8 relative" style={backgroundImageStyle}>
       {/* Back button with arrow icon */}
       <div className="absolute top-4 left-4">
         <svg
@@ -37,13 +36,14 @@ const UserProfile = () => {
         </svg>
       </div>
 
-      <div className="flex flex-row p-8 w-full h-full">
-        <div className="w-[30%]">
-          <Usertab />
-        </div>
-        <div className="w-full">
-          <UserTabContainer />
-        </div>
+      {/* User tab */}
+      <div className="p-4">
+        <Usertab />
+      </div>
+
+      {/* Tab container */}
+      <div className="p-4">
+        <UserTabContainer />
       </div>
     </div>
   );
