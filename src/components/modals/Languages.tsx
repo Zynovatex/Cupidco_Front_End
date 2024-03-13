@@ -1,20 +1,23 @@
-"use client";
 import React, { useState, useRef, useEffect } from "react";
 import Title from "../common/texts/Title";
 import PrimaryButton from "../common/buttons/PrimaryButton";
 import SecondaryButton from "../common/buttons/SecondaryButton";
 
-const Languages = ({ onClose }) => {
+interface LanguagesProps {
+  onClose: (status: boolean) => void;
+}
+
+const Languages: React.FC<LanguagesProps> = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const modalRef = useRef();
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {
     setIsOpen(false);
     onClose(true);
   };
 
-  const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
       setIsOpen(false);
       onClose(true);
     }

@@ -1,10 +1,11 @@
-'use client'
+"use client";
 
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import Logo from "@/components/common/logo/Logo";
 import SocialMedia from "@/components/common/social-media/SocialMedia";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
+import Link from "next/link";
 import { FaComment } from "react-icons/fa";
 
 export default function Footer() {
@@ -33,16 +34,16 @@ export default function Footer() {
         {/* Second Column */}
         <div className="flex flex-col space-y-3 items-center sm:items-center md:items-start lg:items-start">
           <Title text="Company" fontSize="text-2xl md:text-xl" />
-          <Description text="About us" fontSize="text-lg" href="/pages/about" />
+          <Description text="About us" fontSize="text-lg" href="/about" />
           <Description
             text="Contact us"
             fontSize="text-lg"
-            href="/pages/contact_us"
+            href="/contact"
           />
           <Description
             text="Client Area"
             fontSize="text-lg"
-            href="/pages/client_area"
+            href="/client_area"
           />
           <Description
             text="Data Center"
@@ -71,7 +72,9 @@ export default function Footer() {
           <Title text="Legal" fontSize="text-2xl md:text-xl" />
           <Description text="Terms of Service" fontSize="text-lg" />
           <Description text="Service Agreement" fontSize="text-lg" />
-          <Description text="Privacy Policy" fontSize="text-lg" />
+          <Link href="/privacy-policy">
+            <Description text="Privacy Policy" fontSize="text-lg" />
+          </Link>
           <Description text="Billing Policy" fontSize="text-lg" />
         </div>
 
