@@ -1,8 +1,7 @@
-import { useRouter } from "next/router";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import Image from "next/image";
-import Link from "next/link"; // Import Link from Next.js
+import Link from "next/link";
 import ServicesCard from "../_page-components/services/ServiceCard";
 
 type CardProps = {
@@ -133,4 +132,3 @@ const ServicesPage = () => {
 };
 
 export default ServicesPage;
-
