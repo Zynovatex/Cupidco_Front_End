@@ -7,7 +7,7 @@ import Header from "./layouts/header/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cupidco",
+  title: "",
   description: "Welcome to Cupidco!",
 };
 
