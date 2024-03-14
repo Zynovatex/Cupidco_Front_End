@@ -1,18 +1,30 @@
-"use client";
+'use client'
 
+import React, { useEffect, useState, ChangeEvent } from "react";
 import Logo from "@/components/common/logo/Logo";
 import Link from "next/link";
 import FeatureSection1 from "../../_layout-components/feature-section1";
 import { GrLanguage } from "react-icons/gr";
 import FeatureSection2 from "../../_layout-components/feature-section2";
-import { useEffect, useState } from "react";
-import { IoMenu } from "react-icons/io5";
+import { IoMenu, IoSearch } from "react-icons/io5";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
+import { FaCircleUser } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 
 export default function AfterLogin() {
   const [isMobile, setIsMobile] = useState(false);
   const [showIcons, setShowIcons] = useState(true);
   const [menuText, setMenuText] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
+  const [searchClicked, setSearchClicked] = useState(false);
+
+  const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const handleSearchToggle = () => {
+    setSearchClicked(!searchClicked);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,12 +49,14 @@ export default function AfterLogin() {
     }
   }, [isMobile]);
 
+  
+
   return (
     <>
       {/* in web view */}
       {showIcons && (
         <nav className="fixed w-full md:h-[85px]  bg-transparent backdrop-blur-md z-50 md:flex">
-          <div className=" flex justify-start items-center h-full w-full max-md:pl-6 pl-5">
+          <div className=" flex justify-start items-center  max-md:pl-6 pl-5">
             <Link href="/">
               <Logo />
             </Link>
@@ -75,14 +89,64 @@ export default function AfterLogin() {
             </div>
           </div>
 
-          <div className=" flex justify-end pr-5 ">
-            <div className="border-2 flex bg-[#4d194d]/[.14] rounded-lg px-2 gap-2 items-center border-[#4d194d]/[.24] text-primary-purple font-playfair-display">
-              <HiAdjustmentsHorizontal className="text-xl  " />
-              Filter
+          {/* dropdown search */}
+          <div className="flex  justify-center mt-3 mx-6">
+            {!searchClicked && (
+              <div>
+                <div className="relative  ">
+                  <div className="absolute mt-[4px] ml-1 ">
+                    <div className=" rounded-full text-white text-sm bg-primary-purple p-2 ">
+                      <IoSearch onClick={handleSearchToggle} />
+                    </div>
+                  </div>
+
+                  {/* dropdown */}
+                  <div className="absolute mt-2 ml-12">|</div>
+                  <select
+                    value={selectedValue}
+                    onChange={handleDropdownChange}
+                    className="block appearance-none pr-24 rounded-3xl w-full bg-[#4d194d]/[.24] font-playfair-display border pl-16 text-primary-purple font-bold border-[#4d194d]/[.24] hover:border-gray-500 px-4 py-2 shadow leading-tight focus:outline-none focus:shadow-outline"
+                  >
+                    <option value="" disabled>
+                      Select Package
+                    </option>
+                    <option value="option1">Packages</option>
+                    <option value="option2">Proposals</option>
+                    <option value="option3">Bookmarks</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            {/* input */}
+            {searchClicked && (
+              <div className="relative  ml-2">
+                <div className="absolute mt-[4px] ml-2 ">
+                  <div className=" rounded-full text-primary-purple text-sm bg-purple-100/40 p-1 mt-1 ">
+                    <IoClose onClick={handleSearchToggle} />
+                  </div>
+                </div>
+                <div className="absolute mt-2 ml-12">|</div>
+
+                {/* input Field  */}
+                <input
+                  type="text"
+                  className="block appearance-none pr-14 rounded-3xl w-full bg-[#4d194d]/[.24] font-playfair-display border pl-16 text-primary-purple font-bold border-[#4d194d]/[.24] hover:border-gray-500 px-4 py-2 shadow leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+            )}
+
+            <div>
+              <div className="mt-1 ml-2 rounded-full text-white text-sm bg-primary-purple p-2 ">
+                <HiAdjustmentsHorizontal />
+              </div>
             </div>
-          </div>
-          <div className="flex justify-end pr-5 mt-2">
-            <FeatureSection1 />
+
+            <div>
+              <div className=" mt-[2px] ml-2 rounded-full text-white   bg-primary-purple  ">
+                <FaCircleUser className="w-8 h-8" />
+              </div>
+            </div>
           </div>
         </nav>
       )}
