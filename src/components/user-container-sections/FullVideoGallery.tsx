@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-const VideoGallery = () => {
+const FullVideoGallery = () => {
   const videos = [
     "https://player.vimeo.com/external/372194111.sd.mp4?s=1140b4499879fb28964f675440c342643ad2baec&profile_id=165&oauth2_token_id=57447761",
     "https://player.vimeo.com/external/222141045.sd.mp4?s=0d637b90897e749727ef3af71151bdeaad05d2a2&profile_id=164&oauth2_token_id=57447761",
@@ -24,10 +24,7 @@ const VideoGallery = () => {
   ];
 
   return (
-    <div
-      className="container mx-auto p-2 overflow-y-auto bg-[#FFF4F1] max-h-[600px]"
-      style={{ maxWidth: "700px" }}
-    >
+    <div className="container mx-auto p-2 overflow-y-auto bg-[#FFF4F1] w-full h-full">
       <div className="text-center bg-[#4D194D] p-4">
         <h2 className="text-white">Video Gallery</h2>
       </div>
@@ -44,4 +41,4 @@ const VideoGallery = () => {
   );
 };
 
-export default VideoGallery;
+export default FullVideoGallery;

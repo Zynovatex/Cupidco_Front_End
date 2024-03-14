@@ -1,3 +1,5 @@
+"use client";
+
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import Image from "next/image";

@@ -5,6 +5,7 @@ import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import LoginModal from "@/app/(auth)/login/LoginModal";
 import Logo from "@/components/common/logo/Logo";
+import Languages from "@/components/modals/Languages";
 
 const BeforeLogin = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,6 +29,18 @@ const BeforeLogin = () => {
     { label: "Services", path: "/services" },
     { label: "Contact Us", path: "/contact" },
   ];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const handleCloseModal = (status: boolean) => {
+  //   setIsModalOpen(false);
+  //   console.log("Modal closed with status:", status);
+  //   // You can perform other actions based on the status here
+  // };
+
+  // const handleOpenModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
   return (
     <>
@@ -54,6 +67,7 @@ const BeforeLogin = () => {
               height="py-0 md:py-0 lg:px-0"
               width="px-2 md:px-2 lg:px-4"
               radius="rounded-md"
+              // onClick={handleOpenModal}
             />
             <PrimaryButton
               label="Sign in"
@@ -67,6 +81,7 @@ const BeforeLogin = () => {
         </div>
       </nav>
       <LoginModal isOpen={isLoginModalOpen} onClose={toggleLoginModal} />
+      {/* {isModalOpen && <Languages onClose={handleCloseModal} />} */}
     </>
   );
 };
