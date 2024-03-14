@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Title from "../common/texts/Title";
 import Description from "../common/texts/Description";
