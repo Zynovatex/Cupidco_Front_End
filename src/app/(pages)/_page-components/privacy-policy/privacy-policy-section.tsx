@@ -1,17 +1,14 @@
-"use client";
-import React from "react";
-import Head from "next/head";
+import PrimaryButton from "@/components/common/buttons/PrimaryButton";
+import Logo from "@/components/common/logo/Logo";
+import Description from "@/components/common/texts/Description";
+import Title from "@/components/common/texts/Title";
 import Image from "next/image";
-import Title from "../../../../components/common/texts/Title";
-import Description from "../../../../components/common/texts/Description";
-import Logo from "../../../../components/common/logo/Logo";
-import PrimaryButton from "../../../../components/common/buttons/PrimaryButton";
 import { IoChevronBackCircle } from "react-icons/io5";
 
-export default function PrivacyPolicy() {
+export default function PrivacyPolicySection() {
   return (
     <div className="">
-      <div className="flex justify-between bg-[#d2887a]/[.26] rounded-lg px-10 py-3 items-center  shadow-inner">
+      <div className="flex justify-between bg-[#d2887a]/[.26] rounded-lg px-10 py-20 items-center  shadow-inner">
         <div className="max-sm:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#4D194D]">
           <IoChevronBackCircle />
         </div>

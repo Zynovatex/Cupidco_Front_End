@@ -7,7 +7,10 @@ import Header from "./layouts/header/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "",
+  title: {
+    default: "Cupidco",
+    template: "%s | Cupidco",
+  },
   description: "Welcome to Cupidco!",
 };
 
@@ -16,11 +19,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header/>
+        <Header />
         {children}
         <Footer />
       </body>

@@ -1,9 +1,10 @@
-import ContactSection1 from "../_page-components/contact-us/ContactSection1";
+import { Metadata } from "next";
+import ContactSection1 from "../_page-components/contact/contact-section1";
 
-export default function Contact() {
-  return (
-    <div>
-      <ContactSection1 />
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Contact Us",
+};
+
+export default function ContactUs() {
+  return <ContactSection1 />;
 }

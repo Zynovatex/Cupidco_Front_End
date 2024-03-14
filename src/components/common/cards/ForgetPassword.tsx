@@ -9,8 +9,7 @@ import Input from "../inputs/Input";
 import OtpInput from "../inputs/OtpInput";
 import CheckboxComponent from "../inputs/Checkbox";
 import ForgetPasswordModal from "@/app/(auth)/forget-password/ForgetPasswordModal";
- 
- 
+
 interface CardProps {
   step: number;
   onStepChange: (step: number) => void;
@@ -156,6 +155,8 @@ const ForgetPassword: React.FC<CardProps> = ({
           width="w-[100%]"
           bgColor="bg-transparent"
           height="max-sm:h-2 sm:h-2 xl:h-14"
+          value={""}
+          name={""}
         />
         <PrimaryButton
           label="Next"
@@ -333,6 +334,8 @@ const ForgetPassword: React.FC<CardProps> = ({
           bgColor="bg-transparent"
           height="max-sm:h-2 sm:h-2 xl:h-14"
           fontSizeLabel="xl:text-xl"
+          value={""}
+          name={""}
         />
         <PrimaryButton
           label="Next"
@@ -509,6 +512,8 @@ const ForgetPassword: React.FC<CardProps> = ({
           width="w-[100%]"
           bgColor="bg-transparent"
           height="max-sm:h-2 sm:h-2 xl:h-14"
+          value={""}
+          name={""}
         />
         <Input
           label="Confirm Password"
@@ -517,6 +522,8 @@ const ForgetPassword: React.FC<CardProps> = ({
           width="w-[100%]"
           bgColor="bg-transparent"
           height="max-sm:h-2 sm:h-2 xl:h-14"
+          value={""}
+          name={""}
         />
         <PrimaryButton
           label="Change Password"

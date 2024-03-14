@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import Description from "@/components/common/texts/Description";
