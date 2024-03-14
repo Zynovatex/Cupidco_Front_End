@@ -1,43 +1,41 @@
-"use client";
+'use client';
 
-import UserContainer from "@/components/common/tab-container/userContainer";
-import HomeSection1 from "./(pages)/_page-components/home/HomeSection1";
-import HomeSection2 from "./(pages)/_page-components/home/HomeSection2";
-import Usertab from "@/components/common/user account/Usertab";
-import UserProfile from "./(pages)/user-profile/UserProfile";
-import InteractionIcons from "@/components/common/buttons/IconButtons";
-import InteractionButton from "@/components/common/buttons/InteractionButton";
-import { FaHeart } from "react-icons/fa";
-import Usertab2 from "@/components/common/user account/UserTab2";
-import ProfilePicture from "./(pages)/profile/ProfilePicture";
+import DashboardCard from '@/components/common/cards/DashboardCard';
+import React from 'react';
 
-export default function Home() {
+const ParentComponent = () => {
+  const images = [
+    "/images/ImageGallery1.jpg",
+    "/images/ImageGallery2.jpg",
+    "/images/ImageGallery3.jpg",
+  ];
+
+  const profiles = [
+    {
+      images: images,
+      name: "John Doe",
+      address: "Colombo",
+      age: "30",
+      isPremium: true,
+      aboutMe: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+      interests: ["Painting", "Chess", "Reading", "Football", "Watching Movies"]
+    },
+    {
+      images: images,
+      name: "Emy",
+      address: "Colombo",
+      age: "35",
+    },
+    // Add more profiles if needed
+  ];
+
+
   return (
-    <>
-      <main>
-        {/* Landing page sections  */}
-        {/* <HomeSection1 />
-        <HomeSection2 /> */}
-        {/* <UserContainer />
-        <Usertab /> */}
-        {/* <UserProfile /> */}
-        {/* <InteractionIcons width="50px" height="50px" spacing={4}>
-          <img src="/images/ProfileIcon1.png" alt="Icon 1" />
-          <img src="/images/ProfileIcon2.png" alt="Icon 2" />
-          <img src="/images/ProfileIcon3.png" alt="Icon 2" />
-          <img src="/images/ProfileIcon4.png" alt="Icon 2" />
-          <img src="/images/ProfileIcon5.png" alt="Icon 2" />
-        </InteractionIcons>
-        // <InteractionButton
-        //   text="Like"
-        //   icon={<img src="/images/ProfileIcon5.png" alt="Icon 2" />}
-        //   label="10"
-        //   width="320px"
-        //   height="60px"
-        //   buttonColor="#ff0000"
-        // /> */}
-        <Usertab2 />
-      </main>
-    </>
+    <div className='p-10'>
+      {/* Render DashboardCard and pass profiles as props */}
+      <DashboardCard profiles={profiles} />
+    </div>
   );
-}
+};
+
+export default ParentComponent;
