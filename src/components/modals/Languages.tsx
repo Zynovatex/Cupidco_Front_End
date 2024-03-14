@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import Title from "../common/texts/Title";
-import PrimaryButton from "../common/buttons/PrimaryButton";
-import SecondaryButton from "../common/buttons/SecondaryButton";
+import { IoClose } from "react-icons/io5";
+import LanguageButton from "./LanguageButton";
 
 interface LanguagesProps {
   onClose: (status: boolean) => void;
+  onSelectLanguage: (language: string) => void; // New prop for handling language selection
 }
 
-const Languages: React.FC<LanguagesProps> = ({ onClose }) => {
+const Languages: React.FC<LanguagesProps> = ({ onClose, onSelectLanguage }) => {
   const [isOpen, setIsOpen] = useState(true);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -31,58 +32,43 @@ const Languages: React.FC<LanguagesProps> = ({ onClose }) => {
     };
   }, []);
 
+  // Function to handle language selection
+  const handleLanguageSelect = (language: string) => {
+    onSelectLanguage(language);
+  };
+
   return (
-    <div className="p-1 px-2 py-20 sm:p-4 md:p-6 lg:p-10">
-      <div className="flex justify-center">
+    <div className="absolute mt-3  ml-[-300px]">
+      <div className="   ">
         <div
           ref={modalRef}
-          className="custom-lg-height custom-lg-width p-4 md:p-10 sm:h-auto sm:w-auto rounded-2xl relative"
+          className=" rounded-xl p-3"
           style={{ backgroundImage: "url(/images/FormBg.png)" }}
         >
-          <button
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            onClick={handleClose}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+          <button className="absolute right-2 top-1   " onClick={handleClose}>
+            <IoClose />
           </button>
-          <div className="mb-5">
+          <div className=" ">
             <Title
               text="Choose a Language"
               center={true}
               fontSize="sm:text-md md:text-xl lg:text-2xl"
             />
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
-            <PrimaryButton
-              label="English"
-              height="py-1"
-              width="w-full sm:w-auto"
-              radius="rounded-xl"
+
+          <div className="flex gap-3 mt-2">
+            {/* Language buttons with onClick handlers */}
+            <LanguageButton
+              label={"English"}
+              onClick={() => handleLanguageSelect("English")}
             />
-            <SecondaryButton
-              label="English"
-              height="py-1"
-              width="w-full sm:w-auto"
-              radius="rounded-xl"
+            <LanguageButton
+              label={"සිංහල"}
+              onClick={() => handleLanguageSelect("සිංහල")}
             />
-            <SecondaryButton
-              label="English"
-              height="py-1"
-              width="w-full sm:w-auto"
-              radius="rounded-xl"
+            <LanguageButton
+              label={"தமிழ்"}
+              onClick={() => handleLanguageSelect("தமிழ்")}
             />
           </div>
         </div>

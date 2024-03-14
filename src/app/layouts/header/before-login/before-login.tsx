@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import Link from "next/link";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
@@ -8,19 +8,21 @@ import Logo from "@/components/common/logo/Logo";
 import Languages from "@/components/modals/Languages";
 
 const BeforeLogin = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
-  const handleNav = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("English"); // Default language label
 
   const toggleLoginModal = () => {
     setIsLoginModalOpen(!isLoginModalOpen);
+  };
+
+  const toggleLanguageMenu = () => {
+    setIsLanguageMenuOpen(!isLanguageMenuOpen);
+  };
+
+  const handleLanguageSelect = (language: SetStateAction<string>) => {
+    setSelectedLanguage(language);
+    toggleLanguageMenu(); // Close language menu after selection
   };
 
   const navItems = [
@@ -29,18 +31,6 @@ const BeforeLogin = () => {
     { label: "Services", path: "/services" },
     { label: "Contact Us", path: "/contact" },
   ];
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const handleCloseModal = (status: boolean) => {
-  //   setIsModalOpen(false);
-  //   console.log("Modal closed with status:", status);
-  //   // You can perform other actions based on the status here
-  // };
-
-  // const handleOpenModal = () => {
-  //   setIsModalOpen(true);
-  // };
 
   return (
     <>
@@ -60,19 +50,30 @@ const BeforeLogin = () => {
               </Link>
             ))}
           </div>
-          <div className="hidden md:flex flex-row gap-2">
-            <SecondaryButton
-              label="English"
-              fontSize="text-md md:text-sm lg:text-lg"
-              height="py-0 md:py-0 lg:px-0"
-              width="px-2 md:px-2 lg:px-4"
-              radius="rounded-md"
-              // onClick={handleOpenModal}
-            />
+          <div className="hidden md:flex flex-row lg:gap-2">
+            <div className="relative">
+              <SecondaryButton
+                label={selectedLanguage} // Button label dynamically changes based on selected language
+                fontSize="text-md md:text-sm lg:text-lg"
+                height=" "
+                width="lg:w-24 w-16"
+                radius="rounded-md"
+                onClick={toggleLanguageMenu}
+              />
+
+              <div className="ml-20">
+                {isLanguageMenuOpen && (
+                  <Languages
+                    onClose={toggleLanguageMenu}
+                    onSelectLanguage={handleLanguageSelect}
+                  />
+                )}
+              </div>
+            </div>
             <PrimaryButton
               label="Sign in"
               fontSize="text-md md:text-sm lg:text-lg"
-              height="py-0 md:py-0 lg:px-0"
+              height=" "
               width="px-2 md:px-2 lg:px-4"
               radius="rounded-md"
               onClick={toggleLoginModal}
@@ -81,7 +82,6 @@ const BeforeLogin = () => {
         </div>
       </nav>
       <LoginModal isOpen={isLoginModalOpen} onClose={toggleLoginModal} />
-      {/* {isModalOpen && <Languages onClose={handleCloseModal} />} */}
     </>
   );
 };
