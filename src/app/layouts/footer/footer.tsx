@@ -10,7 +10,10 @@ import { FaComment } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-footer-pink p-10 space-y-4">
+    <div
+      className="bg-cover bg-center bg-no-repeat h-full   p-10  "
+      style={{ backgroundImage: "url(/images/FooterBgImage.png)" }}
+    >
       <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 px-0">
         {/* First Column */}
         <div className="flex flex-col space-y-3 items-center sm:items-center md:items-start lg:items-start">
@@ -35,11 +38,7 @@ export default function Footer() {
         <div className="flex flex-col space-y-3 items-center sm:items-center md:items-start lg:items-start">
           <Title text="Company" fontSize="text-2xl md:text-xl" />
           <Description text="About us" fontSize="text-lg" href="/about" />
-          <Description
-            text="Contact us"
-            fontSize="text-lg"
-            href="/contact"
-          />
+          <Description text="Contact us" fontSize="text-lg" href="/contact" />
           <Description
             text="Client Area"
             fontSize="text-lg"
@@ -87,30 +86,38 @@ export default function Footer() {
           />
         </div>
       </div>
-      {/* Merged row below the columns */}
-      <div className="max-w-6xl mx-0 grid grid-cols-1 gap-8 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 items-center">
-        {/* Leave us a Comment Section */}
-        <div className="flex flex-col items-center sm:items-center md:items-start lg:items-start space-y-2">
-          <Title text="Leave us a Comment" fontSize="text-2xl md:text-lg" />
+
+      <div className="flex max-md:justify-center mt-5">
+        <div className="w-48 text-center md:absolute max-md:mt-5">
+          {/* Merged row below the columns */}
+          <div className="font-bold text-xl mb-2 text-primary-purple font-playfair-display">
+            Leave us a comment
+          </div>
+
+          {/* comment button  */}
           <PrimaryButton
             label="Comment"
             fontSize="lg:text-xl md:text-lg"
-            width="w-full md:w-[60%]"
+            width=" w-full  "
             radius="rounded-lg"
             height="py-2"
             icon={<FaComment />}
             iconPosition="left"
           />
         </div>
+      </div>
 
-        {/* Follow Us Section */}
-        <div className="text-left md:mt-0 sm:items-center lg:items-start">
-          <Title
-            text="Follow us"
-            fontSize="text-2xl md:text-lg "
-            center={true}
-          />
-          <div className="flex justify-center space-x-2 mt-2 items-center">
+      <div className="max-md:mt-5">
+        <div className=" justify-center gap-3 mt-2 items-center">
+          {/* follow us  */}
+          <div>
+            <Title
+              text="Follow Us Here"
+              fontSize="text-2xl md:text-xl "
+              center={true}
+            />
+          </div>
+          <div className="flex justify-center gap-3 mt-2 items-center">
             {/* Social Media Icons */}
             <SocialMedia
               network="facebook"
@@ -137,8 +144,15 @@ export default function Footer() {
               size="8"
             />
           </div>
+          {/* horizontal line  */}
+          <hr className="border-t-2 border-primary-purple my-4" />
+
+          {/* Powered by TeamZX */}
+          <div className="font-['poppins'] text-md text-primary-purple text-center">
+            © 2023 Marriage Proposal App Powered by TeamZX
+          </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 }

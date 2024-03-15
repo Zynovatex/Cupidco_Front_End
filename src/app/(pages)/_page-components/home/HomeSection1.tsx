@@ -27,10 +27,10 @@ export default function HomeSection1() {
       className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col justify-center items-left p-20 max-sm:p-10"
       style={{ backgroundImage: "url('/images/homeBackground1.png')" }}
     >
-      <div className="max-md:mt-10 mb-10 max-md:text-center">
+      <div className="max-md:mt-10 mb-10 mt-10 max-md:text-center">
         <Title
           text="Discover your soul's perfect counterpart"
-          fontSize="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-9xl"
+          fontSize="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
         />
       </div>
 

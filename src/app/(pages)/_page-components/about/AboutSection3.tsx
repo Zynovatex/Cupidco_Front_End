@@ -7,10 +7,7 @@ import Image from "next/image";
 export default function AboutSection3() {
   const Content = `We envision a world where every person can find their soulmate, build a strong foundation, and embark on a lifelong journey of love and companionship. We are dedicated to making this vision a reality by providing a safe, inclusive, and supportive platform for individuals seeking marriage.We envision a world where every person can find their soulmate, build a strong foundation, and embark on a lifelong journey of love and companionship. We are dedicated to making this vision a reality by providing a safe, inclusive, and supportive platform for individuals seeking marriage.We envision a world where every person can find their soulmate, build a strong foundation, and embark on a lifelong journey of love and companionship. We are dedicated to making this vision a reality by providing a safe, inclusive, and supportive platform for individuals seeking marriage.`;
   return (
-    <div
-      className="bg-cover bg-center bg-no-repeat min-h-screen p-20 max-md:p-10"
-      style={{ backgroundImage: "url(/images/LearnMoreBg.png)" }}
-    >
+    <div className="bg-cover bg-center bg-no-repeat min-h-screen p-20 max-md:p-10 bg-[#FFF4F1]">
       <div>
         <Title
           text="Lorem Ipsum"

@@ -6,8 +6,8 @@ import Title from "@/components/common/texts/Title";
 export default function AboutSection1() {
   return (
     <div
-      className="bg-cover bg-center bg-no-repeat h-screen flex flex-col gap-5 justify-center items-center py-28 px-16"
-      style={{ backgroundImage: "url(/images/homeBackground1.png)" }}
+      className="bg-cover bg-center bg-no-repeat h-screen flex flex-col gap-5 justify-center items-center py-28 px-10"
+      style={{ backgroundImage: "url(/images/AboutBackground.png)" }}
     >
       <div>
         <Title
@@ -18,7 +18,7 @@ export default function AboutSection1() {
           uppercase={true}
         />
       </div>
-      <div className="text-center w-[80%]">
+      <div className="text-center md:w-[80%]">
         <Description
           italic={true}
           text="At Cupidco, we believe in the power of love and the beauty of lifelong partnerships. Our mission is to connect individuals on their journey to finding true love, with the ultimate goal of helping them create meaningful and lasting relationships. We are committed to being your trusted companion in your pursuit of marriage and happiness. "

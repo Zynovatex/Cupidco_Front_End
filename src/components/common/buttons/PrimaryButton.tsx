@@ -54,6 +54,7 @@ const PrimaryButton: React.FC<ButtonProps> = ({
       {Icon && iconPosition === "left" && (
         <div className="mr-2 text-sm md:text-lg lg:text-xl">{Icon}</div>
       )}
+      
       <span>{label}</span>
       {Icon && iconPosition === "right" && (
         <div className="ml-2 text-sm md:text-lg lg:text-xl">{Icon}</div>
