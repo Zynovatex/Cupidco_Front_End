@@ -39,6 +39,7 @@ const BeforeLogin = () => {
           <Link href="/">
             <Logo />
           </Link>
+          
           <div className="hidden sm:flex font-playfair-display text-primary-purple font-bold">
             {navItems.map((item, index) => (
               <Link href={item.path} key={index}>
@@ -50,6 +51,7 @@ const BeforeLogin = () => {
               </Link>
             ))}
           </div>
+
           <div className="hidden md:flex flex-row lg:gap-2">
             <div className="relative">
               <SecondaryButton
