@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { IoCloseCircle } from "react-icons/io5";
@@ -13,6 +11,7 @@ import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import PopupwithIco from "@/components/modals/PopupwithIco";
 import ForgetPasswordModal from "../forget-password/ForgetPasswordModal";
+import Link from "next/link";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -76,6 +75,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen && !isClosing) return null;
 
+  const handlePrivacyPolicyClick = () => {
+    startClosing();
+    // Here you can navigate to the privacy policy page
+    // using next/router or any navigation library you're using.
+    // For example, if you're using Next.js router:
+    // import { useRouter } from "next/router";
+    // const router = useRouter();
+    // router.push("/privacy-policy");
+  };
+
   return (
     <>
       <div
@@ -86,19 +95,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       >
         <div
           className={`relative rounded-2xl 
-          w-[80%] 
-          2xl:w-[60%] 
-          max-sm:w-[90%]
-          h-[80%] 
-          max-w-7xl
-          px-10 
-          md:py-36 
-          py-52 
-          max-sm:h-[80%] 
-          sm:py-24 lg:py-2
-          mx-auto sm:h-[74%] md:h-[84%]
-          bg-transparent ${modalAnimation} transition-all overflow-hidden duration-500 flex justify-center items-center`}
+          w-[95%] 
+          md:w-[70%] 
+          h-[90%]
+          md:h-[90%] 
+          bg-transparent ${modalAnimation}  transition-all overflow-hidden duration-500 flex justify-center lg:justify-end  items-center`}
         >
+          {/* bg image  */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/ForgetPasswordBg.png"
@@ -109,29 +112,20 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               className="rounded-2xl shadow-lg"
             />
           </div>
+
+          {/* close button  */}
           <button
             onClick={startClosing}
-            className="absolute top-0 right-0 m-4 z-10 text-secondary-color"
+            className="absolute top-[-8px] right-[-9px] m-4 z-10 text-secondary-color"
             aria-label="Close modal"
           >
             <IoCloseCircle size="2em" />
           </button>
-          <div
-            className="
-        relative rounded-2xl shadow-lg overflow-hidden
-        w-full sm:w-4/5 md:w-4/4 lg:w-2/3 xl:w-2/3 
-        mx-auto sm:p-10 xl:p-28 bg-opacity-80 md:py-56 sm:py-24 
-        sm:h-[100%] max-sm:h-[100%] md:h-[100%] 
-        lg:h-[20%] xl:h-[80%] 
-       max-sm:py-60 
-      "
-          >
-            {/* Logo */}
-            <div className="absolute top-6 z-40 w-[20%] left-8 lg:w-[15%] md:w-[20%] sm:w-[16%] xs:w-[20%] 2xl:w-[50%]">
-              <Logo />
-            </div>
 
-            <div className="absolute inset-0 pt-40">
+          {/* login container  */}
+          <div className="w-[90%] text-center lg:w-[50%] relative h-[90%] lg:mr-10 max-md:mt-5 py-5 px-5 ">
+            {/* bg image  */}
+            <div className="absolute inset-0 pt-40 ">
               <Image
                 src="/images/HomeSc2.png"
                 layout="fill"
@@ -139,34 +133,41 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 objectPosition="right-bottom"
                 alt="Background"
                 priority
+                className="rounded-lg"
               />
             </div>
 
-            {/* Content */}
-            <div
-              className={`
-        relative flex flex-col items-left justify-center sm:space-y-3 max-sm:mx-6 xl:space-y-5 h-full
-      `}
-            >
-              <div className="mb-2 mt-[4%] md:mt-[10%] max-sm:mt-[8%] 2xl:mt-[8%] items-center">
+            <div className="relative">
+              {/* Logo */}
+              <div className=" w-28 mb-3 ">
+                <Logo />
+              </div>
+
+              {/* title  */}
+              <div>
                 <Title
-                  text="Welcome Back to Cupidco!"
+                  text="Welcome Back  to Cupidco!"
                   center={true}
-                  fontSize="text-xl max-sm:text-sm sm:text-xl md:text-xl lg:text-xl xl:text-3xl"
+                  fontSize="text-xl md:text-2xl "
                 />
               </div>
-              <div className="flex flex-col gap-4 xs:gap-3 sm:gap-3 lg:gap-5 md:gap-4 xl:gap-5">
-                <div className="space-y-4">
-                  <TextField
-                    label="Username"
-                    type="text"
-                    id="name"
-                    width="w-full"
-                    bgColor="bg-transparent"
-                    height="h-1"
-                    value={""}
-                    name={""}
-                  />
+
+              {/* inputs  */}
+              <div className="mt-5 w-[80%] mx-[10%] md:w-[70%] md:mx-[15%]">
+                {/* user name  */}
+                <TextField
+                  label="Username"
+                  type="text"
+                  id="name"
+                  width="w-full"
+                  bgColor="bg-transparent"
+                  height="h-1"
+                  value={""}
+                  name={""}
+                />
+
+                {/* password  */}
+                <div className="mt-5">
                   <TextField
                     label="Password"
                     type="password"
@@ -177,107 +178,109 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     name={""}
                   />
                 </div>
-                <div className="flex items-center justify-between sm:gap-8 font-Quicksand font-medium lg:text-sm md:text-xs">
+
+                {/* checkbox  */}
+                <div className="mt-5 flex justify-between">
                   <CheckboxComponent
                     name="Remember Me"
                     value="rememberMe"
                     fontColor="text-[#4D194D]"
                     isSelected={false}
                     onChange={() => {}}
-                    size="sm"
-                    fontSize="max-sm:text-xs"
+                    fontSize=" md:text-md sm:text-sm text-xs"
                   />
+
                   <div>
-                    <button
+                    <div
                       onClick={openForgetPasswordModal}
-                      className="text-[#4D194D] text-sm focus:outline-none font-Quicksand font-medium lg:text-sm md:text-xs max-sm:text-xs"
+                      className="text-primary-purple md:text-md mt-[1px] md:text-sm text-xs cursor-pointer"
                     >
-                      Forget Password?
-                    </button>
+                      Forget Password
+                    </div>
+
                     <ForgetPasswordModal
                       isOpen={isForgetPasswordModalOpen}
                       onClose={closeForgetPasswordModal}
                     />
                   </div>
                 </div>
-                <div className="flex flex-wrap items-center space-x-1">
-                  <p className="text-sm max-sm:text-xs lg:text-xs md:text-xs font-medium font-Quicksand text-primary-purple xl:text-md">
-                    By signing up you are agreeing to our
-                  </p>
-                  <p className="text-sm lg:text-xs md:text-xs font-Quicksand text-primary-purple font-bold max-sm:text-xs xl:text-md">
-                    Privacy Policy
-                  </p>
-                  <p className="text-sm lg:text-xs md:text-xs font-regular font-medium font-Quicksand text-primary-purple max-sm:text-xs xl:text-md">
-                    and
-                  </p>
-                  <p className="text-sm lg:text-xs md:text-xs font-Quicksand text-primary-purple font-bold max-sm:text-xs xl:text-md">
-                    Terms of Use.
-                  </p>
+
+                {/* texts  */}
+                <div className="text-justify text-xs text-primary-purple mt-4 ">
+                  <span> By signing up you are agreeing to our </span>
+                  <Link href="/privacy-policy">
+                    <span
+                      className="font-bold text-primary-purple cursor-pointer"
+                      onClick={handlePrivacyPolicyClick}
+                    >
+                      Privacy Policy
+                    </span>
+                  </Link>
+                  <span> and </span>
+                  <span className="font-bold"> Terms of Use.</span>
                 </div>
 
-                <PrimaryButton
-                  label="Sign In"
-                  height="py-2 xl:p-2 2xl:p-2 "
-                  width="w-full"
-                  radius="rounded-xl lg:rounded-md xl:rounded-lg"
-                  fontSize="lg:text-md xl:text-lg max-sm:text-xs text-lg max-xs:text-sm"
-                  onClick={handleSignUpClick}
-                />
-                <PopupwithIco
-                  icon={<MdDone size={68} />}
-                  title="You have successfully logged into Cupidco!"
-                  primaryButtonText="Go to Dashboard"
-                  isOpen={isModalOpen}
-                  onPrimaryClick={() => {}}
-                  onClose={() => setIsModalOpen(false)}
-                />
-                <div className="lg:space-y-2">
-                  <div className="flex flex-col sm:flex-row justify-center items-center space-x-2">
-                    <Description
-                      text="Don't Have an Account?"
-                      fontWeight="font-regular"
-                      fontSize="text-sm max-sm:text-xs"
-                      center={true}
-                    />
-                    <Description
-                      text="Sign Up"
-                      fontWeight="font-bold"
-                      fontSize="text-sm max-sm:text-xs"
-                      center={true}
-                    />
-                  </div>
+                <div className="mt-5">
+                  <PrimaryButton
+                    label="Sign In"
+                    height="py-2 xl:p-2 2xl:p-2 "
+                    width="w-full"
+                    radius="rounded-xl lg:rounded-md xl:rounded-lg"
+                    fontSize="lg:text-md xl:text-lg max-sm:text-xs text-lg max-xs:text-sm"
+                    onClick={handleSignUpClick}
+                  />
+                </div>
+
+                <div className="flex gap-2 justify-center mt-4">
+                  <Description
+                    text="Don't Have an Account?"
+                    fontWeight="font-regular"
+                    fontSize="text-sm max-sm:text-xs"
+                    center={true}
+                  />
+                  <Description
+                    text=" Sign Up"
+                    fontWeight="font-bold"
+                    fontSize="text-sm max-sm:text-xs"
+                    center={true}
+                  />
+                </div>
+
+                <div>
                   <Description
                     text="- or -"
                     fontWeight="font-regular"
                     fontSize="text-sm max-sm:text-xs"
                     center={true}
                   />
-                  <div className="flex justify-center space-x-4 sm:space-x-8 lg:space-x-4  mt-2 items-center">
-                    <SocialMedia
-                      network="facebook"
-                      url="www.facebook.com"
-                      key={1}
-                      size="8"
-                    />
-                    <SocialMedia
-                      network="instagram"
-                      url="www.instagram.com"
-                      key={2}
-                      size="8"
-                    />
-                    <SocialMedia
-                      network="linkedin"
-                      url="www.linkedin.com"
-                      key={3}
-                      size="8"
-                    />
-                    <SocialMedia
-                      network="twitter"
-                      url="www.twitter.com"
-                      key={4}
-                      size="8"
-                    />
-                  </div>
+                </div>
+
+                {/* social media  */}
+                <div className="flex gap-3 justify-center mt-3">
+                   <SocialMedia
+                    network="facebook"
+                    url="www.facebook.com"
+                    key={1}
+                    size="8"
+                  />
+                  <SocialMedia
+                    network="instagram"
+                    url="www.instagram.com"
+                    key={2}
+                    size="8"
+                  />
+                  <SocialMedia
+                    network="linkedin"
+                    url="www.linkedin.com"
+                    key={3}
+                    size="8"
+                  />
+                  <SocialMedia
+                    network="twitter"
+                    url="www.twitter.com"
+                    key={4}
+                    size="8"
+                  />
                 </div>
               </div>
             </div>
