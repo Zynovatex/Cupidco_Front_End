@@ -13,7 +13,6 @@ import HomeSection2 from "./(pages)/_page-components/home/HomeSection2";
         <HomeSection2 />
       </main>
     </>
-
   );
 };
 

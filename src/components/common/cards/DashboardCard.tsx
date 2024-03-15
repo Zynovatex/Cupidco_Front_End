@@ -75,7 +75,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
     };
 
     return (
-        <div className="flex flex-wrap justify-center gap-5">
+        <div className="flex flex-wrap justify-center gap-10">
             {/* Profile */}
             {profiles.map((profile, index) => (
                 <div key={index} className="relative w-[350px]">
