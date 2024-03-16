@@ -2,9 +2,7 @@
 
 import Usertab from "@/components/common/user account/Usertab";
 import UserTabContainer from "@/components/tab-container/UserTabConatiner";
-import { url } from "inspector";
 import React from "react";
-
 
 const UserProfile = () => {
   const backgroundImageStyle = {
@@ -14,7 +12,6 @@ const UserProfile = () => {
     backgroundRepeat: "no-repeat",
     height: "100vh",
   };
-
 
   return (
     <div className="flex p-8 relative" style={backgroundImageStyle}>
