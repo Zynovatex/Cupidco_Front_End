@@ -25,7 +25,7 @@ const Description: React.FC<DescriptionProps> = ({
   italic,
   center,
   right,
-  fontFamily = "font-Quicksand",
+  fontFamily = "font-playfair-display",
   fontSize = "text-sm sm:text-md md:text-lg lg:text-xl",
   fontColor = "text-[#6D2E46]",
   fontWeight = "font-regular",

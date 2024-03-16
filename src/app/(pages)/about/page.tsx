@@ -13,8 +13,8 @@ export default function About() {
     <>
       <AboutSection1 />
       <AboutSection2 />
-      <AboutSection3 />
-      <AboutSection4 />
+      {/* <AboutSection3 /> */}
+      {/* <AboutSection4 /> */}
     </>
   );
 }

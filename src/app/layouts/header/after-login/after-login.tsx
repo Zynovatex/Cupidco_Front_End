@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState, ChangeEvent } from "react";
+import React, { useEffect, useState, ChangeEvent, SetStateAction } from "react";
 import Logo from "@/components/common/logo/Logo";
 import Link from "next/link";
 import FeatureSection1 from "../../_layout-components/feature-section1";
@@ -10,6 +10,7 @@ import { IoMenu, IoSearch } from "react-icons/io5";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { FaCircleUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import Languages from "@/components/modals/Languages";
 
 export default function AfterLogin() {
   const [isMobile, setIsMobile] = useState(false);
@@ -17,6 +18,9 @@ export default function AfterLogin() {
   const [menuText, setMenuText] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("English"); // Default language label
 
   const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(event.target.value);
@@ -49,7 +53,16 @@ export default function AfterLogin() {
     }
   }, [isMobile]);
 
-  
+  const toggleLanguageMenu = () => {
+    setIsLanguageMenuOpen(!isLanguageMenuOpen);
+  };
+  const toggleLoginModal = () => {
+    setIsLoginModalOpen(!isLoginModalOpen);
+  };
+  const handleLanguageSelect = (language: SetStateAction<string>) => {
+    setSelectedLanguage(language);
+    toggleLanguageMenu(); // Close language menu after selection
+  };
 
   return (
     <>
@@ -65,8 +78,14 @@ export default function AfterLogin() {
           {/* feature sections  */}
           <div className="flex justify-end items-center h-full w-full  pr-5">
             <FeatureSection1 />
-            <div className="text-2xl px-5 text-primary-purple">
-              <GrLanguage />
+            <div className="text-2xl px-5 text-primary-purple cursor-pointer ">
+              <GrLanguage onClick={toggleLanguageMenu} />
+              {isLanguageMenuOpen && (
+                <Languages
+                  onClose={toggleLanguageMenu}
+                  onSelectLanguage={handleLanguageSelect}
+                />
+              )}
             </div>
             <FeatureSection2 />
           </div>

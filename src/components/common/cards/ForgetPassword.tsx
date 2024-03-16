@@ -379,7 +379,7 @@ const ForgetPassword: React.FC<CardProps> = ({
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            onClick={() => onStepChange(4)}
+            onClick={() => onStepChange(3)}
             fontSize="
          "
             radius="
