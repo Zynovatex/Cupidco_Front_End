@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HomeSection2() {
   const sliderSettings = {};
-  
+
   return (
     <div className="relative items-center">
       {/* Background Image */}

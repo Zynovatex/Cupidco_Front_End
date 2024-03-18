@@ -284,14 +284,15 @@ const UserEditProfile: React.FC<UserEditProfileProps> = ({
                   </div>
                   <div className="space-y-2">
                     <div className="flex flex-wrap mb-6">
-                      {foodPreferences.slice(0, 4).map((preference, index) => (
-                        <div key={index} className="w-1/2">
-                          <Chip
-                            text={preference}
-                            width="w-40 max-sm:w-32 mb-2"
-                          />
-                        </div>
-                      ))}
+                      {foodPreferences &&
+                        foodPreferences.slice(0, 4).map((preference, index) => (
+                          <div key={index} className="w-1/2">
+                            <Chip
+                              text={preference}
+                              width="w-40 max-sm:w-32 mb-2"
+                            />
+                          </div>
+                        ))}
                     </div>
                   </div>{" "}
                 </div>
@@ -308,14 +309,15 @@ const UserEditProfile: React.FC<UserEditProfileProps> = ({
                   </div>
                   <div className="space-y-2">
                     <div className="flex flex-wrap mb-6">
-                      {hobbies.slice(0, 4).map((preference, index) => (
-                        <div key={index} className="w-1/2">
-                          <Chip
-                            text={preference}
-                            width="w-40 max-sm:w-32 mb-2"
-                          />
-                        </div>
-                      ))}
+                      {hobbies &&
+                        hobbies.slice(0, 4).map((preference, index) => (
+                          <div key={index} className="w-1/2">
+                            <Chip
+                              text={preference}
+                              width="w-40 max-sm:w-32 mb-2"
+                            />
+                          </div>
+                        ))}
                     </div>
                   </div>{" "}
                 </div>
