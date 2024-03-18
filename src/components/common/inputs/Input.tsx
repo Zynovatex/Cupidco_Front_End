@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 interface TextFieldProps {
   id: string;
-  value: string;
-  name: string;
-  label: string;
+  value?: string;
+  name?: string;
+  label?: string;
   type?: string;
   width?: string;
   height?: string;

@@ -10,10 +10,7 @@ import { FaComment } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div
-      className="bg-cover bg-center bg-no-repeat h-full   p-10  "
-      style={{ backgroundImage: "url(/images/FooterBgImage.png)" }}
-    >
+    <div className="bg-cover bg-center bg-no-repeat h-full p-10">
       <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 px-0">
         {/* First Column */}
         <div className="flex flex-col space-y-3 items-center sm:items-center md:items-start lg:items-start">
