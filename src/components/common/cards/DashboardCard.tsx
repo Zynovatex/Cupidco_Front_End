@@ -2,17 +2,18 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { FaClock, FaInfoCircle, FaCrown } from 'react-icons/fa';
+import { IoCloseCircle } from 'react-icons/io5';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import { FaClock, FaCrown, FaInfoCircle } from 'react-icons/fa';
-import { IoCloseCircle } from 'react-icons/io5';
 import DashboardSLiderImages from './DashboardSliderImages';
 import Description from '../texts/Description';
-import { FaLocationDot } from 'react-icons/fa6';
 import Chip from '../chip/Chip';
 import SecondaryButton from '../buttons/SecondaryButton';
+import LocationModal from '@/components/modals/LocationModal';
+import { FaLocationDot } from 'react-icons/fa6';
 
 interface Profile {
     images: string[];
@@ -31,6 +32,18 @@ interface DashboardProps {
 const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
     const [overlayVisible, setOverlayVisible] = useState<Array<boolean>>(Array(profiles.length).fill(false));
     const overlayRefs = useRef<Array<HTMLDivElement | null>>(Array(profiles.length).fill(null));
+
+    const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+    const [locationInfo, setLocationInfo] = useState({ name: '', address: '' });
+
+    const toggleLocationModal = () => {
+        setIsLocationModalOpen(!isLocationModalOpen);
+    };
+
+    const handleDescriptionClick = (name: any, address: any) => {
+        setLocationInfo({ name, address });
+        toggleLocationModal();
+    };
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -82,9 +95,15 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
 
                     {/* Image Slider Card */}
                     <div className="swiper-container">
-                        <Swiper navigation={true} modules={[Navigation]} className="mySwiper rounded-t-xl">
+                        <Swiper
+                            navigation={true}
+                            modules={[Navigation]}
+                            className="mySwiper rounded-t-xl">
+
                             {profile.images.map((image, imageIndex) => (
-                                <SwiperSlide key={imageIndex} className="flex justify-center items-center relative">
+                                <SwiperSlide key={imageIndex}
+                                    className="flex justify-center items-center relative">
+
                                     <DashboardSLiderImages image={image} />
                                     {/* Premium Icon */}
                                     {profile.isPremium && (
@@ -118,19 +137,40 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
 
                         {/* Details */}
                         <div className="name">
-                            <Description text={profile.name} fontFamily="font-playfair-display" fontSize="text-sm sm:text-sm md:text-lg lg:text-2xl xl:text-2xl" fontWeight="font-bold" />
+                            <Description text={profile.name}
+                                fontFamily="font-playfair-display"
+                                fontSize="text-sm sm:text-sm md:text-lg lg:text-2xl xl:text-2xl"
+                                fontWeight="font-bold" />
                         </div>
+
                         <div className="age">
-                            <Description text={`Age ${profile.age}`} fontFamily="font-playfair-display" fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" />
+                            <Description text={`Age ${profile.age}`}
+                                fontFamily="font-playfair-display"
+                                fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" />
                         </div>
+
                         <div className="Address flex justify-between items-center">
-                            <Description text={truncateText(profile.address, 7)} icon={FaLocationDot} fontFamily="font-playfair-display" fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" />
+                            <div className="text-primary-purple cursor-pointer"
+                                onClick={() => handleDescriptionClick(profile.name, profile.address)}>
+                                <Description
+                                    text={truncateText(profile.address, 7)}
+                                    icon={FaLocationDot}
+                                    fontFamily="font-playfair-display"
+                                    fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl"
+                                />
+                            </div>
 
                             {/* Online status & Info icon */}
                             <div className="online-text flex items-center rounded-full border border-primary-purple px-3 py-1">
-                                <Description text="An hour ago" icon={FaClock} iconPosition="left" fontFamily="font-playfair-display" fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" />
+                                <Description text="An hour ago"
+                                    icon={FaClock}
+                                    iconPosition="left"
+                                    fontFamily="font-playfair-display"
+                                    fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" />
                             </div>
-                            <div className="text-primary-purple cursor-pointer" onClick={() => toggleOverlay(index)}>
+
+                            <div className="text-primary-purple cursor-pointer"
+                                onClick={() => toggleOverlay(index)}>
                                 <FaInfoCircle size={22} />
                             </div>
                         </div>
@@ -138,14 +178,17 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
 
                     {/* Overlay */}
                     {overlayVisible[index] && (
-                        <div ref={el => (overlayRefs.current[index] = el)} className={`overlay absolute inset-0 bg-primary-purple z-20 rounded-xl transform origin-bottom ${overlayVisible[index] ? "scale-y-100 duration-300 ease-in" : "scale-y-0 duration-300 ease-out"}`}>
+                        <div ref={el => (overlayRefs.current[index] = el)}
+                            className={`overlay absolute inset-0 bg-primary-purple z-20 rounded-xl transform origin-bottom ${overlayVisible[index] ? "scale-y-100 duration-300 ease-in" : "scale-y-0 duration-300 ease-out"}`}>
 
                             {/* Overlay content */}
                             <div className="overlay-content flex flex-col justify-between items-center relative h-full">
                                 <div className="p-5 flex flex-col justify-center items-center text-center w-full">
 
                                     {/* Close & Premium Icons */}
-                                    <IoCloseCircle size={20} className="absolute top-0 left-0 m-4 cursor-pointer text-white" onClick={() => handleCloseOverlay(index)} />
+                                    <IoCloseCircle size={20}
+                                        className="absolute top-0 left-0 m-4 cursor-pointer text-white"
+                                        onClick={() => handleCloseOverlay(index)} />
 
                                     {profile.isPremium && (
                                         <div className="absolute top-0 right-0 m-4 cursor-pointer text-white">
@@ -156,10 +199,18 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                                     {/* User Details */}
                                     {profile.aboutMe && (
                                         <div className='flex flex-col gap-5 items-center'>
-                                            <Description text="About Me" fontFamily="font-playfair-display" fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" fontColor='text-white' fontWeight='font-bold' />
-                                            <div className="w-full h-28 overflow-auto" style={{ scrollbarWidth: 'none' }}>
-                                                <Description text={profile.aboutMe} fontFamily="font-playfair-display" fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" fontColor='text-white' />
+                                            <Description text="About Me"
+                                                fontFamily="font-playfair-display"
+                                                fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" fontColor='text-white'
+                                                fontWeight='font-bold' />
+
+                                            <div className="w-full h-28 overflow-auto"
+                                                style={{ scrollbarWidth: 'none' }}>
+                                                <Description text={profile.aboutMe}
+                                                    fontFamily="font-playfair-display"
+                                                    fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" fontColor='text-white' />
                                             </div>
+
                                             <div className="divider w-full border-t border-gray-300"></div>
                                         </div>
                                     )}
@@ -167,7 +218,11 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                                     {/* Interests */}
                                     {profile.interests && (
                                         <div className="flex flex-col gap-5 items-start mt-5 w-full">
-                                            <Description text="Interests" fontFamily="font-playfair-display" fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" fontColor='text-white' fontWeight='font-bold' />
+                                            <Description text="Interests"
+                                                fontFamily="font-playfair-display"
+                                                fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" fontColor='text-white'
+                                                fontWeight='font-bold' />
+
                                             <div className="flex flex-wrap gap-3">
                                                 {profile.interests.map((interest, i) => (
                                                     <Chip key={i} text={interest} fontColor='text-primary-purple' width='w-auto' />
@@ -191,6 +246,14 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                     )}
                 </div>
             ))}
+
+            {/* Location modal */}
+            <LocationModal
+                isOpen={isLocationModalOpen}
+                onClose={toggleLocationModal}
+                name={locationInfo.name}
+                location={locationInfo.address}
+            />
         </div>
     );
 };
