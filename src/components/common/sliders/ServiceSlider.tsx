@@ -147,45 +147,47 @@ const SliderComponent = () => {
   }, []); // Empty dependency array ensures the effect runs only once on component mount
 
   return (
-    <Swiper
-      loop={true}
-      spaceBetween={50}
-      slidesPerView={1}
-      autoplay={{ delay: 3000 }}
-      breakpoints={{
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 50,
-        },
-      }}
-      freeMode={true}
-      className="w-[90%]"
-      pagination={{ clickable: true }}
-      modules={[FreeMode, Pagination, Autoplay]}
-    >
-      {cardsData.map((card, index) => (
-        <SwiperSlide key={index}>
-          <div className="mb-10">
-            <CardComponent
-              overlayTitle={card.overlayTitle}
-              gradientTitle={card.gradientTitle}
-              descriptionText={card.descriptionText}
-              buttonText={card.buttonText}
-              onButtonClick={() => console.log(`Button ${index + 1} clicked`)}
-              image={card.image}
-            />
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="">
+      <Swiper
+        loop={true}
+        spaceBetween={50}
+        slidesPerView={1}
+        autoplay={{ delay: 3000 }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        }}
+        freeMode={true}
+        className="w-[90%]"
+        pagination={{ clickable: true }}
+        modules={[FreeMode, Pagination, Autoplay]}
+      >
+        {cardsData.map((card, index) => (
+          <SwiperSlide key={index}>
+            <div className="mb-10">
+              <CardComponent
+                overlayTitle={card.overlayTitle}
+                gradientTitle={card.gradientTitle}
+                descriptionText={card.descriptionText}
+                buttonText={card.buttonText}
+                onButtonClick={() => console.log(`Button ${index + 1} clicked`)}
+                image={card.image}
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 
