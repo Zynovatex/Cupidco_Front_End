@@ -7,6 +7,7 @@ import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import LoginModal from "../login/LoginModal";
 import { IoCloseCircle } from "react-icons/io5";
+import { register } from "@/app/api/auth";
 
 interface RegisterModalProps {
   isOpen: boolean;
@@ -15,12 +16,32 @@ interface RegisterModalProps {
 
 const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    password: "",
+  });
+
+   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     const { name, value } = e.target;
+     setFormData({ ...formData, [name]: value });
+   };
+
+  const handleRegisterUser = async () => {
+    try {
+      const response = await register(formData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const toggleLoginModal = () => {
     setIsLoginModalOpen(!isLoginModalOpen);
   };
 
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   // radio button function
@@ -31,48 +52,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
     setSelectedOptions({ ...selectedOptions, [groupName]: value });
   };
 
-  const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    dob: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-    gender: "",
-  });
-
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch(
-        "https://65e02f84d3db23f762488898.mockapi.io/api/v1/cupidco/user",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
-
-      if (response.ok) {
-        console.log("Data posted successfully!");
-      } else {
-        console.error("Failed to post data:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error posting data:", error);
-    }
-  };
   const disableScroll = () => {
     document.body.style.overflow = "hidden";
   };
@@ -190,8 +169,6 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-2">
                     <TextField
-                      value={userData.firstName}
-                      onChange={handleChange}
                       name="firstName"
                       label="First Name"
                       type="text"
@@ -199,10 +176,10 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                       width="w-full"
                       bgColor="bg-transparent"
                       height="h-1"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                     />
                     <TextField
-                      value={userData.lastName}
-                      onChange={handleChange}
                       name="lastName"
                       label="Last Name"
                       type="text"
@@ -210,11 +187,12 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                       width="w-full"
                       bgColor="bg-transparent"
                       height="h-1"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                     />
                   </div>
+                  
                   <TextField
-                    value={userData.dob}
-                    onChange={handleChange}
                     name="dob"
                     label="Date of birth"
                     type="text"
@@ -223,10 +201,9 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                     bgColor="bg-transparent"
                     height="h-1 "
                   />
+                  
                   <TextField
                     name="phoneNumber"
-                    value={userData.phoneNumber}
-                    onChange={handleChange}
                     label="Phone Number"
                     type="Number"
                     id="phoneNumber"
@@ -234,20 +211,20 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                     bgColor="bg-transparent"
                     height="h-1 "
                   />
+
                   <TextField
-                    value={userData.email}
-                    onChange={handleChange}
-                    name="email"
+                    name="emailAddress"
                     label="Email"
                     type="email"
-                    id="mail"
+                    id="emailAddress"
                     width="w-full"
                     bgColor="bg-transparent"
                     height="h-1 "
+                    value={formData.emailAddress}
+                    onChange={handleInputChange}
                   />
+
                   <TextField
-                    value={userData.password}
-                    onChange={handleChange}
                     name="password"
                     label="Password"
                     type="password"
@@ -255,6 +232,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                     width="w-full"
                     bgColor="bg-transparent"
                     height="h-1 "
+                    value={formData.password}
+                    onChange={handleInputChange}
                   />
                   <div className="flex flex-row md:gap-4 gap-2">
                     <Description
@@ -315,7 +294,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                   width="w-full"
                   radius="rounded-xl lg:rounded-md xl:rounded-lg"
                   fontSize="lg:text-md xl:text-lg xs:text-xs text-lg max-xs:text-sm"
-                  onClick={handleSubmit}
+                  onClick={handleRegisterUser}
                 />
                 <LoginModal
                   isOpen={isLoginModalOpen}

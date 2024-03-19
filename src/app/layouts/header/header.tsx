@@ -3,7 +3,7 @@ import AfterLogin from "./after-login/after-login";
 import BeforeLogin from "./before-login/before-login";
 
 export default function Header(): JSX.Element {
-  const userLogin = true;
+  const userLogin = false;
 
   return <div>{userLogin ? <AfterLogin /> : <BeforeLogin />}</div>;
 }
