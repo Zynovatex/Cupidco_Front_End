@@ -1,4 +1,4 @@
-import About from "@/app/(pages)/about/page";
+import About from "@/app/(before-login-pages)/about/page";
 import React, { useState } from "react";
 import VideoGallery from "../user-container-sections/VideoGallery";
 import ImageGallery from "../user-container-sections/ImageGallery";

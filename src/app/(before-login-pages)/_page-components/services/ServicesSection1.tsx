@@ -3,7 +3,7 @@ import Title from "@/components/common/texts/Title";
 import Image from "next/image";
 import Link from "next/link";
 import ServicesCard from "./ServiceCard";
- 
+
 type CardProps = {
   title: string;
   description: string;

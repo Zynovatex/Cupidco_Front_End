@@ -1,8 +1,8 @@
 "use-client";
 
-import Description from "../../../common/texts/Description";
-import Title from "../../../common/texts/Title";
-import Image from "next/image";
+import Description from "@/components/common/texts/Description";
+import Title from "@/components/common/texts/Title";
+  import Image from "next/image";
 
 type ServiceInnerProps = {
   imageUrl: string;
