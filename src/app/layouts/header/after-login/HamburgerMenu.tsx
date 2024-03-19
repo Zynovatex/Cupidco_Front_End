@@ -63,7 +63,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClose }) => {
   return (
     <div
       ref={menuRef}
-      className={`fixed md:hidden right-0 top-0 h-screen bg-cover bg-no-repeat transition-opacity ${
+      className={`fixed right-0 top-0 h-screen bg-cover bg-no-repeat transition-opacity ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       style={{ backgroundImage: "url(/images/HamburgerFrame.png)" }}
@@ -80,13 +80,14 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClose }) => {
             </li>
           ))}
         </ul>
+
         <div className="absolute bottom-0 left-0 w-full text-lg flex justify-center pb-10">
           <PrimaryButton
             label="Log out"
             bgColor="bg-[white]"
             textColor="text-primary-purple"
             height="py-1"
-            fontSize="text-md"
+            fontSize=""
           />
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function ClientAreaSection01() {
       <div>
         <Title
           text="Client Area"
-          fontSize="text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl"
+          fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
           center={true}
           fontWeight="font-normal"
           uppercase={true}

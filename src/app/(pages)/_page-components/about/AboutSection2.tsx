@@ -40,6 +40,7 @@ export default function AboutSection2() {
                   fontSize="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl"
                 />
               </div>
+              
               {/* description  */}
               <div className="mb-5">
                 <Description text={OurVision} />
