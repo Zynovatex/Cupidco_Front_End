@@ -139,14 +139,14 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                         <div className="name">
                             <Description text={profile.name}
                                 fontFamily="font-playfair-display"
-                                fontSize="text-sm sm:text-sm md:text-lg lg:text-2xl xl:text-2xl"
+                                fontSize="text-md md:text-lg lg:text-2xl xl:text-2xl"
                                 fontWeight="font-bold" />
                         </div>
 
                         <div className="age">
                             <Description text={`Age ${profile.age}`}
                                 fontFamily="font-playfair-display"
-                                fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" />
+                                fontSize="text-md md:text-lg lg:text-xl xl:text-xl" />
                         </div>
 
                         <div className="Address flex justify-between items-center">
@@ -156,7 +156,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                                     text={truncateText(profile.address, 7)}
                                     icon={FaLocationDot}
                                     fontFamily="font-playfair-display"
-                                    fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl"
+                                    fontSize="text-md md:text-lg lg:text-xl xl:text-xl"
                                 />
                             </div>
 
@@ -166,7 +166,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                                     icon={FaClock}
                                     iconPosition="left"
                                     fontFamily="font-playfair-display"
-                                    fontSize="text-sm sm:text-sm md:text-lg lg:text-xl xl:text-xl" />
+                                    fontSize="text-md md:text-lg lg:text-xl xl:text-xl" />
                             </div>
 
                             <div className="text-primary-purple cursor-pointer"
