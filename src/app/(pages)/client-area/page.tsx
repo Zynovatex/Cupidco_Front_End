@@ -1,4 +1,5 @@
 import ClientAreaSection01 from "../_page-components/client-area/ClientAreaSection01";
+import ClientAreaSection02 from "../_page-components/client-area/ClientAreaSection02";
 
 export default function ClientArea() {
   return (
@@ -10,6 +11,8 @@ export default function ClientArea() {
       >
         <ClientAreaSection01 />
       </div>
+
+      <ClientAreaSection02 />
     </>
   );
 }

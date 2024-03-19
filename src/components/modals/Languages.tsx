@@ -38,7 +38,7 @@ const Languages: React.FC<LanguagesProps> = ({ onClose, onSelectLanguage }) => {
   };
 
   return (
-    <div className="absolute mt-3  ml-[-300px]">
+    <div className="absolute mt-5 ml-[-300px]">
       <div className="   ">
         <div
           ref={modalRef}

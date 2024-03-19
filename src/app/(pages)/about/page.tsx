@@ -19,10 +19,8 @@ export default function About() {
       </div>
 
       {/* about section 02  */}
-      <div className="  ">
-       <AboutSection2 />
-      </div>
- 
+      <AboutSection2 />
+
       {/* about section 03  */}
       <div className=" bg-[#f8e7e7]">
         <div className="mx-auto max-w-screen-2xl">
