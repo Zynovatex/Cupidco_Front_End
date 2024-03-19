@@ -22,9 +22,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header/>
+        <Header />
         {children}
-        <Footer />
+        <div
+          className="bg-cover bg-center bg-no-repeat h-full"
+          style={{ backgroundImage: "url(/images/FooterBgImage.png)" }}
+        >
+          <div className="flex justify-center  ">
+            <div className="max-w-screen-2xl">
+              <Footer />
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );

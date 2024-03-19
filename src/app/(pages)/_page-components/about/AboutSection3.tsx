@@ -5,42 +5,58 @@ import Title from "@/components/common/texts/Title";
 import Image from "next/image";
 
 export default function AboutSection3() {
-  const Content = `We envision a world where every person can find their soulmate, build a strong foundation, and embark on a lifelong journey of love and companionship. We are dedicated to making this vision a reality by providing a safe, inclusive, and supportive platform for individuals seeking marriage.We envision a world where every person can find their soulmate, build a strong foundation, and embark on a lifelong journey of love and companionship. We are dedicated to making this vision a reality by providing a safe, inclusive, and supportive platform for individuals seeking marriage.We envision a world where every person can find their soulmate, build a strong foundation, and embark on a lifelong journey of love and companionship. We are dedicated to making this vision a reality by providing a safe, inclusive, and supportive platform for individuals seeking marriage.`;
+  const Content = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also `;
+
   return (
-    <div className="bg-cover bg-center bg-no-repeat min-h-screen p-20 max-md:p-10 bg-[#FFF4F1]">
-      <div>
-        <Title
-          text="Lorem Ipsum"
-          fontSize="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl"
-          center={true}
+    <div className="px-8 md:px-16 py-10 md:py-20 text-justify md:flex">
+      {/* Description  */}
+      <div className="md:order-last md:ml-10  ">
+        <Description text={Content} italic={true} />
+      </div>
+
+      {/* images in web view  */}
+      {/* image 01  */}
+      <div className="max-lg:hidden mt-[-200px]">
+        <Image
+          src="/images/AboutSectionImage.png"
+          alt="Double Images"
+          width={700}
+          height={50}
+          className="shadow-2xl "
         />
       </div>
-      <div className="grid md:grid-cols-2 mt-10 text-justify items-center gap-5">
-        <div>
-          <Description text={Content} italic={true} />
-        </div>
-        <div className="flex justify-center">
-          <Image
-            src="/images/SampleRectangle.png"
-            alt="Double Images"
-            width={400}
-            height={400}
-            className="w-[80%]"
-          />
-        </div>
+      {/* image 02  */}
+      <div className=" max-lg:hidden ml-[-50px] lg:mt-[5%] ">
+        <Image
+          src="/images/AboutSectionImage.png"
+          alt="Double Images"
+          width={400}
+          height={50}
+          className="shadow-2xl "
+        />
       </div>
-      <div className="grid md:grid-cols-2 mt-10 text-justify items-center gap-5">
-        <div className="flex justify-center order-last md:order-first ">
+
+      {/* images in mobile view and tablet view */}
+      <div className=" mt-5 ">
+        {/* image 01  */}
+        <div className="max-md:flex max-md:justify-center max-md:mr-20 md:w-40 md:mt-[-20px] lg:hidden  ">
           <Image
-            src="/images/SampleRectangle.png"
+            src="/images/AboutSectionImage.png"
             alt="Double Images"
-            width={400}
-            height={400}
-            className="w-[80%]"
+            width={180}
+            height={50}
+            className="shadow-2xl "
           />
         </div>
-        <div className="order-first md:order-last">
-          <Description text={Content} italic={true} />
+        {/* image 02  */}
+        <div className="flex justify-center ml-28 mt-[-100px] md:hidden ">
+          <Image
+            src="/images/AboutSectionImage.png"
+            alt="Double Images"
+            width={120}
+            height={50}
+            className="shadow-2xl"
+          />
         </div>
       </div>
     </div>

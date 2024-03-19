@@ -26,7 +26,7 @@ const Description: React.FC<DescriptionProps> = ({
   center,
   right,
   fontFamily = "font-playfair-display",
-  fontSize = "text-sm sm:text-md md:text-lg lg:text-xl",
+  fontSize = "text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl  ",
   fontColor = "text-[#6D2E46]",
   fontWeight = "font-regular",
   icon: Icon,

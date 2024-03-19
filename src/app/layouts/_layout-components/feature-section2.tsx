@@ -4,9 +4,20 @@ import { MdOutlineNotificationsActive } from "react-icons/md";
 import { RiMessengerFill } from "react-icons/ri";
 import { FaCircleUser } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
+import HamburgerMenu from "../header/after-login/HamburgerMenu";
+import { useState } from "react";
 
 export default function FeatureSection2() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const notifcation = true;
+
+  const handleNav = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <>
@@ -27,8 +38,12 @@ export default function FeatureSection2() {
         <div className="  rounded-full text-white   bg-primary-purple  ">
           <FaCircleUser className="w-8 h-8" />
         </div>
-        <div className=" text-primary-purple text-3xl pr-1 ">
+        <div
+          onClick={handleNav}
+          className="relative text-primary-purple text-3xl pr-1 "
+        >
           <IoMenu />
+          <HamburgerMenu isOpen={menuOpen} onClose={closeMenu} />
         </div>
       </div>
     </>

@@ -11,7 +11,8 @@ import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { FaCircleUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import Languages from "@/components/modals/Languages";
-
+import HamburgerMenu from "./HamburgerMenu";
+ 
 export default function AfterLogin() {
   const [isMobile, setIsMobile] = useState(false);
   const [showIcons, setShowIcons] = useState(true);
@@ -21,6 +22,15 @@ export default function AfterLogin() {
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English"); // Default language label
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleNav = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(event.target.value);
@@ -88,6 +98,7 @@ export default function AfterLogin() {
               )}
             </div>
             <FeatureSection2 />
+            
           </div>
         </nav>
       )}
@@ -101,9 +112,10 @@ export default function AfterLogin() {
               </Link>
             </div>
 
-            <div className="items-center flex ">
+            <div className="items-center flex " onClick={handleNav}>
               <div className=" text-primary-purple text-3xl px-5 ">
                 <IoMenu />
+                <HamburgerMenu isOpen={menuOpen} onClose={closeMenu} />
               </div>
             </div>
           </div>
