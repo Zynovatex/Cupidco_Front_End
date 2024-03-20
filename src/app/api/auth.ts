@@ -11,4 +11,12 @@ export const register = async (data: any) => {
     }
 };
 
-
+// login
+export const login = async (data: any) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/auth/token`, data)
+        return response.data;
+    } catch (error: any) {
+        return error.message;
+    }
+}
