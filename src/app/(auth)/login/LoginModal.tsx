@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { IoCloseCircle } from "react-icons/io5";
-import { MdDone } from "react-icons/md";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import CheckboxComponent from "@/components/common/inputs/Checkbox";
 import TextField from "@/components/common/inputs/Input";
@@ -9,9 +8,11 @@ import Logo from "@/components/common/logo/Logo";
 import SocialMedia from "@/components/common/social-media/SocialMedia";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
-import PopupwithIco from "@/components/modals/PopupwithIco";
 import ForgetPasswordModal from "../forget-password/ForgetPasswordModal";
 import Link from "next/link";
+import { GoEye } from "react-icons/go";
+import { FiEyeOff } from "react-icons/fi";
+import { login } from "@/app/api/auth";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -22,6 +23,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [username, setUsername] = useState<string>(""); // Specify type string
+  const [password, setPassword] = useState<string>(""); // Specify type string
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
+  };
 
   const handleSignUpClick = () => {
     setIsModalOpen(true);
@@ -75,14 +83,31 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen && !isClosing) return null;
 
-  const handlePrivacyPolicyClick = () => {
-    startClosing();
-    // Here you can navigate to the privacy policy page
-    // using next/router or any navigation library you're using.
-    // For example, if you're using Next.js router:
-    // import { useRouter } from "next/router";
-    // const router = useRouter();
-    // router.push("/privacy-policy");
+  // user login
+  const handleSubmit = async () => {
+    try {
+      const response = await login({ email: username, password });
+      console.log(response);
+
+      if (response.status === "success") {
+        // localStorage.setItem("token", response.message);
+        localStorage.setItem("token", response.message);
+        // Handle successful login, redirect, etc.
+      } else {
+        // Handle unsuccessful login, show error message, etc.
+      }
+    } catch (error) {
+      console.log(error);
+      // Handle error, show error message, etc.
+    }
+  };
+
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value); // Ensure event.target.value is string
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value); // Ensure event.target.value is string
   };
 
   return (
@@ -162,7 +187,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   width="w-full"
                   bgColor="bg-transparent"
                   height="h-1"
-                  value={""}
+                  value={username}
+                  onChange={handleUsernameChange}
                   name={""}
                 />
 
@@ -170,13 +196,27 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 <div className="mt-5">
                   <TextField
                     label="Password"
-                    type="password"
+                    type={passwordVisible ? "text" : "password"}
                     id="password"
                     bgColor="bg-transparent"
                     height="h-1"
-                    value={""}
+                    value={password}
+                    onChange={handlePasswordChange}
                     name={""}
                   />
+                  <div className=" relative mt-[-29px] flex justify-end mr-3 ">
+                    {passwordVisible ? (
+                      <GoEye
+                        onClick={togglePasswordVisibility}
+                        className="cursor-pointer"
+                      />
+                    ) : (
+                      <FiEyeOff
+                        onClick={togglePasswordVisibility}
+                        className="cursor-pointer"
+                      />
+                    )}
+                  </div>
                 </div>
 
                 {/* checkbox  */}
@@ -205,21 +245,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   </div>
                 </div>
 
-                {/* texts  */}
-                <div className="text-justify text-xs text-primary-purple mt-4 ">
-                  <span> By signing up you are agreeing to our </span>
-                  <Link href="/privacy-policy">
-                    <span
-                      className="font-bold text-primary-purple cursor-pointer"
-                      onClick={handlePrivacyPolicyClick}
-                    >
-                      Privacy Policy
-                    </span>
-                  </Link>
-                  <span> and </span>
-                  <span className="font-bold"> Terms of Use.</span>
-                </div>
-
                 <div className="mt-5">
                   <PrimaryButton
                     label="Sign In"
@@ -227,7 +252,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     width="w-full"
                     radius="rounded-xl lg:rounded-md xl:rounded-lg"
                     fontSize="lg:text-md xl:text-lg max-sm:text-xs text-lg max-xs:text-sm"
-                    onClick={handleSignUpClick}
+                    onClick={handleSubmit}
                   />
                 </div>
 
@@ -257,7 +282,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
                 {/* social media  */}
                 <div className="flex gap-3 justify-center mt-3">
-                   <SocialMedia
+                  <SocialMedia
                     network="facebook"
                     url="www.facebook.com"
                     key={1}
