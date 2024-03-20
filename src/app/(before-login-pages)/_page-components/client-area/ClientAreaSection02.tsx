@@ -1,9 +1,11 @@
 "use client";
 
+import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import Title2 from "@/components/common/texts/Title2";
 import { RxDotFilled } from "react-icons/rx";
+import { IoMdSend } from "react-icons/io";
 
 export default function ClientAreaSection02() {
   return (
@@ -108,6 +110,25 @@ export default function ClientAreaSection02() {
             <RxDotFilled className="w-14 text-[#6D2E46] text-xl" />
             <Description text="Client Area at Cupidco. This is where you can manage your profile, interact with potential matches, and access resources to enhance your journey towards marriage. " />
           </div>
+        </div>
+
+        <div className="mt-5">
+          <Description
+            fontWeight={"font-bold"}
+            text="Client Area at Cupidco. This is where you can manage your profile, interact with potential matches, and access resources to enhance your journey towards marriage. "
+          />
+        </div>
+
+        <div className="mt-5">
+          <PrimaryButton
+            label="Contact us"
+            fontSize="text-md md:text-md lg:text-xl"
+            height="py-2"
+            width=""
+            radius="rounded-2xl"
+            icon={<IoMdSend />}
+            iconPosition={"right"}
+          />
         </div>
       </div>
     </>

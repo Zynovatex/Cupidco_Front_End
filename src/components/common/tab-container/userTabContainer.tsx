@@ -1,5 +1,5 @@
 "use cliet";
-import About from "@/app/(pages)/about/page";
+import About from "@/app/(before-login-pages)/about/page";
 import VideoGallery from "@/components/user-container-sections/FullVideoGallery";
 import ImageGallery from "@/components/user-container-sections/ImageGallery";
 import Requirements from "@/components/user-container-sections/Requirements";

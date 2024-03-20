@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Title from "../common/texts/Title";
 import { IoClose } from "react-icons/io5";
-import LanguageButton from "./LanguageButton";
+import LanguageButton from "../common/buttons/LanguageButton";
 
 interface LanguagesProps {
   onClose: (status: boolean) => void;

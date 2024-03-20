@@ -23,11 +23,12 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
     password: "",
   });
 
-   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-     const { name, value } = e.target;
-     setFormData({ ...formData, [name]: value });
-   };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
+  //  user registration
   const handleRegisterUser = async () => {
     try {
       const response = await register(formData);
@@ -152,10 +153,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Content */}
-            <div
-              className={`relative flex flex-col items-center justify-center sm:space-y-3 h-[10%] max-sm:m-4 xl:space-y-2 
-        md:h-[10%] lg:h-[10%] xs:h-[10%] xl:h-[98%]`}
-            >
+            <div className={`relative flex flex-col items-center justify-center sm:space-y-3 h-[10%] max-sm:m-4 xl:space-y-2 md:h-[10%] lg:h-[10%] xs:h-[10%] xl:h-[98%]`}>
               <div className="mb-3">
                 <Title
                   text="Welcome to Cupidco!"
@@ -191,7 +189,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                       onChange={handleInputChange}
                     />
                   </div>
-                  
+
                   <TextField
                     name="dob"
                     label="Date of birth"
@@ -201,7 +199,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                     bgColor="bg-transparent"
                     height="h-1 "
                   />
-                  
+
                   <TextField
                     name="phoneNumber"
                     label="Phone Number"
@@ -235,7 +233,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                     value={formData.password}
                     onChange={handleInputChange}
                   />
-                  <div className="flex flex-row md:gap-4 gap-2">
+
+                  <div className="flex flex-row md:gap-4 gap-2 ">
                     <Description
                       text="Gender : "
                       fontSize="text-sm xs:text-xs lg:text-sm md:text-sm xl:text-lg max-xs:text-xs"
@@ -266,36 +265,18 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
                     />
                   </div>
                 </div>
-                <div className="flex items-center justify-between sm:gap-8 font-Quicksand xs:text-xs sm:text-xs lg:text-sm xl:text-lg md:text-xs max-xs:text-xs"></div>
-                <div className="space-x-1 font-Quicksand">
-                  <span className="text-sm xs:text-xs lg:text-xs md:text-xs xl:text-sm font-medium max-xs:text-xs">
-                    By signing up you are agreeing to our
-                  </span>
-                  <a
-                    href="/privacy-policy"
-                    className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-bold"
-                  >
-                    Privacy Policy
-                  </a>
-                  <span className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-medium">
-                    and
-                  </span>
-                  <a
-                    href="/terms-of-use"
-                    className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-bold"
-                  >
-                    Terms of Use.
-                  </a>
+
+                <div className="mt-5">
+                  <PrimaryButton
+                    label="Sign In"
+                    height="py-1 xl:py-2"
+                    width="w-full"
+                    radius="rounded-xl lg:rounded-md xl:rounded-lg"
+                    fontSize="lg:text-md xl:text-lg xs:text-xs text-lg max-xs:text-sm"
+                    onClick={handleRegisterUser}
+                  />
                 </div>
 
-                <PrimaryButton
-                  label="Sign In"
-                  height="py-1 xl:py-2"
-                  width="w-full"
-                  radius="rounded-xl lg:rounded-md xl:rounded-lg"
-                  fontSize="lg:text-md xl:text-lg xs:text-xs text-lg max-xs:text-sm"
-                  onClick={handleRegisterUser}
-                />
                 <LoginModal
                   isOpen={isLoginModalOpen}
                   onClose={toggleLoginModal}

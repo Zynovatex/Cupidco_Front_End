@@ -2,9 +2,9 @@
 
 import React from "react";
 
-import HomeSection1 from "./(pages)/_page-components/home/HomeSection1";
-import HomeSection2 from "./(pages)/_page-components/home/HomeSection2";
 import Dashboard from "./(after-login-pages)/dashboard/page";
+import HomeSection1 from "./(before-login-pages)/_page-components/home/HomeSection1";
+import HomeSection2 from "./(before-login-pages)/_page-components/home/HomeSection2";
 
 const ParentComponent = () => {
   const UserLogin = false;
