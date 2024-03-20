@@ -5,7 +5,7 @@ import Image from "next/image";
 import Title from "../texts/Title";
 import Description from "../texts/Description";
 import PrimaryButton from "../buttons/PrimaryButton";
-import Input from "../inputs/Input";
+import Input from "../inputs/TextField";
 import OtpInput from "../inputs/OtpInput";
 import CheckboxComponent from "../inputs/Checkbox";
 import ForgetPasswordModal from "@/app/(auth)/forget-password/ForgetPasswordModal";
