@@ -53,7 +53,7 @@ const TextField: React.FC<TextFieldProps> = ({
 
   const inputStyle = {
     boxShadow: isFocused ? `0 0 0 2px #4D194D` : "none",
-    border: isFocused ? "none" : "1.8px solid #4D194D",
+    border: isFocused ? "none" : "1px solid #4D194D",
   };
 
   return (
@@ -71,7 +71,7 @@ const TextField: React.FC<TextFieldProps> = ({
           p-4
           pt-6
           ${bgColor}
-          border-[2px]
+          border-[1px]
           transition
           disabled:opacity-40
           disabled:cursor-not-allowed
