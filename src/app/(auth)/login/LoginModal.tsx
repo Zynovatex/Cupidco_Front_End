@@ -3,7 +3,7 @@ import Image from "next/image";
 import { IoCloseCircle } from "react-icons/io5";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import CheckboxComponent from "@/components/common/inputs/Checkbox";
-import TextField from "@/components/common/inputs/Input";
+import TextField from "@/components/common/inputs/TextField";
 import Logo from "@/components/common/logo/Logo";
 import SocialMedia from "@/components/common/social-media/SocialMedia";
 import Description from "@/components/common/texts/Description";

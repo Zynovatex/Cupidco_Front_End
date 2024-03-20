@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import TextField from "../common/inputs/Input";
+import TextField from "../common/inputs/TextField";
 import TextArea from "../common/inputs/TextArea";
 import Title from "../common/texts/Title";
 import PrimaryButton from "../common/buttons/PrimaryButton";

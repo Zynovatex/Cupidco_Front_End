@@ -5,14 +5,20 @@ import Logo from "@/components/common/logo/Logo";
 import Link from "next/link";
 import FeatureSection1 from "../../_layout-components/feature-section1";
 import { GrLanguage } from "react-icons/gr";
-import FeatureSection2 from "../../_layout-components/feature-section2";
 import { IoMenu, IoSearch } from "react-icons/io5";
 import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { FaCircleUser } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import Languages from "@/components/modals/Languages";
 import HamburgerMenu from "./HamburgerMenu";
- 
+import PrimaryButton from "@/components/common/buttons/PrimaryButton";
+import {
+  MdOutlineNotifications,
+  MdOutlineNotificationsActive,
+} from "react-icons/md";
+import { RiMessengerFill } from "react-icons/ri";
+import FilterOption from "@/components/modals/FilterOption";
+
 export default function AfterLogin() {
   const [isMobile, setIsMobile] = useState(false);
   const [showIcons, setShowIcons] = useState(true);
@@ -23,7 +29,13 @@ export default function AfterLogin() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English"); // Default language label
   const [menuOpen, setMenuOpen] = useState(false);
+  const notifcation = true;
 
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = React.useState(false);
+
+  const toggleRegisterModal = () => {
+    setIsRegisterModalOpen(!isRegisterModalOpen);
+  };
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
@@ -97,12 +109,44 @@ export default function AfterLogin() {
                 />
               )}
             </div>
-            <FeatureSection2 />
-            
+
+            <div className="relative  py-1 lg:py-[6px] px-2 text-primary-purple font-bold rounded-[30px] border-2 border-[#4d194d]/[.35] bg-[#fff]/[.40] flex font-playfair-display gap-1 lg:gap-3  items-center">
+              {/* filter option icon  */}
+              <div
+                className=" relative cursor-pointer rounded-full text-white lg:text-lg bg-primary-purple p-2 "
+                onClick={toggleRegisterModal}
+              >
+                <HiAdjustmentsHorizontal />
+              </div>
+              {/* notification icon  */}
+              <div className="  rounded-full text-white lg:text-lg bg-primary-purple p-2">
+                {notifcation ? (
+                  <MdOutlineNotifications />
+                ) : (
+                  <MdOutlineNotificationsActive />
+                )}
+              </div>
+              {/* messenger icon  */}
+              <div className="  rounded-full text-white lg:text-lg bg-primary-purple p-2">
+                <RiMessengerFill />
+              </div>
+              {/* user profile  */}
+              <div className="  rounded-full text-white   bg-primary-purple  ">
+                <FaCircleUser className="w-8 h-8" />
+              </div>
+              {/* HamburgerMenu menu  */}
+              <div
+                onClick={handleNav}
+                className="relative text-primary-purple text-3xl pr-1 "
+              >
+                <IoMenu />
+                <HamburgerMenu isOpen={menuOpen} onClose={closeMenu} />
+              </div>
+            </div>
           </div>
         </nav>
       )}
-
+      {/* tablet and mobile view  */}
       {!showIcons && (
         <nav className="fixed w-full py-2 bg-transparent backdrop-blur-md z-50  ">
           <div className="flex">
@@ -168,7 +212,10 @@ export default function AfterLogin() {
             )}
 
             <div>
-              <div className="mt-1 ml-2 rounded-full text-white text-sm bg-primary-purple p-2 ">
+              <div
+                className="mt-1 ml-2 rounded-full text-white text-sm bg-primary-purple p-2 "
+                onClick={toggleRegisterModal}
+              >
                 <HiAdjustmentsHorizontal />
               </div>
             </div>
@@ -180,7 +227,11 @@ export default function AfterLogin() {
             </div>
           </div>
         </nav>
-      )}
+      )}{" "}
+      <FilterOption
+        isOpen={isRegisterModalOpen}
+        onClose={toggleRegisterModal}
+      />
     </>
   );
 }

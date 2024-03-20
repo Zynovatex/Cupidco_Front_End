@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
-import TextField from "@/components/common/inputs/Input";
+import TextField from "@/components/common/inputs/TextField";
 import RadioButton from "@/components/common/inputs/RadioButton";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
@@ -153,7 +153,9 @@ const RegisterModal: React.FC<RegisterModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Content */}
-            <div className={`relative flex flex-col items-center justify-center sm:space-y-3 h-[10%] max-sm:m-4 xl:space-y-2 md:h-[10%] lg:h-[10%] xs:h-[10%] xl:h-[98%]`}>
+            <div
+              className={`relative flex flex-col items-center justify-center sm:space-y-3 h-[10%] max-sm:m-4 xl:space-y-2 md:h-[10%] lg:h-[10%] xs:h-[10%] xl:h-[98%]`}
+            >
               <div className="mb-3">
                 <Title
                   text="Welcome to Cupidco!"
