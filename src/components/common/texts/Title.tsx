@@ -31,7 +31,7 @@ const Title: React.FC<TitleProps> = ({
   fontFamily = "font-playfair-display",
   fontSize = "text-4xl",
   fontColor = "text-[#4D194D]",
-  fontWeight = "font-semibold",
+  fontWeight = "font-bold",
   uppercase,
 }) => {
   return (

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -13,7 +13,12 @@ interface DescriptionProps {
   fontFamily?: string;
   fontSize?: string;
   fontColor?: string;
-  fontWeight?: "font-light" | "font-regular" | "font-medium" | "font-semibold" | "font-bold";
+  fontWeight?:
+    | "font-light"
+    | "font-regular"
+    | "font-medium"
+    | "font-semibold"
+    | "font-bold";
   icon?: IconType;
   iconPosition?: "left" | "right";
   children?: ReactNode;
@@ -25,7 +30,7 @@ const Description: React.FC<DescriptionProps> = ({
   italic,
   center,
   right,
-  fontFamily = "font-playfair-display",
+  fontFamily = "font-Vollkorn",
   fontSize = "text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl  ",
   fontColor = "text-[#6D2E46]",
   fontWeight = "font-regular",

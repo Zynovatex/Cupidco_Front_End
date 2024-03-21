@@ -1,29 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
-interface InputProps {
-  id?: string;
-  name?: string;
-  width?: string;
+interface TextFieldProps {
+  id: string;
   value?: string;
+  name?: string;
+  label?: string;
+  type?: string;
+  width?: string;
+  height?: string;
+  radius?: string;
+  fontSizeLabel?: string;
   disabled?: boolean;
+  formatPrice?: boolean;
+  required?: boolean;
   bgColor?: string;
-  borderColor?: string;
-  borderRadius?: string;
-  placeholder?: string;
-  frontIcon?: React.ReactNode; // Change the type to React.ReactNode
+  placeholder?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({
+const TextField: React.FC<TextFieldProps> = ({
   id,
-  name,
-  width,
   value,
-  bgColor,
+  name,
+  label,
+  type = "text",
   disabled,
-  borderColor,
-  placeholder,
-  borderRadius,
-  frontIcon,
+  formatPrice,
+  fontSizeLabel = "text-sm xl:text-xl",
+  width = "w-[100%]",
+  height = "h-12",
+  radius = "rounded-lg",
+  required,
+  bgColor = "bg-white",
+  placeholder= "",
+  onChange,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState(value);
@@ -45,7 +55,7 @@ const Input: React.FC<InputProps> = ({
 
   const inputStyle = {
     boxShadow: isFocused ? `0 0 0 2px #4D194D` : "none",
-    border: isFocused ? "none" : "1px solid #4D194D",
+    border: isFocused ? "none" : "1.8px solid #4D194D",
   };
 
   return (
@@ -55,7 +65,7 @@ const Input: React.FC<InputProps> = ({
         name={name}
         id={id}
         disabled={disabled}
-        placeholder=" "
+        placeholder={placeholder}
         type={type}
         style={inputStyle}
         className={`
@@ -63,7 +73,7 @@ const Input: React.FC<InputProps> = ({
           p-4
           pt-6
           ${bgColor}
-          border-[1px]
+          border-[2px]
           transition
           disabled:opacity-40
           disabled:cursor-not-allowed
@@ -112,4 +122,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default TextField;
