@@ -16,40 +16,93 @@ const Dashboard = () => {
     ];
 
     const profiles = [
-        {
-            images: images,
-            name: "John Doe",
-            address: "Anuradhapura",
-            age: "30",
-            isPremium: true,
-            aboutMe: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-            interests: ["Painting", "Chess", "Reading", "Football", "Watching Movies"]
-        },
-        {
-            images: images,
-            name: "Emy",
-            address: "Colombo",
-            age: "35",
-        },
-        {
-            images: images,
-            name: "John Doe",
-            address: "Kandy",
-            age: "30",
-            isPremium: true,
-            aboutMe: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-            interests: ["Painting", "Chess", "Reading", "Football", "Watching Movies"]
-        },
-        {
-            images: images,
-            name: "John Doe",
-            address: "Colombo",
-            age: "30",
-            isPremium: true,
-            aboutMe: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
-            interests: ["Painting", "Chess", "Reading", "Football", "Watching Movies"]
-        },
-        // More profiles...
+      {
+        images: images,
+        name: "John Doe",
+        address: "Anuradhapura",
+        age: "30",
+        isPremium: true,
+        aboutMe:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        interests: [
+          "Painting",
+          "Chess",
+          "Reading",
+          "Football",
+          "Watching Movies",
+        ],
+      },
+      {
+        images: images,
+        name: "Emy",
+        address: "Colombo",
+        age: "35",
+      },
+      {
+        images: images,
+        name: "John Doe",
+        address: "Kandy",
+        age: "30",
+        isPremium: true,
+        aboutMe:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        interests: [
+          "Painting",
+          "Chess",
+          "Reading",
+          "Football",
+          "Watching Movies",
+        ],
+      },
+      {
+        images: images,
+        name: "John Doe",
+        address: "Colombo",
+        age: "30",
+        isPremium: true,
+        aboutMe:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        interests: [
+          "Painting",
+          "Chess",
+          "Reading",
+          "Football",
+          "Watching Movies",
+        ],
+      },
+      {
+        images: images,
+        name: "John Doe",
+        address: "Colombo",
+        age: "30",
+        isPremium: true,
+        aboutMe:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        interests: [
+          "Painting",
+          "Chess",
+          "Reading",
+          "Football",
+          "Watching Movies",
+        ],
+      },
+      {
+        images: images,
+        name: "John Doe",
+        address: "Colombo",
+        age: "30",
+        isPremium: true,
+        aboutMe:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        interests: [
+          "Painting",
+          "Chess",
+          "Reading",
+          "Football",
+          "Watching Movies",
+        ],
+      },
+      // More profiles...
     ];
 
     const startIndex = (currentPage - 1) * cardsPerPage;
