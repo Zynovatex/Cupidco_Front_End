@@ -92,15 +92,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen && !isClosing) return null;
 
+
   const onStepChange = (stepNumber: number) => {
     setStep(stepNumber);
   };
 
   const stepContent: { [key: number]: JSX.Element } = {
     1: (
-      <div className="mt-5 w-[80%] mx-[10%] md:w-[70%] md:mx-[15%]">
+      < div className="mt-5 w-[80%] mx-[10%] md:w-[70%] md:mx-[15%]" >
         {/* user name  */}
-        <TextField
+        < TextField
           label="Username"
           type="text"
           id="name"
@@ -111,7 +112,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         />
 
         {/* password  */}
-        <div className="mt-5">
+        < div className="mt-5" >
           <TextField
             label="Password"
             id="password"
@@ -119,16 +120,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             height="h-1"
             name={""}
           />
-        </div>
+        </div >
 
         {/* checkbox  */}
-        <div className="mt-5 flex justify-between">
+        < div className="mt-5 flex justify-between" >
           <CheckboxComponent
             name="Remember Me"
             value="rememberMe"
             fontColor="text-[#4D194D]"
             isSelected={false}
-            onChange={() => {}}
+            onChange={() => { }}
             fontSize=" md:text-md sm:text-sm text-xs"
           />
 
@@ -140,7 +141,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               Forgot Password
             </div>
           </div>
-        </div>
+        </div >
 
         <div className="mt-5">
           <PrimaryButton
@@ -203,7 +204,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             size="8"
           />
         </div>
-      </div>
+      </div >
     ),
 
     2: (
@@ -296,8 +297,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             Verify using
             <span
               className="font-semibold ml-2"
-              onClick={() => onStepChange(4)}
-            >
+              onClick={() => onStepChange(4)}>
               Email Address
             </span>
           </p>
@@ -678,9 +678,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   return (
     <>
       <div
-        className={`fixed inset-0 z-50 bg-[#FFB4A2] bg-opacity-30 transition-opacity duration-500 flex justify-center items-center ${
-          isOpen || isClosing ? "opacity-100" : "opacity-0"
-        }`}
+        className={`fixed inset-0 z-50 bg-[#FFB4A2] bg-opacity-30 transition-opacity duration-500 flex justify-center items-center ${isOpen || isClosing ? "opacity-100" : "opacity-0"
+          }`}
         onClick={handleBgClick}
       >
         <div
