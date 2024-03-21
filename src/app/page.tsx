@@ -22,7 +22,7 @@ const ParentComponent = () => {
             <div className="max-w-screen-2xl ">
               {/* Landing page sections  */}
               <HomeSection1 />
-              <HomeSection2 />
+              {/* <HomeSection2 /> */}
             </div>
           </div>
         )}

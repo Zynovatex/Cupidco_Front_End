@@ -12,7 +12,7 @@ export default function AboutSection1() {
           text="About Us"
           fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
           center={true}
-          fontWeight="font-normal"
+          fontWeight="font-bold"
           uppercase={true}
         />
       </div>

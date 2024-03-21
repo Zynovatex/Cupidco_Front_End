@@ -6,6 +6,7 @@ import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import HomeFlipSlider from "@/components/common/sliders/HomeFlipSlider";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -24,55 +25,116 @@ export default function HomeSection1() {
 
   return (
     <div
-      className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col justify-center items-left p-20 max-sm:p-10"
+      className="bg-cover bg-center bg-no-repeat min-h-screen justify-center items-left px-10 py-16 md:py-20 md:px-20"
       style={{ backgroundImage: "url('/images/homeBackground1.png')" }}
     >
-      <div className="max-md:mt-10 mb-10 mt-10 max-md:text-center">
-        <Title
-          text="Discover your soul's perfect counterpart"
-          fontSize="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-        />
-      </div>
+      <div>
+        <div className=" mb-5 md:mb-10 mt-10  ">
+          <Title
+            text="Discover your soul's perfect counterpart"
+            fontSize="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+          />
+        </div>
 
-      <div className="items-start">
-        <div className="grid md:grid-cols-2 xl:mt-0">
-          <div className="w-full">
-            <div className="text-justify ">
-              <Description
-                text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book"
-                fontSize="xl:text-2xl"
-                fontWeight="font-regular"
+        <div className="text-justify md:w-[70%] md:pr-10">
+          <Description
+            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer "
+            fontSize=" md:text-xl xl:text-2xl"
+            fontWeight="font-regular"
+          />
+        </div>
+
+        {/* in web view  */}
+        <div className="max-sm:hidden mt-5 flex gap-5 ">
+          <Link href="/learn-more">
+            <SecondaryButton
+              label="Learn More"
+              fontSize="text-md sm:text-sm lg:text-lg"
+              height="h-9 xl:h-12"
+              width="w-40 lg:w-48"
+              radius="rounded-lg"
+            />
+          </Link>
+          <PrimaryButton
+            label="Register"
+            fontSize="text-md sm:text-sm lg:text-lg"
+            height="h-9 xl:h-12"
+            width=" w-40 lg:w-48"
+            radius="rounded-lg"
+            onClick={toggleRegisterModal}
+          />
+        </div>
+
+        {/*in web view images  */}
+        <div>
+          <div className="sm:ml-[50%] md:ml-[60%] sm:mt-[-60px] md:mt-[-150px] max-md:hidden">
+            <div className="flex justify-center ml-28 mt-5">
+              <Image
+                src={"/images/HomeImage1.png"}
+                alt={" text background image"}
+                width={250}
+                height={50}
               />
             </div>
-            <div className="mt-10 flex gap-5 justify-center sm:justify-start">
-              <Link href="/learn-more">
-                <SecondaryButton
-                  label="Learn More"
-                  fontSize="text-md sm:text-sm lg:text-lg"
-                  height="h-10 xl:h-12"
-                  width="w-auto xl:w-60"
-                  radius="rounded-lg"
-                />
-              </Link>
-              <PrimaryButton
-                label="Register"
+            <div className="flex justify-center mr-24 mt-[-50px] lg:mt-[-100px] ">
+              <Image
+                src={"/images/HomeImage2.png"}
+                alt={" text background image"}
+                width={180}
+                height={50}
+                className="max-lg:w-28"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/*in mobile view images  */}
+        <div>
+          <div className=" md:hidden sm:ml-[50%] md:ml-[60%] sm:mt-[-60px] md:mt-[-80px]">
+            <div className="flex justify-center ml-20 mt-5 ">
+              <Image
+                src={"/images/HomeImage1.png"}
+                alt={" text background image"}
+                width={150}
+                height={50}
+              />
+            </div>
+            <div className="flex justify-center mr-20 mt-[-60px]">
+              <Image
+                src={"/images/HomeImage2.png"}
+                alt={" text background image"}
+                width={100}
+                height={50}
+              />
+            </div>
+          </div>
+
+          {/* in mobile view  */}
+          <div className="mt-7 flex  justify-center sm:hidden">
+            <Link href="/learn-more">
+              <SecondaryButton
+                label="Learn More"
                 fontSize="text-md sm:text-sm lg:text-lg"
-                height="h-10 xl:h-12"
-                width="w-auto xl:w-60"
+                height="h-9 xl:h-12"
+                width=" w-40"
                 radius="rounded-lg"
-                onClick={toggleRegisterModal}
               />
-            </div>
-            <RegisterModal
-              isOpen={isRegisterModalOpen}
-              onClose={toggleRegisterModal}
+            </Link>
+          </div>
+          <div className="mt-4 flex    justify-center sm:hidden">
+            <PrimaryButton
+              label="Register"
+              fontSize="text-md sm:text-sm lg:text-lg"
+              height="h-9 xl:h-12"
+              width="w-40"
+              radius="rounded-lg "
+              onClick={toggleRegisterModal}
             />
           </div>
-          <div className="w-full flex justify-end">
-            <div className="hidden md:block w-[35%]">
-              <HomeFlipSlider images={images} />
-            </div>
-          </div>
+          <RegisterModal
+            isOpen={isRegisterModalOpen}
+            onClose={toggleRegisterModal}
+          />
         </div>
       </div>
     </div>
