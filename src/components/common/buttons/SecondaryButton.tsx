@@ -25,7 +25,7 @@ const SecondaryButton: React.FC<ButtonProps> = ({
   radius = "rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl",
   invert = false, // Default value for invert prop
 }) => {
-  const baseStyles = `inline-flex items-center justify-center font-playfair-display border-2 px-5 transition ${width} ${height} ${radius} ${fontSize}`;
+  const baseStyles = `inline-flex items-center justify-center font-Vollkorn border-2 px-5 transition ${width} ${height} ${radius} ${fontSize}`;
 
   // Conditional styles based on the invert prop
   const conditionalStyles = invert
