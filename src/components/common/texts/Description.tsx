@@ -30,7 +30,7 @@ const Description: React.FC<DescriptionProps> = ({
   italic,
   center,
   right,
-  fontFamily = "font-playfair-display",
+  fontFamily = "font-Vollkorn",
   fontSize = "text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl  ",
   fontColor = "text-[#6D2E46]",
   fontWeight = "font-regular",

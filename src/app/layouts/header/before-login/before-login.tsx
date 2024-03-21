@@ -69,7 +69,7 @@ const BeforeLogin = () => {
                 label={selectedLanguage} // Button label dynamically changes based on selected language
                 fontSize="text-md md:text-sm lg:text-lg"
                 height=" "
-                width="lg:w-24 w-16"
+                width="px-2 md:px-2 lg:px-4"
                 radius="rounded-md"
                 onClick={toggleLanguageMenu}
               />
@@ -87,7 +87,7 @@ const BeforeLogin = () => {
               label="Sign in"
               fontSize="text-md md:text-sm lg:text-lg"
               height=" "
-              width="px-2 md:px-2 lg:px-4"
+              width="px-2 md:px-2 lg:px-5"
               radius="rounded-md"
               onClick={toggleLoginModal}
             />
