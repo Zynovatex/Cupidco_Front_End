@@ -51,7 +51,7 @@ const BeforeLogin = () => {
             <Logo />
           </Link>
 
-          <div className="hidden sm:flex font-playfair-display text-primary-purple font-bold">
+          <div className="hidden sm:flex font-PlayfairDisplay text-primary-purple font-bold">
             {navItems.map((item, index) => (
               <Link href={item.path} key={index}>
                 <div className="ml-10 uppercase md:text-sm lg:text-lg hidden md:block lg:block">

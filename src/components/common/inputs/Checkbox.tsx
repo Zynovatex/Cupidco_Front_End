@@ -39,7 +39,7 @@ const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
 
   return (
     <div>
-      <label className="flex items-center text-sm md:text-lg font-playfair-display font-bold">
+      <label className="flex items-center text-sm md:text-lg font-PlayfairDisplay font-bold">
         <span className={` mr-5 ${fontColor} ${fontSize} ${fontWeight}`}>
           {frontName}
         </span>

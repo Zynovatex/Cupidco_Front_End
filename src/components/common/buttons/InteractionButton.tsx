@@ -21,7 +21,7 @@ const InteractionButton: React.FC<InteractionButtonProps> = ({
   buttonColor = "#4d194d",
   fontSize = "text-xl",
   textPosition = "center", // Default to center position if not provided
-  fontFamily = "font-playfair-display",
+  fontFamily = "font-PlayfairDisplay",
 }) => {
   // Define classes based on textPosition prop
   const textClasses =

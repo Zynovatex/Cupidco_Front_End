@@ -28,7 +28,7 @@ const Title: React.FC<TitleProps> = ({
   center,
   right,
   icon,
-  fontFamily = "font-playfair-display",
+  fontFamily = "font-PlayfairDisplay",
   fontSize = "text-4xl",
   fontColor = "text-[#4D194D]",
   fontWeight = "font-bold",

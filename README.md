@@ -12,6 +12,6 @@ const [selectedOptions, setSelectedOptions] = useState<{
 
 
 # fonts 
-Titles - playfair-display
+Titles - PlayfairDisplay
 Descriptions - Vollkorn
 Links - Yrsa

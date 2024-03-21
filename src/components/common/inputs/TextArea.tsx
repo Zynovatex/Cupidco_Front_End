@@ -54,7 +54,7 @@ const TextArea: React.FC<TextFieldProps> = ({
   };
 
   return (
-    <div className="relative w-full font-playfair-display font-normal text-[16px]">
+    <div className="relative w-full font-PlayfairDisplay font-normal text-[16px]">
       <textarea
         id={id}
         disabled={disabled}
@@ -101,10 +101,11 @@ const TextArea: React.FC<TextFieldProps> = ({
                 font-quicksand
                 font-normal
                 ${formatPrice ? "left-9" : "left-4"}
-                ${isFocused || inputValue || (required && !disabled)
-            ? "scale-85 -translate-y-5 bg-[#fef2f2] px-2"
-            : ""
-          }
+                ${
+                  isFocused || inputValue || (required && !disabled)
+                    ? "scale-85 -translate-y-5 bg-[#fef2f2] px-2"
+                    : ""
+                }
         `}
         htmlFor={id}
       >

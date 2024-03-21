@@ -14,11 +14,10 @@ interface TextFieldProps {
   formatPrice?: boolean;
   required?: boolean;
   bgColor?: string;
-  placeholder?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextField: React.FC<TextFieldProps> = ({
+const TextField2: React.FC<TextFieldProps> = ({
   id,
   value,
   name,
@@ -32,7 +31,6 @@ const TextField: React.FC<TextFieldProps> = ({
   radius = "rounded-lg",
   required,
   bgColor = "bg-white",
-  placeholder = "",
   onChange,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -55,7 +53,7 @@ const TextField: React.FC<TextFieldProps> = ({
 
   const inputStyle = {
     boxShadow: isFocused ? `0 0 0 2px #4D194D` : "none",
-    border: isFocused ? "none" : "1.8px solid #4D194D",
+    border: isFocused ? "none" : "1px solid #4D194D",
   };
 
   return (
@@ -65,7 +63,7 @@ const TextField: React.FC<TextFieldProps> = ({
         name={name}
         id={id}
         disabled={disabled}
-        placeholder={placeholder}
+        placeholder=" "
         type={type}
         style={inputStyle}
         className={`
@@ -73,7 +71,7 @@ const TextField: React.FC<TextFieldProps> = ({
           p-4
           pt-6
           ${bgColor}
-          border-[2px]
+          border-[1px]
           transition
           disabled:opacity-40
           disabled:cursor-not-allowed
@@ -122,4 +120,4 @@ const TextField: React.FC<TextFieldProps> = ({
   );
 };
 
-export default TextField;
+export default TextField2;
