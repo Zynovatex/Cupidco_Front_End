@@ -7,7 +7,7 @@ import HomeSection1 from "./(before-login-pages)/_page-components/home/HomeSecti
 import HomeSection2 from "./(before-login-pages)/_page-components/home/HomeSection2";
 
 const ParentComponent = () => {
-  const UserLogin = false;
+  const UserLogin = true;
 
   return (
     <>
@@ -22,7 +22,7 @@ const ParentComponent = () => {
             <div className="max-w-screen-2xl ">
               {/* Landing page sections  */}
               <HomeSection1 />
-              <HomeSection2 />
+              {/* <HomeSection2 /> */}
             </div>
           </div>
         )}

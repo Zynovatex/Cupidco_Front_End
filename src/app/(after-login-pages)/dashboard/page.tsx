@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DashboardCard from "@/components/common/cards/DashboardCard";
 import Image from "next/image";
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
@@ -10,7 +10,7 @@ const Dashboard = () => {
     const cardsPerPage = 16;
 
     const images = [
-        "/images/ImageGallery1.jpg",
+        "/images/SliderImage3.png",
         "/images/ImageGallery2.jpg",
         "/images/ImageGallery3.jpg",
     ];
@@ -23,6 +23,7 @@ const Dashboard = () => {
             age: "30",
             isPremium: true,
             aboutMe: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+            profession: "Doctor",
             interests: ["Painting", "Chess", "Reading", "Football", "Watching Movies"]
         },
         {
@@ -30,6 +31,7 @@ const Dashboard = () => {
             name: "Emy",
             address: "Colombo",
             age: "35",
+            profession: "Engineer",
         },
         {
             images: images,
@@ -38,6 +40,7 @@ const Dashboard = () => {
             age: "30",
             isPremium: true,
             aboutMe: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+            profession: "Carpenter",
             interests: ["Painting", "Chess", "Reading", "Football", "Watching Movies"]
         },
         {
@@ -47,8 +50,10 @@ const Dashboard = () => {
             age: "30",
             isPremium: true,
             aboutMe: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+            profession: "Business Man",
             interests: ["Painting", "Chess", "Reading", "Football", "Watching Movies"]
         },
+
         // More profiles...
     ];
 
@@ -57,6 +62,13 @@ const Dashboard = () => {
     const profilesToShow = profiles.slice(startIndex, endIndex);
 
     const totalPages = Math.ceil(profiles.length / cardsPerPage);
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }, [currentPage]);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -69,10 +81,9 @@ const Dashboard = () => {
             setCurrentPage(currentPage - 1);
         }
     };
-
     return (
         <>
-            <div className="relative min-h-screen flex flex-col justify-start py-20 px-10 items-center text-center">
+            <div className="relative min-h-screen flex flex-col justify-start py-32 px-10 items-center text-center">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 bg-cover">
                     <Image
