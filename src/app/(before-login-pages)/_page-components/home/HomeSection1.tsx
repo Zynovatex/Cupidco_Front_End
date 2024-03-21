@@ -41,7 +41,7 @@ export default function HomeSection1() {
               <Description
                 text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book"
                 fontSize="xl:text-2xl"
-                fontWeight="font-medium"
+                fontWeight="font-regular"
               />
             </div>
             <div className="mt-10 flex gap-5 justify-center sm:justify-start">

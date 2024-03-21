@@ -67,6 +67,7 @@ const config: Config = {
       fontFamily: {
         "playfair-display": ["Playfair Display", "serif"],
         Quicksand: ["Quicksand", "sans-serif"],
+        Vollkorn: ["Vollkorn"],
       },
       screens: {
         xs: "468px",
