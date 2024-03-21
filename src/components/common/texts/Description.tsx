@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -13,7 +13,12 @@ interface DescriptionProps {
   fontFamily?: string;
   fontSize?: string;
   fontColor?: string;
-  fontWeight?: "font-light" | "font-regular" | "font-medium" | "font-semibold" | "font-bold";
+  fontWeight?:
+    | "font-light"
+    | "font-regular"
+    | "font-medium"
+    | "font-semibold"
+    | "font-bold";
   icon?: IconType;
   iconPosition?: "left" | "right";
   children?: ReactNode;
