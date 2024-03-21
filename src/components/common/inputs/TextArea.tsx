@@ -21,7 +21,7 @@ const TextArea: React.FC<TextFieldProps> = ({
   label,
   disabled,
   formatPrice,
-  bgColor = "bg-white",
+  bgColor = "bg-transparent",
   width = "w-[100%]",
   maxHeight = "",
   radius = "rounded-lg",
@@ -50,7 +50,7 @@ const TextArea: React.FC<TextFieldProps> = ({
 
   const textareaStyle = {
     boxShadow: isFocused ? `0 0 0 2px #4D194D` : "none",
-    border: isFocused ? "none" : "1.8px solid #4D194D",
+    border: isFocused ? "none" : "1px solid #4D194D",
   };
 
   return (
@@ -62,9 +62,10 @@ const TextArea: React.FC<TextFieldProps> = ({
         style={textareaStyle}
         className={`
                 peer
+                p-10
                 font-light
                 ${bgColor}
-                border-[1px]
+                border-[2px]
                 border-[#4D194D]
                 transition
                 disabled:opacity-40
@@ -94,15 +95,16 @@ const TextArea: React.FC<TextFieldProps> = ({
                 peer-placeholder-shown:translate-y-0
                 peer-focus:scale-85
                 peer-focus:-translate-y-5
-                peer-focus:bg-input-bg
+                peer-focus:bg-[#fef2f2]
                 peer-focus:px-2
                 peer-disabled:opacity-40
+                font-quicksand
+                font-normal
                 ${formatPrice ? "left-9" : "left-4"}
-                ${
-                  isFocused || inputValue || (required && !disabled)
-                    ? "scale-85 -translate-y-5 bg-white px-2"
-                    : ""
-                }
+                ${isFocused || inputValue || (required && !disabled)
+            ? "scale-85 -translate-y-5 bg-[#fef2f2] px-2"
+            : ""
+          }
         `}
         htmlFor={id}
       >

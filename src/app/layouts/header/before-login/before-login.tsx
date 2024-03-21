@@ -1,14 +1,32 @@
 "use client";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import Link from "next/link";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import LoginModal from "@/app/(auth)/login/LoginModal";
 import Logo from "@/components/common/logo/Logo";
+import Languages from "@/components/modals/Languages";
+import HamburgerMenu from "./HamburgerMenu";
+import { AiOutlineMenu } from "react-icons/ai";
 
 const BeforeLogin = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("English"); // Default language label
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleLoginModal = () => {
+    setIsLoginModalOpen(!isLoginModalOpen);
+  };
+
+  const toggleLanguageMenu = () => {
+    setIsLanguageMenuOpen(!isLanguageMenuOpen);
+  };
+
+  const handleLanguageSelect = (language: SetStateAction<string>) => {
+    setSelectedLanguage(language);
+    toggleLanguageMenu(); // Close language menu after selection
+  };
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
@@ -16,10 +34,6 @@ const BeforeLogin = () => {
 
   const closeMenu = () => {
     setMenuOpen(false);
-  };
-
-  const toggleLoginModal = () => {
-    setIsLoginModalOpen(!isLoginModalOpen);
   };
 
   const navItems = [
@@ -36,6 +50,7 @@ const BeforeLogin = () => {
           <Link href="/">
             <Logo />
           </Link>
+
           <div className="hidden sm:flex font-playfair-display text-primary-purple font-bold">
             {navItems.map((item, index) => (
               <Link href={item.path} key={index}>
@@ -47,23 +62,40 @@ const BeforeLogin = () => {
               </Link>
             ))}
           </div>
-          <div className="hidden md:flex flex-row gap-2">
-            <SecondaryButton
-              label="English"
-              fontSize="text-md md:text-sm lg:text-lg"
-              height="py-0 md:py-0 lg:px-0"
-              width="px-2 md:px-2 lg:px-4"
-              radius="rounded-md"
-            />
+
+          <div className="hidden md:flex flex-row lg:gap-2">
+            <div className="relative">
+              <SecondaryButton
+                label={selectedLanguage} // Button label dynamically changes based on selected language
+                fontSize="text-md md:text-sm lg:text-lg"
+                height=" "
+                width="lg:w-24 w-16"
+                radius="rounded-md"
+                onClick={toggleLanguageMenu}
+              />
+
+              <div className="ml-20">
+                {isLanguageMenuOpen && (
+                  <Languages
+                    onClose={toggleLanguageMenu}
+                    onSelectLanguage={handleLanguageSelect}
+                  />
+                )}
+              </div>
+            </div>
             <PrimaryButton
               label="Sign in"
               fontSize="text-md md:text-sm lg:text-lg"
-              height="py-0 md:py-0 lg:px-0"
+              height=" "
               width="px-2 md:px-2 lg:px-4"
               radius="rounded-md"
               onClick={toggleLoginModal}
             />
           </div>
+          <div onClick={handleNav} className="md:hidden cursor-pointer pl-24">
+            <AiOutlineMenu size={24} />
+          </div>
+          <HamburgerMenu isOpen={menuOpen} onClose={closeMenu} />
         </div>
       </nav>
       <LoginModal isOpen={isLoginModalOpen} onClose={toggleLoginModal} />

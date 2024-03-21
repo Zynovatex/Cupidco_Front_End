@@ -1,14 +1,23 @@
 import type { Config } from "tailwindcss";
 
-
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  
+
   theme: {
+     screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px',
+      '4xl': '2560px',
+      '5xl': '3840px',
+      },
     extend: {
       keyframes: {
         slideUp: {
@@ -19,12 +28,12 @@ const config: Config = {
           "0%": { transform: "translateY(0)" },
           "100%": { transform: "translateY(100vh)" },
         },
-         
       },
       animation: {
         slideUp: "slideUp 0.5s ease-out",
         slideDown: "slideDown 0.5s ease-in forwards",
         fadeOutCenter: "fadeOutCenter 0.5s ease-in forwards",
+        scrollText: "scrollText 10s linear infinite",
       },
       spacing: {
         card: "0.5rem",
@@ -42,6 +51,7 @@ const config: Config = {
       },
       colors: {
         "primary-purple": "#4D194D",
+        "secondary-color": "#f7cbc7",
         "footer-pink": "#ffe3f9",
         "online-state": "#57f000",
         "offline-state": "#c3282a",
@@ -49,9 +59,10 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "gradient-custom": 'linear-gradient(90deg, #4D194D 0%, #6D2E46 80%)',
-        'custom-gradient': 'linear-gradient(360deg, #6D2E46 10%, #4D194D 90%)',
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-custom": "linear-gradient(90deg, #4D194D 0%, #6D2E46 80%)",
+        "custom-gradient": "linear-gradient(360deg, #6D2E46 10%, #4D194D 90%)",
       },
       fontFamily: {
         "playfair-display": ["Playfair Display", "serif"],
@@ -62,6 +73,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms"),],
+  plugins: [require("@tailwindcss/forms")],
 };
 export default config;

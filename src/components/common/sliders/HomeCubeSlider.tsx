@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 import { Autoplay, EffectCube } from "swiper/modules";
-import HomeSliderCard from "../cards/HomeSLiderCard";
+import HomeSliderCard from "../cards/HomeSliderCard";
 
 interface HomeCubeSliderProps {
   images: string[];

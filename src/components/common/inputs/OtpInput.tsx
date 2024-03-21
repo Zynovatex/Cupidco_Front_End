@@ -11,10 +11,10 @@ interface OtpInputProps {
 }
 
 const OtpInput: React.FC<OtpInputProps> = ({
-  width = "w-12 sm:w-16 md:w-26 lg:w-34 max-sm:w-8",
-  height = "h-12 sm:h-16 md:w-26 lg:h-34 max-sm:h-8",
+  width = "w-10   xl:w-16 ",
+  height = " h-10   xl:h-16",
   radius = "rounded-lg",
-  fontSize = "text-sm sm:text-md md:text-xl lg:text-2xl",
+  fontSize = " ",
   onOtpChange,
 }) => {
   const handleOtpInput = (
@@ -43,7 +43,7 @@ const OtpInput: React.FC<OtpInputProps> = ({
   };
 
   return (
-    <div className="flex space-x-2">
+    <div className="flex gap-2">
       {Array.from({ length: 5 }, (_, i) => (
         <input
           key={`otp-${i}`}

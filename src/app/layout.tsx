@@ -7,7 +7,10 @@ import Header from "./layouts/header/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "",
+  title: {
+    default: "Cupidco",
+    template: "%s | Cupidco",
+  },
   description: "Welcome to Cupidco!",
 };
 
@@ -16,13 +19,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header/>
+        <Header />
         {children}
-        <Footer />
+        <div
+          className="bg-cover bg-center bg-no-repeat h-full"
+          style={{ backgroundImage: "url(/images/FooterBgImage.png)" }}
+        >
+          <div className="flex justify-center  ">
+            <div className="max-w-screen-2xl">
+              <Footer />
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );

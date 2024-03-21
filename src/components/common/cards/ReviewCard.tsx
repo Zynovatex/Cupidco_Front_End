@@ -29,7 +29,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             </div>
             <div className="flex flex-col gap-5 justify-center text-justify">
 
-                <Description text={description} fontColor="text-[#6D2E46]" fontWeight="font-light" fontSize="text-lg" fontFamily="font-playfair-display" />
+                <Description text={description} fontColor="text-[#6D2E46]" fontWeight="font-light" fontSize="text-sm sm:text-md md:text-lg lg:text-lg xl:text-xl" fontFamily="font-playfair-display" />
 
                 <div className="flex justify-end">
                     <h5 className="text-lg font-semibold text-[#4D194D] font-playfair-display">
