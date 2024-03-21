@@ -8,7 +8,7 @@ import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import PopupwithIco from "@/components/modals/PopupwithIco";
 
-interface CardProps {
+interface PackagesCardProps {
   title: string;
   cost: string;
   features: string[];
@@ -16,7 +16,7 @@ interface CardProps {
   overlayDescription: string;
 }
 
-const CardComponent: React.FC<CardProps> = ({
+const PackagesCard: React.FC<PackagesCardProps> = ({
   title,
   cost,
   features,
@@ -107,11 +107,10 @@ const CardComponent: React.FC<CardProps> = ({
       {/* Overlay */}
       <div
         ref={overlayRef}
-        className={`absolute inset-0 z-10 transform transition-transform ${
-          showOverlay
-            ? "translate-y-0 duration-1000 ease-in"
+        className={`absolute inset-0 z-10 transform transition-transform ${showOverlay
+            ? "translate-y-0 duration-500 ease-in"
             : "translate-y-full duration-300 ease-in-out"
-        }`}
+          }`}
       >
         <Image
           src="/images/DefaultBg.png"
@@ -124,7 +123,7 @@ const CardComponent: React.FC<CardProps> = ({
           <div className="flex flex-col items-center">
             <Title text={title} />
           </div>
-          <div className="overflow-y-auto lg:h-[80%] md:h-[60%] h-[70%] scrollbar-hide">
+          <div className="overflow-y-auto lg:h-[80%] md:h-[60%] h-[70%]" style={{ scrollbarWidth: 'none' }}>
             <div className="flex flex-col items-center text-justify">
               <Description
                 text={overlayDescription}
@@ -149,11 +148,11 @@ const CardComponent: React.FC<CardProps> = ({
         title="Congratulations! Your Free Account Have Been Successfully Upgraded"
         primaryButtonText="Home"
         isOpen={isModalOpen}
-        onPrimaryClick={() => {}}
+        onPrimaryClick={() => { }}
         onClose={() => setIsModalOpen(false)}
       />
     </div>
   );
 };
 
-export default CardComponent;
+export default PackagesCard;

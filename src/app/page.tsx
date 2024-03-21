@@ -7,7 +7,7 @@ import HomeSection1 from "./(before-login-pages)/_page-components/home/HomeSecti
 import HomeSection2 from "./(before-login-pages)/_page-components/home/HomeSection2";
 
 const ParentComponent = () => {
-  const UserLogin = false;
+  const UserLogin = true;
 
   return (
     <>

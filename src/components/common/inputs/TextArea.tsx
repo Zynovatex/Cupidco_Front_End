@@ -62,7 +62,7 @@ const TextArea: React.FC<TextFieldProps> = ({
         style={textareaStyle}
         className={`
                 peer
-                p-10
+                p-4
                 font-light
                 ${bgColor}
                 border-[2px]

@@ -54,6 +54,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
               selection:bg-[#4D194D]
               checked:focus:bg-[#4D194D]
                 focus:ring-transparent
+                bg-transparent
                 rounded-full
                 ${sizeClass}
                 transition duration-300

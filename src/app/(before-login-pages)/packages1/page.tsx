@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
-import CardComponent from "../../../components/common/cards/PackagesCard";
+import PackagesCard from "@/components/common/cards/PackagesCard";
 
 const Packages = () => {
   return (
@@ -39,21 +39,21 @@ const Packages = () => {
 
         {/* Cards */}
         <div className="flex flex-col md:flex-row items-center justify-evenly gap-5">
-          <CardComponent
+          <PackagesCard
             title="Basic"
             cost="cost"
             features={["Feature 1", "Feature 2", "Feature 3"]}
             buttonText="Buy Now"
             overlayDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book "
           />
-          <CardComponent
+          <PackagesCard
             title="Standard"
             cost="cost"
             features={["Feature 1", "Feature 2", "Feature 3"]}
             buttonText="Buy Now"
             overlayDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book"
           />
-          <CardComponent
+          <PackagesCard
             title="Premium"
             cost="cost"
             features={["Feature 1", "Feature 2", "Feature 3"]}

@@ -1,6 +1,6 @@
 "use client";
 
-import RegisterModal from "@/app/(auth)/register/RegisterModal";
+import Register from "@/app/(auth)/register/Register";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import HomeFlipSlider from "@/components/common/sliders/HomeFlipSlider";
@@ -119,16 +119,10 @@ export default function HomeSection1() {
                 width=" w-40"
                 radius="rounded-lg"
               />
-            </Link>
-          </div>
-          <div className="mt-4 flex    justify-center sm:hidden">
-            <PrimaryButton
-              label="Register"
-              fontSize="text-md sm:text-sm lg:text-lg"
-              height="h-9 xl:h-12"
-              width="w-40"
-              radius="rounded-lg "
-              onClick={toggleRegisterModal}
+            </div>
+            <Register
+              isOpen={isRegisterModalOpen}
+              onClose={toggleRegisterModal}
             />
           </div>
           <RegisterModal
