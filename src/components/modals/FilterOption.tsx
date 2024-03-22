@@ -78,7 +78,7 @@ const FilterOption: React.FC<FilterOptionProps> = ({
         onClick={handleBgClick}
       >
         <div
-          className={`w-[90%] md:w-[80%] p-8 md:p-10 lg:p-16 bg-[#faf3f1] rounded-2xl bg-transparent animate-slideUp transition-all  duration-500   items-center overflow-y-auto h-[90%] overflow-hidden`}
+          className={`w-[90%] md:w-[80%] p-8 md:p-10 lg:p-16 bg-white rounded-2xl bg-transparent animate-slideUp transition-all  duration-500   items-center overflow-y-auto h-[90%] overflow-hidden`}
         >
           <Title text="Filter Options" center={true} />
           <div className="flex justify-center">

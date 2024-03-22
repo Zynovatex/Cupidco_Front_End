@@ -87,7 +87,7 @@ export default function Footer() {
       <div className="flex max-md:justify-center mt-5">
         <div className="w-48 text-center md:absolute max-md:mt-5">
           {/* Merged row below the columns */}
-          <div className="font-bold text-xl mb-2 text-primary-purple font-playfair-display">
+          <div className="font-bold text-xl mb-2 text-primary-purple font-PlayfairDisplay">
             Leave us a comment
           </div>
 

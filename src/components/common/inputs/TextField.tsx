@@ -14,7 +14,7 @@ interface TextFieldProps {
   formatPrice?: boolean;
   required?: boolean;
   bgColor?: string;
-  placeholder?: string
+  placeholder?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -32,7 +32,7 @@ const TextField: React.FC<TextFieldProps> = ({
   radius = "rounded-lg",
   required,
   bgColor = "bg-white",
-  placeholder= "",
+  placeholder = "",
   onChange,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -59,7 +59,7 @@ const TextField: React.FC<TextFieldProps> = ({
   };
 
   return (
-    <div className="relative font-playfair-display font-normal">
+    <div className="relative font-PlayfairDisplay font-normal">
       <input
         value={inputValue}
         name={name}

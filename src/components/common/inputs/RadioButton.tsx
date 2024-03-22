@@ -14,7 +14,6 @@ interface RadioButtonProps {
   onChange?: (groupName: string, value: string) => void;
 }
 
-
 const RadioButton: React.FC<RadioButtonProps> = ({
   groupName,
   name,
@@ -60,7 +59,8 @@ const RadioButton: React.FC<RadioButtonProps> = ({
                 `}
       />
       <span
-        className={`ml-2  font-Quicksand ${fontColor} ${fontSize} font-${fontWeight}`}
+        className={`ml-2  font-PlayfairDisplay
+ ${fontColor} ${fontSize} font-${fontWeight}`}
       >
         {name}
       </span>

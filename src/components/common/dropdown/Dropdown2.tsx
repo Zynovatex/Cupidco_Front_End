@@ -39,7 +39,7 @@ const Dropdown2: React.FC<DropdownProps> = ({
         <select
           value={selectedOption}
           onChange={handleOptionChange}
-          className={`${bgColor} ${borderColor} mt-4 ${width} ${borderRadius} flex text-base md:text-lg text-primary-purple font-playfair-display`}
+          className={`${bgColor} ${borderColor} mt-4 ${width} ${borderRadius} flex text-base md:text-lg text-primary-purple font-PlayfairDisplay`}
         >
           {options.map((option, index) => (
             <option key={index} value={option} className={`${optionsBgColor}`}>

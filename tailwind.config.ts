@@ -65,8 +65,10 @@ const config: Config = {
         "custom-gradient": "linear-gradient(360deg, #6D2E46 10%, #4D194D 90%)",
       },
       fontFamily: {
-        "playfair-display": ["Playfair Display", "serif"],
+        PlayfairDisplay: ["PlayfairDisplay", "serif"],
         Quicksand: ["Quicksand", "sans-serif"],
+        Vollkorn: ["Vollkorn"],
+        Yrsa: ["Yrsa"]
       },
       screens: {
         xs: "468px",
