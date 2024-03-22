@@ -1,6 +1,6 @@
 "use client";
 
-import RegisterModal from "@/app/(auth)/register/RegisterModal";
+import Register from "@/app/(auth)/register/Register";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import HomeFlipSlider from "@/components/common/sliders/HomeFlipSlider";
@@ -131,7 +131,7 @@ export default function HomeSection1() {
               onClick={toggleRegisterModal}
             />
           </div>
-          <RegisterModal
+          <Register
             isOpen={isRegisterModalOpen}
             onClose={toggleRegisterModal}
           />

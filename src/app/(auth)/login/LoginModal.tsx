@@ -3,14 +3,14 @@ import Image from "next/image";
 import { IoCloseCircle } from "react-icons/io5";
 import Logo from "@/components/common/logo/Logo";
 import Title from "@/components/common/texts/Title";
-import TextField from "@/components/common/inputs/Input";
 import SocialMedia from "@/components/common/social-media/SocialMedia";
 import Description from "@/components/common/texts/Description";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import CheckboxComponent from "@/components/common/inputs/Checkbox";
-import OtpInput from "@/components/common/inputs/OtpInput";
 import TextField2 from "@/components/common/inputs/TextField2";
 import { login } from "@/app/api/auth";
+import Register from "../register/Register";
+import OtpInput from "@/components/common/inputs/OtpInput";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -20,12 +20,13 @@ interface LoginModalProps {
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [step, setStep] = useState<number>(1);
   const [resendDisabled, setResendDisabled] = useState(false);
   const [timer, setTimer] = useState(60);
   const [showResendText, setShowResendText] = useState(true);
-  const [username, setUsername] = useState<string>(""); // Specify type string
-  const [password, setPassword] = useState<string>(""); // Specify type string
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -65,7 +66,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
     return () => {
       document.body.style.overflow = "auto";
-      // Reset step to 1 when modal is closed
       setStep(1);
     };
   }, [isOpen]);
@@ -86,10 +86,21 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     }, 500);
   };
 
-  const handleBgClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      startClosing();
-    }
+  const handleBgClick = () => {
+    startClosing();
+  };
+
+  const openRegister = () => {
+    setIsClosing(true);
+    setIsRegisterOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsRegisterOpen(false);
+  };
+
+  const handleFormClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
   };
 
   const modalAnimation = isClosing ? "animate-slideDown" : "animate-slideUp";
@@ -107,24 +118,20 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       console.log(response);
 
       if (response.status === "success") {
-        // localStorage.setItem("token", response.message);
         localStorage.setItem("token", response.message);
-        // Handle successful login, redirect, etc.
       } else {
-        // Handle unsuccessful login, show error message, etc.
       }
     } catch (error) {
       console.log(error);
-      // Handle error, show error message, etc.
     }
   };
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value); // Ensure event.target.value is string
+    setUsername(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value); // Ensure event.target.value is string
+    setPassword(event.target.value);
   };
 
   const stepContent: { [key: number]: JSX.Element } = {
@@ -163,8 +170,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             value="rememberMe"
             fontColor="text-[#4D194D]"
             isSelected={false}
-            onChange={() => { } }
-            fontSize=" md:text-md sm:text-sm text-xs" name={""}          />
+            onChange={() => { }}
+            fontSize=" md:text-md sm:text-sm text-xs" name={""} />
 
           <div>
             <div
@@ -194,12 +201,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             fontSize="text-sm max-sm:text-xs"
             center={true}
           />
-          <Description
-            text=" Sign Up"
-            fontWeight="font-bold"
-            fontSize="text-sm max-sm:text-xs"
-            center={true}
-          />
+          <div onClick={openRegister} className="cursor-pointer">
+            <Description
+              text=" Sign Up"
+              fontWeight="font-bold"
+              fontSize="text-sm max-sm:text-xs"
+              center={true}
+            />
+          </div>
         </div>
 
         <div>
@@ -214,33 +223,32 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         {/* social media  */}
         <div className="flex gap-3 justify-center mt-3">
           <SocialMedia
-            network="facebook"
-            url="www.facebook.com"
-            key={1}
-            size="8"
-          />
-          <SocialMedia
-            network="instagram"
-            url="www.instagram.com"
-            key={2}
-            size="8"
-          />
-          <SocialMedia
-            network="linkedin"
+            network="google"
             url="www.linkedin.com"
             key={3}
-            size="8"
+            size="6"
           />
           <SocialMedia
             network="twitter"
             url="www.twitter.com"
             key={4}
-            size="8"
+            size="6"
+          />
+          <SocialMedia
+            network="facebook"
+            url="www.facebook.com"
+            key={3}
+            size="6"
+          />
+          <SocialMedia
+            network="tiktok"
+            url="www.tiktok.com"
+            key={4}
+            size="6"
           />
         </div>
       </div>
     ),
-
     2: (
       <div className=" mt-8 md:mt-5 ">
         <Title
@@ -367,9 +375,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
         <div className="mt-3 flex justify-center">
           <OtpInput
-            onOtpChange={function (otp: string): void {
-              throw new Error("Function not implemented.");
-            }}
+            onOtpChange={()=> {}}
           />
         </div>
 
@@ -379,7 +385,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            onClick={() => onStepChange(2)}
+            onClick={() => onStepChange(3)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
           />
           <PrimaryButton
@@ -387,7 +393,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            onClick={() => onStepChange(4)}
+            onClick={() => onStepChange(5)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
           />
         </div>
@@ -446,13 +452,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            onClick={() => onStepChange(3.1)}
-            fontSize="
-         "
-            radius="
-            rounded-xl
-            max-sm:rounded-lg
-            lg:rounded-xl"
+            onClick={() => onStepChange(4.1)}
+            radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
           />
         </div>
 
@@ -497,9 +498,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
         <div className="mt-3 flex justify-center">
           <OtpInput
-            onOtpChange={function (otp: string): void {
-              throw new Error("Function not implemented.");
-            }}
+            onOtpChange={() => { }}
           />
         </div>
 
@@ -509,31 +508,21 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            onClick={() => onStepChange(3)}
-            fontSize="
-         "
-            radius="
-            rounded-xl
-            max-sm:rounded-lg
-            lg:rounded-xl"
+            onClick={() => onStepChange(4)}
+            radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
           />
           <PrimaryButton
             label="Next"
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            onClick={() => onStepChange(4)}
-            fontSize="
-         "
-            radius="
-            rounded-xl
-            max-sm:rounded-lg
-            lg:rounded-xl"
+            onClick={() => onStepChange(5)}
+            radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
           />
         </div>
 
         <div className="justify-center text-sm md:text-md text-primary-purple mt-2 flex">
-          {showResendText && <p>Did not Recieve OTP?</p>}
+          {showResendText && <p>Did not Receive OTP?</p>}
           {resendDisabled ? (
             <span className="font-semibold ml-2 ">
               Resend Done! Time Remaining : {formatTime(timer)}
@@ -571,9 +560,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </div>
         <div>
           <OtpInput
-            onOtpChange={function (otp: string): void {
-              throw new Error("Function not implemented.");
-            }}
+            onOtpChange={() => { }}
           />
         </div>
         <PrimaryButton
@@ -673,12 +660,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             width="w-full"
             textColor="text-white"
             onClick={() => onStepChange(5)}
-            fontSize="
-         "
-            radius="
-            rounded-xl
-            max-sm:rounded-lg
-            lg:rounded-xl"
+            radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
           />
         </div>
       </div>
@@ -697,12 +679,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            fontSize="
-         "
-            radius="
-            rounded-xl
-            max-sm:rounded-lg
-            lg:rounded-xl"
+            radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
           />
         </div>
       </div>
@@ -712,78 +689,84 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <div
-        className={`fixed inset-0 z-50 bg-[#FFB4A2] bg-opacity-30 transition-opacity duration-500 flex justify-center items-center ${
-          isOpen || isClosing ? "opacity-100" : "opacity-0"
-        }`}
-        onClick={handleBgClick}
-      >
+      {(isOpen || isClosing) && (
         <div
-          className={`relative rounded-2xl w-[95%] md:w-[70%] h-[90%] md:h-[90%] bg-transparent ${modalAnimation}  transition-all overflow-hidden duration-500 flex justify-center lg:justify-end  items-center`}
+          className={`fixed inset-0 z-50 transition-opacity duration-500 flex justify-center items-center ${isOpen || isClosing ? "opacity-100" : "opacity-0"
+            }`}
+          onClick={handleBgClick}
         >
-          {/* bg image  */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/ForgetPasswordBg.png"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              alt="Background"
-              className="rounded-2xl shadow-lg"
-            />
-          </div>
-
-          {/* close button  */}
-          <button
-            onClick={startClosing}
-            className="absolute top-[-8px] right-[-9px] m-4 z-10 text-secondary-color"
-            aria-label="Close modal"
+          <div
+            className={`relative rounded-2xl w-[95%] md:w-[70%] h-[90%] md:h-[90%] bg-transparent ${modalAnimation}  transition-all overflow-hidden duration-500 flex justify-center lg:justify-end  items-center`}
+            onClick={handleFormClick}
           >
-            <IoCloseCircle size="2em" />
-          </button>
-
-          {/* login container  */}
-          <div className="w-[90%] text-center lg:w-[50%] relative h-[90%] lg:mr-10 max-md:mt-5 py-5 px-5 ">
             {/* bg image  */}
-            <div className="absolute inset-0 pt-40 ">
+            <div className="absolute inset-0 z-0">
               <Image
-                src="/images/HomeSc2.png"
+                src="/images/ForgetPasswordBg.png"
                 layout="fill"
                 objectFit="cover"
-                objectPosition="right-bottom"
+                objectPosition="center"
                 alt="Background"
-                priority
-                className="rounded-lg"
+                className="rounded-2xl shadow-lg"
               />
             </div>
 
-            <div className="relative">
-              {/* Logo */}
-              <div className=" w-28 mb-3 ">
-                <Logo />
-              </div>
+            {/* close button  */}
+            <button
+              onClick={startClosing}
+              className="absolute top-[-8px] right-[-9px] m-4 z-10 text-secondary-color"
+              aria-label="Close modal"
+            >
+              <IoCloseCircle size="2em" />
+            </button>
 
-              {/* title  */}
-              <div>
-                <Title
-                  text="Welcome Back  to Cupidco!"
-                  center={true}
-                  fontSize="text-xl md:text-2xl "
+            {/* login container  */}
+            <div className="w-[90%] text-center lg:w-[50%] relative h-[90%] lg:mr-10 max-md:mt-5 py-5 px-5 ">
+              {/* bg image  */}
+              <div className="absolute inset-0 pt-40 ">
+                <Image
+                  src="/images/HomeSc2.png"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="right-bottom"
+                  alt="Background"
+                  priority
+                  className="rounded-lg"
                 />
               </div>
-              {/* Content */}
-              <div
-                className={`
-                  relative z-10 flex   justify-center 
-                `}
-              >
-                {/* Render step content based on current step */}
-                {stepContent[step] || <p>Step not found</p>}
+
+              <div className="relative">
+                {/* Logo */}
+                <div className=" w-28 mb-3 ">
+                  <Logo />
+                </div>
+
+                {/* title  */}
+                <div>
+                  <Title
+                    text="Welcome Back to Cupidco!"
+                    center={true}
+                    fontSize="text-xl md:text-2xl "
+                  />
+                </div>
+                {/* Content */}
+                <div
+                  className={`relative z-10 flex   justify-center `}
+                >
+                  {/* Render step content based on current step */}
+                  {stepContent[step] || <p>Step not found</p>}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
+      {isRegisterOpen && (
+        <Register
+          isOpen={isRegisterOpen}
+          onClose={closeModal}
+        />
+      )}
     </>
   );
 };
