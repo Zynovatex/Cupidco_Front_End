@@ -2,50 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Vollkorn";
-  src: url("/fonts/Vollkorn-VariableFont_wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-}
 
-@font-face {
-  font-family: "Yrsa";
-  src: url("/fonts/Yrsa.ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "PlayfairDisplay";
-  src: url("/fonts/PlayfairDisplay.ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-}
 
 @layer base {
   h1 {
     @apply text-4xl;
     @apply font-bold;
   }
+
   h2 {
     @apply text-3xl;
     @apply font-bold;
   }
+
   h3 {
     @apply text-2xl;
     @apply font-bold;
   }
+
   h4 {
     @apply text-xl;
     @apply font-semibold;
   }
+
   h5 {
-    @apply text-lg; 
+    @apply text-lg;
+    /*or text-lg */
     @apply font-semibold;
   }
+
   h6 {
     @apply text-sm;
     @apply font-semibold;
   }
+}
+
+.swiper-pagination-bullet-active {
+  width: 10px;
+  height: 10px; 
+  background-color: #4D194D !important;
+}
+
+.swiper-pagination-bullet {
+  width: 10px; 
+  height: 10px; 
+  background-color: rgba(255, 0, 0, 0.5);
 }

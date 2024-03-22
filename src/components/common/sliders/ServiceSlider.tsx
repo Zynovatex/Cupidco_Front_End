@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import SecondaryButton from "../buttons/SecondaryButton";
 import Description from "../texts/Description";
@@ -39,8 +37,10 @@ const CardComponent: React.FC<CardComponentProps> = ({
     : "opacity-0 translate-y-full";
 
   const gradientBaseClasses =
-    "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary-purple to-transparent p-2 transition-opacity duration-800";
+    "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary-purple to-transparent h-40 p-2 transition-opacity duration-800";
   const gradientHoverClasses = isHovered ? "opacity-0" : "opacity-100";
+
+  const blackoverlay = "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-60 rounded-2xl transition-all duration-800";
 
   return (
     <div
@@ -62,6 +62,9 @@ const CardComponent: React.FC<CardComponentProps> = ({
         />
       </div>
 
+      {/* Additional overlay */}
+      <div className={`${blackoverlay}`} />
+
       {/* Overlay content */}
       <div className={`${overlayBaseClasses} ${overlayHoverClasses}`}>
         {/* Title */}
@@ -70,8 +73,7 @@ const CardComponent: React.FC<CardComponentProps> = ({
           center={true}
           fontColor="text-white"
           fontWeight="font-bold"
-          fontSize=" text-2xl max-sm:text-lg sm:text-xl md:text-lg lg:text-xl xl:text-2xl
-          "
+          fontSize=" text-2xl max-sm:text-lg sm:text-xl md:text-lg lg:text-xl xl:text-2xl"
         />
         {/* Description */}
         <Description
@@ -102,7 +104,7 @@ const CardComponent: React.FC<CardComponentProps> = ({
 
       {/* Gradient overlay */}
       <div className={`${gradientBaseClasses} ${gradientHoverClasses}`}>
-        <div className="p-1 mb-1 md:p-0 lg:p-1">
+        <div className="absolute bottom-3 left-0 right-0 p-1 mb-1 md:p-0 lg:p-1">
           <Title
             text={gradientTitle}
             center={true}
@@ -144,7 +146,7 @@ const SliderComponent = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+  }, []);  // Empty dependency array ensures the effect runs only once on component mount
 
   return (
     <div className="">

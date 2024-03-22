@@ -18,12 +18,14 @@ const ParentComponent = () => {
             <Dashboard />
           </div>
         ) : (
-          <div className="flex justify-center bg-[#FFF4F1]">
-            <div className={`max-w-screen-2xl   `}>
-              {/* Landing page sections  */}
-              <HomeSection1 />
-              {/* <HomeSection2 /> */}
+          <div>
+            <div className="flex justify-center bg-[#FFF4F1]">
+              <div className={`max-w-screen-2xl   `}>
+                {/* Landing page sections  */}
+                <HomeSection1 />
+              </div>
             </div>
+                <HomeSection2 />
           </div>
         )}
       </main>

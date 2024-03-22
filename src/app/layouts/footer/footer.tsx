@@ -1,14 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import Logo from "@/components/common/logo/Logo";
 import SocialMedia from "@/components/common/social-media/SocialMedia";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
-import Link from "next/link";
 import { FaComment } from "react-icons/fa";
+import ContactModal from "@/components/modals/ContactModal";
 
 export default function Footer() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenForm = () => {
+    setIsOpen(true);
+  };
+
+  const handleCloseForm = () => {
+    setIsOpen(false);
+  };
   return (
     <div className="bg-cover bg-center bg-no-repeat h-full p-10">
       <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 px-0">
@@ -44,34 +54,60 @@ export default function Footer() {
           <Description
             text="Data Center"
             fontSize="text-lg"
-            href="/pages/center"
+            href="/data-center"
           />
           <Description
             text="Site Map"
             fontSize="text-lg"
-            href="/pages/sitemap"
+            href="/site_map"
           />
         </div>
 
         {/* Third Column */}
         <div className="flex flex-col space-y-3 items-center sm:items-center md:items-start lg:items-start">
           <Title text="Services" fontSize="text-2xl md:text-xl" />
-          <Description text="Dressing Service" fontSize="text-lg" />
-          <Description text="Hotel Booking" fontSize="text-lg" />
-          <Description text="Photography Service" fontSize="text-lg" />
-          <Description text="Vehicle Renting" fontSize="text-lg" />
-          <Description text="Wedding Place Planning" fontSize="text-lg" />
+          <Description
+            text="Dressing Service"
+            fontSize="text-lg"
+          />
+          <Description
+            text="Hotel Booking"
+            fontSize="text-lg"
+          />
+          <Description
+            text="Photography Service"
+            fontSize="text-lg"
+          />
+          <Description
+            text="Vehicle Renting"
+            fontSize="text-lg"
+          />
+          <Description
+            text="Wedding Place Planning"
+            fontSize="text-lg"
+          />
         </div>
 
         {/* Fourth Column */}
         <div className="flex flex-col space-y-3 items-center sm:items-center md:items-start lg:items-start">
           <Title text="Legal" fontSize="text-2xl md:text-xl" />
-          <Description text="Terms of Service" fontSize="text-lg" />
-          <Description text="Service Agreement" fontSize="text-lg" />
-          <Link href="/privacy-policy">
-            <Description text="Privacy Policy" fontSize="text-lg" />
-          </Link>
-          <Description text="Billing Policy" fontSize="text-lg" />
+          <Description
+            text="Terms of Service"
+            fontSize="text-lg"
+            href="/terms&conditions"
+          />
+          <Description
+            text="Service Agreement"
+            fontSize="text-lg"
+          />
+          <Description
+            text="Privacy Policy"
+            fontSize="text-lg"
+            href="/privacy-policy"
+          />
+          <Description
+            text="Billing Policy"
+            fontSize="text-lg" />
         </div>
 
         {/* Fifth Column */}
@@ -87,7 +123,7 @@ export default function Footer() {
       <div className="flex max-md:justify-center mt-5">
         <div className="w-48 text-center md:absolute max-md:mt-5">
           {/* Merged row below the columns */}
-          <div className="font-bold text-xl mb-2 text-primary-purple font-PlayfairDisplay">
+          <div className="font-bold text-xl mb-2 text-primary-purple font-playfair-display">
             Leave us a comment
           </div>
 
@@ -100,9 +136,11 @@ export default function Footer() {
             height="py-2"
             icon={<FaComment />}
             iconPosition="left"
+            onClick={handleOpenForm}
           />
         </div>
       </div>
+      <ContactModal isOpen={isOpen} onClose={handleCloseForm} />
 
       <div className="max-md:mt-5">
         <div className=" justify-center gap-3 mt-2 items-center">
