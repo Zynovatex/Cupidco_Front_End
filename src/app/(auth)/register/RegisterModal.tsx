@@ -34,16 +34,25 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
     phoneNumber: "",
     gender: "",
   });
+  const [passwordError, setPasswordError] = useState("");
 
-  //  user registration
+ //  user registration
   const handleRegisterUser = async () => {
     try {
+      if (password1 !== password2) {
+        setPasswordError("Passwords do not match");
+        return;
+      } else {
+        setPasswordError(""); // Resetting error message when passwords match
+      }
+
       const response = await register(formData);
       console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
+
 
   const handleGenderChange = (gender: string) => {
     setFormData({ ...formData, gender }); // Update formData with selected gender
@@ -248,16 +257,16 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
                   <div>
                     <div className="password-field">
                       <TextField
-                        name="Password"
+                        name="password"
                         label="Password"
                         type={passwordVisible1 ? "text" : "password"}
-                        id="Password"
+                        id="password"
                         width="w-full"
                         bgColor="bg-transparent"
                         height="h-1"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                      />{" "}
+                        value={password1}
+                        onChange={(e) => setPassword1(e.target.value)}
+                      />
                       <div className=" relative mt-[-29px] flex justify-end mr-3 ">
                         {passwordVisible1 ? (
                           <GoEye
@@ -283,6 +292,8 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
                         width="w-full"
                         bgColor="bg-transparent"
                         height="h-1"
+                        value={password2}
+                        onChange={(e) => setPassword2(e.target.value)}
                       />
                       <div className=" relative mt-[-29px] flex justify-end mr-3 ">
                         {passwordVisible2 ? (
@@ -299,6 +310,11 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
                       </div>
                     </div>
                   </div>
+
+                  {/* Error message for password mismatch */}
+                  {passwordError && (
+                    <div className="text-red-500">{passwordError}</div>
+                  )}
 
                   {/* Radio Buttons for Gender */}
                   <div className="flex flex-row md:gap-4 gap-2">

@@ -11,22 +11,13 @@ export default function About() {
   return (
     <>
       {/* about section 01  */}
-      <div
-        className="bg-cover bg-center bg-no-repeat h-screen flex flex-col gap-5 justify-center items-center py-28 px-10 "
-        style={{ backgroundImage: "url(/images/AboutBackground.png)" }}
-      >
-        <AboutSection1 />
-      </div>
+      <AboutSection1 />
 
       {/* about section 02  */}
       <AboutSection2 />
 
       {/* about section 03  */}
-      <div className=" bg-[#f8e7e7]">
-        <div className="mx-auto max-w-screen-2xl">
-          <AboutSection3 />
-        </div>
-      </div>
+      <AboutSection3 />
     </>
   );
 }

@@ -42,7 +42,7 @@ const Languages: React.FC<LanguagesProps> = ({ onClose, onSelectLanguage }) => {
       <div className="   ">
         <div
           ref={modalRef}
-          className=" rounded-xl p-3"
+          className=" rounded-xl p-3 font-Vollkorn"
           style={{ backgroundImage: "url(/images/FormBg.png)" }}
         >
           <button className="absolute right-2 top-1   " onClick={handleClose}>
