@@ -466,7 +466,7 @@ const ProfileCard: React.FC<CardProps> = ({
         <Title
           text="Edit Profile"
           center={true}
-          fontFamily="font-playfair-display"
+          fontFamily="font-PlayfairDisplay"
           fontSize="text-2xl max-sm:text-md md:text-2xl lg:text-3xl xl:text-4xl"
         />
       </div>

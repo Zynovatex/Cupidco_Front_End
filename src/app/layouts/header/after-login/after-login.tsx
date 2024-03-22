@@ -110,7 +110,7 @@ export default function AfterLogin() {
               )}
             </div>
 
-            <div className="relative  py-1 lg:py-[6px] px-2 text-primary-purple font-bold rounded-[30px] border-2 border-[#4d194d]/[.35] bg-[#fff]/[.40] flex font-playfair-display gap-1 lg:gap-3  items-center">
+            <div className="relative  py-1 lg:py-[6px] px-2 text-primary-purple font-bold rounded-[30px] border-2 border-[#4d194d]/[.35] bg-[#fff]/[.40] flex font-PlayfairDisplaygap-1 lg:gap-3  items-center">
               {/* filter option icon  */}
               <div
                 className=" relative cursor-pointer rounded-full text-white lg:text-lg bg-primary-purple p-2 "
@@ -180,7 +180,7 @@ export default function AfterLogin() {
                   <select
                     value={selectedValue}
                     onChange={handleDropdownChange}
-                    className="block appearance-none pr-24 rounded-3xl w-full bg-[#4d194d]/[.24] font-playfair-display border pl-16 text-primary-purple font-bold border-[#4d194d]/[.24] hover:border-gray-500 px-4 py-2 shadow leading-tight focus:outline-none focus:shadow-outline"
+                    className="block appearance-none pr-24 rounded-3xl w-full bg-[#4d194d]/[.24] font-PlayfairDisplayborder pl-16 text-primary-purple font-bold border-[#4d194d]/[.24] hover:border-gray-500 px-4 py-2 shadow leading-tight focus:outline-none focus:shadow-outline"
                   >
                     <option value="" disabled>
                       Select Package
@@ -206,7 +206,7 @@ export default function AfterLogin() {
                 {/* input Field  */}
                 <input
                   type="text"
-                  className="block appearance-none pr-14 rounded-3xl w-full bg-[#4d194d]/[.24] font-playfair-display border pl-16 text-primary-purple font-bold border-[#4d194d]/[.24] hover:border-gray-500 px-4 py-2 shadow leading-tight focus:outline-none focus:shadow-outline"
+                  className="block appearance-none pr-14 rounded-3xl w-full bg-[#4d194d]/[.24] font-PlayfairDisplayborder pl-16 text-primary-purple font-bold border-[#4d194d]/[.24] hover:border-gray-500 px-4 py-2 shadow leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
             )}

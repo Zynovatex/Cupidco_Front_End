@@ -9,3 +9,9 @@ const [selectedOptions, setSelectedOptions] = useState<{
   const handleOptionChange = (groupName: string, value: string) => {
     setSelectedOptions({ ...selectedOptions, [groupName]: value });
   };
+
+
+# fonts 
+Titles - PlayfairDisplay
+Descriptions - Vollkorn
+Links - Yrsa

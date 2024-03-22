@@ -69,7 +69,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClose }) => {
       style={{ backgroundImage: "url(/images/HamburgerFrame.png)" }}
     >
       <div className="p-10">
-        <ul className="text-lg mt-20 text-white font-playfair-display">
+        <ul className="text-lg mt-20 text-white font-PlayfairDisplay ">
           {menuItems.map((item, index) => (
             <li key={index} className="mb-4 uppercase text-lg">
               <Link href={item.path}>

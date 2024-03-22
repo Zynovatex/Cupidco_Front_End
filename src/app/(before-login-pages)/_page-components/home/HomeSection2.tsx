@@ -32,11 +32,11 @@ export default function HomeSection2() {
         </div>
 
         {/* Description */}
-        <div className="text-center p-2 px-9">
+        <div className="text-center p-2 px-9 lg:w-[80%] flex mx-auto">
           <Description
             text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book"
             center={true}
-            fontWeight="font-regular"
+            fontWeight="font-medium"
             fontSize="max-sm:text-md xl:text-xl"
           />
         </div>

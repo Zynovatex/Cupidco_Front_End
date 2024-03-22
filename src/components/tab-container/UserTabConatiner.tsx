@@ -22,7 +22,7 @@ const UserTabContainer = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex-1 p-8 focus:outline-none font-playfair-display text-xl ${
+            className={`flex-1 p-8 focus:outline-none font-PlayfairDisplaytext-xl ${
               activeTab === tab.id
                 ? "bg-[#4D194D] text-white text-bold"
                 : "bg-[#4D194D] text-gray-500"
