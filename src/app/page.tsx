@@ -5,6 +5,7 @@ import React from "react";
 import Dashboard from "./(after-login-pages)/dashboard/page";
 import HomeSection1 from "./(before-login-pages)/_page-components/home/HomeSection1";
 import HomeSection2 from "./(before-login-pages)/_page-components/home/HomeSection2";
+import InputField from "@/components/common/inputs/InputField";
 
 const ParentComponent = () => {
   const UserLogin = false;
@@ -25,7 +26,7 @@ const ParentComponent = () => {
                 <HomeSection1 />
               </div>
             </div>
-                <HomeSection2 />
+            <HomeSection2 />
           </div>
         )}
       </main>

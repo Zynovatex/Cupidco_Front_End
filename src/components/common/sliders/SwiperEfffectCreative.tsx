@@ -6,35 +6,40 @@ import "swiper/css/effect-flip";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Autoplay, EffectFlip } from "swiper/modules";
+import { EffectCreative } from "swiper/modules";
 import HomeSliderCard from "../cards/HomeSLiderCard";
- 
+
 interface HomeFlipSliderProps {
   images: string[];
 }
 
-const HomeFlipSlider: React.FC<HomeFlipSliderProps> = ({ images }) => {
+const SwiperEfffectCreative: React.FC<HomeFlipSliderProps> = ({ images }) => {
   return (
     <>
       <Swiper
-        effect={"flip"}
         grabCursor={true}
-        modules={[EffectFlip, Autoplay]}
-        cubeEffect={{
-          shadow: true,
-          slideShadows: false,
-        }}
+        effect={"creative"}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
         }}
         loop={true}
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: [0, 0, -400],
+          },
+          next: {
+            translate: ["100%", 0, 0],
+          },
+        }}
+        modules={[EffectCreative]}
         className="mySwiper"
       >
         {images.map((image, index) => (
           <SwiperSlide
             key={index}
-            className="flex justify-center items-center shadow-2xl"
+            className="flex justify-center items-center shadow-2xl "
           >
             <HomeSliderCard image={image} />
           </SwiperSlide>
@@ -44,4 +49,4 @@ const HomeFlipSlider: React.FC<HomeFlipSliderProps> = ({ images }) => {
   );
 };
 
-export default HomeFlipSlider;
+export default SwiperEfffectCreative;

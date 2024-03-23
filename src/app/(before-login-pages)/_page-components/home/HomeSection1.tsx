@@ -3,7 +3,8 @@
 import Register from "@/app/(auth)/register/Register";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
-import HomeFlipSlider from "@/components/common/sliders/HomeFlipSlider";
+import HomeSwiper from "@/components/common/sliders/HomeSwiper";
+import HomeSwiperVerticle from "@/components/common/sliders/HomeSwiperVerticle";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import Image from "next/image";
@@ -11,9 +12,15 @@ import Link from "next/link";
 import React from "react";
 
 const images = [
-  "/images/ImageGallery1.jpg",
-  "/images/ImageGallery2.jpg",
-  "/images/ImageGallery3.jpg",
+  "/images/HomeImage1.png",
+  "/images/HomeImage1.png",
+  "/images/HomeImage1.png",
+];
+
+const images2 = [
+  "/images/HomeImage2.png",
+  "/images/HomeImage2.png",
+  "/images/HomeImage2.png",
 ];
 
 export default function HomeSection1() {
@@ -67,23 +74,16 @@ export default function HomeSection1() {
 
         {/*in web view images  */}
         <div>
-          <div className="sm:ml-[50%] md:ml-[60%] sm:mt-[-60px] md:mt-[-150px] max-md:hidden">
+          <div className="sm:ml-[50%] md:ml-[60%] sm:mt-[-60px] md:mt-[-180px] max-md:hidden">
             <div className="flex justify-center ml-28 mt-5">
-              <Image
-                src={"/images/HomeImage1.png"}
-                alt={" text background image"}
-                width={250}
-                height={50}
-              />
+              <div className="w-52 lg:w-72 z-0 ">
+                <HomeSwiper images={images} />
+              </div>
             </div>
-            <div className="flex justify-center mr-24 mt-[-50px] lg:mt-[-100px] ">
-              <Image
-                src={"/images/HomeImage2.png"}
-                alt={" text background image"}
-                width={180}
-                height={50}
-                className="max-lg:w-28"
-              />
+            <div className="flex justify-center mr-24 mt-[-60px] lg:mt-[-100px] ">
+              <div className="w-40 overflow-hidden">
+                <HomeSwiperVerticle images={images2} />
+              </div>
             </div>
           </div>
         </div>
@@ -92,20 +92,14 @@ export default function HomeSection1() {
         <div>
           <div className=" md:hidden sm:ml-[50%] md:ml-[60%] sm:mt-[-60px] md:mt-[-80px]">
             <div className="flex justify-center ml-20 mt-5 ">
-              <Image
-                src={"/images/HomeImage1.png"}
-                alt={" text background image"}
-                width={150}
-                height={50}
-              />
+              <div className="w-40  z-0 ">
+                <HomeSwiper images={images} />
+              </div>
             </div>
-            <div className="flex justify-center mr-20 mt-[-60px]">
-              <Image
-                src={"/images/HomeImage2.png"}
-                alt={" text background image"}
-                width={100}
-                height={50}
-              />
+            <div className="flex justify-center mr-20 mt-[-60px] relative">
+              <div className="w-28">
+                <HomeSwiper images={images2} />
+              </div>
             </div>
           </div>
 
@@ -116,7 +110,7 @@ export default function HomeSection1() {
                 label="Learn More"
                 fontSize="text-md sm:text-sm lg:text-lg"
                 height="h-9 xl:h-12"
-                width=" w-40"
+                width=" w-60"
                 radius="rounded-lg"
               />
             </Link>
@@ -126,7 +120,7 @@ export default function HomeSection1() {
               label="Register"
               fontSize="text-md sm:text-sm lg:text-lg"
               height="h-9 xl:h-12"
-              width="w-40"
+              width="w-60"
               radius="rounded-lg "
               onClick={toggleRegisterModal}
             />

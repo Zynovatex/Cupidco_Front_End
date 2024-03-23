@@ -6,8 +6,8 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 import { Autoplay, EffectCube } from "swiper/modules";
-import HomeSliderCard from "../cards/HomeSliderCard";
-
+import HomeSliderCard from "../cards/HomeSLiderCard";
+ 
 interface HomeCubeSliderProps {
   images: string[];
 }
@@ -18,6 +18,7 @@ const HomeCubeSlider: React.FC<HomeCubeSliderProps> = ({ images }) => {
       <Swiper
         effect={"cube"}
         grabCursor={true}
+        loop={true}
         cubeEffect={{
           shadow: true,
           slideShadows: false,
