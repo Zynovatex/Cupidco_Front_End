@@ -3,6 +3,7 @@ import React from "react";
 interface InputFieldProps {
   id: string;
   name: string;
+  width?: string;
   label: string;
   value?: string;
   disabled?: boolean;
@@ -15,6 +16,7 @@ const InputField: React.FC<InputFieldProps> = ({
   label,
   name,
   value,
+  width,
   disabled,
   backicon,
   onChange,
@@ -32,7 +34,8 @@ const InputField: React.FC<InputFieldProps> = ({
             onChange={onChange}
             className={`font-Vollkorn peer  pl-5
             ${backicon ? "pr-12" : "pr-5"} 
-            w-full h-10 md:h-12 bg-transparent focus:ring-transparent text-primary-purple font-normal disabled:bg-primary-purple disabled:border-0 transition-all placeholder-shown:border-2 placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border-2 focus:border-2 border-t-0 focus:border-t-transparent text-sm md:text-base     py-2.5 rounded-[15px] border-primary-purple focus:border-primary-purple`}
+            ${width}
+             h-10 md:h-12 bg-transparent focus:ring-transparent text-primary-purple font-normal disabled:bg-primary-purple disabled:border-0 transition-all placeholder-shown:border-2 placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border-2 focus:border-2 border-t-0 focus:border-t-transparent text-sm md:text-base     py-2.5 rounded-[15px] border-primary-purple focus:border-primary-purple`}
             placeholder=" "
           />
 
