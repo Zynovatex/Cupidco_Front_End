@@ -10,7 +10,7 @@ import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 
 const WriteReview = () => {
     return (
-        <div className="relative min-h-screen flex flex-col justify-start py-10 pt-28 items-center text-center">
+        <div className="relative min-h-screen flex flex-col justify-start py-20 pt-28 px-10 items-center text-center">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image

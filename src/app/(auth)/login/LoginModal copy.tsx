@@ -1,18 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { IoArrowBackCircleOutline, IoCloseCircle } from "react-icons/io5";
+import { IoCloseCircle } from "react-icons/io5";
 import Logo from "@/components/common/logo/Logo";
 import Title from "@/components/common/texts/Title";
 import SocialMedia from "@/components/common/social-media/SocialMedia";
 import Description from "@/components/common/texts/Description";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import CheckboxComponent from "@/components/common/inputs/Checkbox";
+import TextField2 from "@/components/common/inputs/TextField2";
 import { login } from "@/app/api/auth";
 import Register from "../register/Register";
 import OtpInput from "@/components/common/inputs/OtpInput";
-import InputField from "@/components/common/inputs/InputField";
-import { GoEye } from "react-icons/go";
-import { FiEyeOff } from "react-icons/fi";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -23,7 +21,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const [step, setStep] = useState<number>(1);
   const [resendDisabled, setResendDisabled] = useState(false);
   const [timer, setTimer] = useState(60);
@@ -57,7 +54,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   useEffect(() => {
@@ -112,10 +111,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     setStep(stepNumber);
   };
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible((prev) => !prev);
-  };
-
   // user login
   const handleSubmit = async () => {
     try {
@@ -139,50 +134,32 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     setPassword(event.target.value);
   };
 
-  const handlePreviousStep = () => {
-    const previousStep = step - 1;
-    onStepChange(previousStep);
-  };
-
-  const stepTitles: string[] = [
-    "",
-    "Welcome To Cupidco",
-    "Forgot Your Password",
-  ];
-
   const stepContent: { [key: number]: JSX.Element } = {
     1: (
-      <div className="mt-5 w-full">
+      <div className="mt-5 w-[80%] mx-[10%] md:w-[70%] md:mx-[15%]">
         {/* user name  */}
-        <InputField
+        <TextField2
           label="Username"
           type="text"
           id="name"
-          name={"username"}
+          width="w-full"
+          bgColor="bg-transparent"
+          height="h-1"
+          name={""}
           value={username}
           onChange={handleUsernameChange}
         />
 
         {/* password  */}
         <div className="mt-5">
-          <InputField
-            name="Password"
+          <TextField2
             label="Password"
-            type={passwordVisible ? "text" : "password"}
-            id="Password"
-            width="w-full"
+            id="password"
+            bgColor="bg-transparent"
+            height="h-1"
+            name={""}
+            value={password}
             onChange={handlePasswordChange}
-            backicon={passwordVisible ? (
-              <GoEye
-                onClick={togglePasswordVisibility}
-                className="cursor-pointer"
-              />
-            ) : (
-              <FiEyeOff
-                onClick={togglePasswordVisibility}
-                className="cursor-pointer"
-              />
-            )}
           />
         </div>
 
@@ -199,7 +176,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           <div>
             <div
               className="text-primary-purple md:text-md mt-[1px] md:text-sm text-xs cursor-pointer"
-              onClick={() => onStepChange(2)}>
+              onClick={() => onStepChange(2)}
+            >
               Forgot Password
             </div>
           </div>
@@ -271,9 +249,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </div>
       </div>
     ),
-
     2: (
-      <div>
+      <div className=" mt-8 md:mt-5 ">
+        <Title
+          text="Forget Your Password"
+          center={true}
+          fontSize="md:text-lg md:text-xl lg:text-2xl "
+        />
+
         <div className="mt-2">
           <Description
             text="Don't worry! Choose your option below to recover your account!"
@@ -289,7 +272,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             textColor="text-white"
             onClick={() => onStepChange(4)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-lg"
           />
         </div>
 
@@ -305,14 +287,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             textColor="text-white"
             onClick={() => onStepChange(3)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-lg"
           />
         </div>
       </div>
     ),
+
     // Mobile Number Verification Step 1
     3: (
-      <div>
+      <div className=" mt-8 md:mt-5 ">
         <Title
           text="Mobile Number"
           center={true}
@@ -328,34 +310,26 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         <div className="mt-3">
-          <InputField
+          <TextField2
             label="Mobile Number"
             type="mobilenumber"
             id="mobileNumber"
             width="w-[100%]"
+            bgColor="bg-transparent"
+            height=" h-3"
             value={""}
-            name={"number"}
+            name={""}
           />
         </div>
 
-        <div className="mt-5 flex gap-2">
-          <PrimaryButton
-            label="Back"
-            height="py-2"
-            width="w-full"
-            textColor="text-white"
-            onClick={() => onStepChange(2)}
-            radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
-          />
+        <div className="mt-3">
           <PrimaryButton
             label="Next"
-            height="py-2"
+            height=" py-2"
             width="w-full"
             textColor="text-white"
             onClick={() => onStepChange(3.1)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
           />
         </div>
 
@@ -364,7 +338,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           <p>
             Verify using
             <span
-              className="font-semibold ml-2 cursor-pointer"
+              className="font-semibold ml-2"
               onClick={() => onStepChange(4)}
             >
               Email Address
@@ -376,7 +350,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
     // Verify OTP | Mobile Number Verification Step 2
     3.1: (
-      <div>
+      <div className=" mt-8 md:mt-5 ">
         <Title
           text="Please Verify Your Account"
           center={true}
@@ -401,28 +375,26 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
         <div className="mt-3 flex justify-center">
           <OtpInput
-            onOtpChange={() => { }}
+            onOtpChange={()=> {}}
           />
         </div>
 
         <div className="mt-3 flex gap-2">
           <PrimaryButton
             label="Back"
-            height="py-2"
+            height=" py-2"
             width="w-full"
             textColor="text-white"
             onClick={() => onStepChange(3)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
           />
           <PrimaryButton
             label="Next"
-            height="py-2"
+            height=" py-2"
             width="w-full"
             textColor="text-white"
             onClick={() => onStepChange(5)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
           />
         </div>
 
@@ -446,7 +418,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
     // Email Address Verification Step 1
     4: (
-      <div>
+      <div className=" mt-8 md:mt-5 ">
         <Title
           text="Email Address"
           center={true}
@@ -462,27 +434,26 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         <div className="mt-3">
-          <InputField id="email" label="Email Address" name="mail" type="text" />
+          <TextField2
+            label="Email Address"
+            type="mobilenumber"
+            id="mobileNumber"
+            width="w-[100%]"
+            bgColor="bg-transparent"
+            height=" h-3"
+            value={""}
+            name={""}
+          />
         </div>
 
-        <div className="mt-5 flex gap-2">
-          <PrimaryButton
-            label="Back"
-            height="py-2"
-            width="w-full"
-            textColor="text-white"
-            onClick={() => onStepChange(2)}
-            radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
-          />
+        <div className="mt-3">
           <PrimaryButton
             label="Next"
-            height="py-2"
+            height=" py-2"
             width="w-full"
             textColor="text-white"
             onClick={() => onStepChange(4.1)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
           />
         </div>
 
@@ -491,8 +462,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           <p>
             Verify using
             <span
-              className="font-semibold ml-2 cursor-pointer"
-              onClick={() => onStepChange(3)}>
+              className="font-semibold ml-2"
+              onClick={() => onStepChange(2)}
+            >
               Mobile Number
             </span>
           </p>
@@ -501,7 +473,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     ),
     // Verify OTP | Email Address Verification Step 2
     4.1: (
-      <div>
+      <div className=" mt-8 md:mt-5 ">
         <Title
           text="Please Verify Your Account"
           center={true}
@@ -538,7 +510,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             textColor="text-white"
             onClick={() => onStepChange(4)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
           />
           <PrimaryButton
             label="Next"
@@ -547,7 +518,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             textColor="text-white"
             onClick={() => onStepChange(5)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
           />
         </div>
 
@@ -570,7 +540,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     ),
     // Resend OTP | Email Address Verification Step 3
     4.2: (
-      <div className="pt-4 md:pt-8 flex flex-col items-center justify-center space-y-4 xl:space-y-4">
+      <div className="pt-4 md:pt-8 flex flex-col items-center justify-center h-screen space-y-4 xl:space-y-4">
         <Title
           text="Please Verify Your Account"
           center={true}
@@ -595,11 +565,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </div>
         <PrimaryButton
           label="Next"
-          height="py-2"
+          height="p-2 lg:p-2 max-sm:p-1 xl:p-3"
           textColor="text-white"
           width="w-[64%]"
           onClick={() => onStepChange(4)}
-          fontSize="text-md"
+          fontSize="
+            text-lg
+            max-sm:text-sm
+            md:text-md 
+            lg:text-lg
+            xl:text-xl"
           radius="
             rounded-xl
             max-sm:rounded-lg
@@ -626,9 +601,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </div>
       </div>
     ),
-    // Account Verification
+    // Account Veriification
     5: (
-      <div className="w-full">
+      <div className=" mt-8 md:mt-5 ">
         <Title
           text="Account Verified!"
           center={true}
@@ -643,39 +618,55 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           />
         </div>
 
-        <div className="mt-3">
-          <InputField id="password" label="password" name="password" type="password" />
+        <div className="mt-3 ">
+          <TextField2
+            label="New Password"
+            type="password"
+            id="newpassword"
+            width="w-[100%]"
+            bgColor="bg-transparent"
+            height=" h-3"
+            value={""}
+            name={""}
+          />
         </div>
 
-        <div className="mt-5 ">
-          <InputField id="password" label="Confirm password" name="password" type="password" />
+        <div className="mt-3 ">
+          <TextField2
+            label="Confirm Password"
+            type="password"
+            id="confirmpassword"
+            width="w-[100%]"
+            bgColor="bg-transparent"
+            height=" h-3"
+            value={""}
+            name={""}
+          />
+        </div>
+        <div className=" mt-3">
+          <CheckboxComponent
+            name="Remember me"
+            value="Remember me"
+            fontColor="font-Quicksand"
+            size="sm"
+            fontSize="max-sm:text-sm"
+          />
         </div>
 
-        <div className="mt-5">
+        <div className="mt-3 ">
           <PrimaryButton
             label="Change Password"
             height=" py-2"
             width="w-full"
             textColor="text-white"
-            onClick={() => onStepChange(6)}
+            onClick={() => onStepChange(5)}
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
           />
-        </div>
-        {/* checkbox  */}
-        <div className="mt-5 flex justify-center">
-          <CheckboxComponent
-            secondName="Remember This Device"
-            value="rememberMe"
-            fontColor="text-[#4D194D]"
-            isSelected={false}
-            onChange={() => { }}
-            fontSize=" md:text-md sm:text-sm text-xs" name={""} />
         </div>
       </div>
     ),
     6: (
-      <div>
+      <div className=" mt-8 md:mt-8 ">
         <Title
           text="Your Password has been Changed Succssfully!"
           center={true}
@@ -689,8 +680,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             width="w-full"
             textColor="text-white"
             radius="rounded-xl max-sm:rounded-lg lg:rounded-xl"
-            fontSize="text-md"
-            onClick={() => onStepChange(1)}
           />
         </div>
       </div>
@@ -702,14 +691,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     <>
       {(isOpen || isClosing) && (
         <div
-          className={`fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-500 flex justify-center items-center py-5 ${isOpen || isClosing ? "opacity-100" : "opacity-0"
+          className={`fixed inset-0 z-50 transition-opacity duration-500 flex justify-center items-center ${isOpen || isClosing ? "opacity-100" : "opacity-0"
             }`}
           onClick={handleBgClick}
         >
           <div
-            className={`relative md:rounded-2xl w-[100%] md:w-[70%] h-[100%] md:h-[90%] bg-transparent ${modalAnimation} transition-all duration-500 flex justify-center lg:justify-end items-center md:px-10 px-0`}
-            onClick={handleFormClick}>
-
+            className={`relative rounded-2xl w-[95%] md:w-[70%] h-[90%] md:h-[90%] bg-transparent ${modalAnimation}  transition-all overflow-hidden duration-500 flex justify-center lg:justify-end  items-center`}
+            onClick={handleFormClick}
+          >
             {/* bg image  */}
             <div className="absolute inset-0 z-0">
               <Image
@@ -732,10 +721,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </button>
 
             {/* login container  */}
-            <div className="w-[90%] text-center lg:w-[50%] relative h-auto py-5 px-5">
+            <div className="w-[90%] text-center lg:w-[50%] relative h-[90%] lg:mr-10 max-md:mt-5 py-5 px-5 ">
               {/* bg image  */}
-              <div>
-                {/* <div className="w-auto p-10 rounded-lg" style={{ backgroundImage: "url(/images/DefaultBg.png)" }}> */}
+              <div className="absolute inset-0 pt-40 ">
                 <Image
                   src="/images/HomeSc2.png"
                   layout="fill"
@@ -745,39 +733,28 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   priority
                   className="rounded-lg"
                 />
+              </div>
 
-                <div className="relative">
-                  {/* Logo */}
-                  <div className="w-28">
-                    <Logo />
-                  </div>
+              <div className="relative">
+                {/* Logo */}
+                <div className=" w-28 mb-3 ">
+                  <Logo />
+                </div>
 
-                  <div className="flex gap-5 items-center justify-center w-full">
-                    {step === 2 && (
-                      <button
-                        onClick={handlePreviousStep}
-                        className="text-primary-purple"
-                        aria-label="Go back"
-                      >
-                        <IoArrowBackCircleOutline size="2em" />
-                      </button>
-                    )}
-                    {/* title  */}
-                    <div>
-                      <Title
-                        text={stepTitles[step]}
-                        center={true}
-                        fontSize="text-xl md:text-2xl"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div
-                    className={`relative z-10 flex   justify-center `}>
-                    {/* Render step content based on current step */}
-                    {stepContent[step] || <p>Step not found</p>}
-                  </div>
+                {/* title  */}
+                <div>
+                  <Title
+                    text="Welcome Back to Cupidco!"
+                    center={true}
+                    fontSize="text-xl md:text-2xl "
+                  />
+                </div>
+                {/* Content */}
+                <div
+                  className={`relative z-10 flex   justify-center `}
+                >
+                  {/* Render step content based on current step */}
+                  {stepContent[step] || <p>Step not found</p>}
                 </div>
               </div>
             </div>

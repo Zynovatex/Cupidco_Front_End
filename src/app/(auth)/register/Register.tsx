@@ -11,6 +11,7 @@ import SocialMedia from "@/components/common/social-media/SocialMedia";
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import TextField from "@/components/common/inputs/TextField";
 import { register } from "@/app/api/auth";
+import InputField from "@/components/common/inputs/InputField";
 
 interface RegisterProps {
     isOpen: boolean;
@@ -123,11 +124,11 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
                     onClick={handleBgClick}>
 
                     <div
-                        className={`relative md:rounded-2xl w-[100%] md:w-[70%] h-[100%] md:h-[90%] bg-transparent ${modalAnimation} transition-all overflow-hidden duration-500 flex justify-center lg:justify-end  items-center`}
+                        className={`relative md:rounded-2xl w-[100%] md:w-[70%] h-[100%] md:h-[90%] bg-transparent ${modalAnimation} transition-all duration-500 flex justify-center lg:justify-end items-center md:px-10 px-5`}
                         onClick={handleFormClick}>
 
                         {/* bg image  */}
-                        <div className="absolute inset-0 z-0">
+                        <div>
                             <Image
                                 src="/images/ForgetPasswordBg.png"
                                 layout="fill"
@@ -148,24 +149,11 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
                         </button>
 
                         {/* Register container  */}
-                        <div className="w-[90%] text-center lg:w-[50%] relative lg:h-[96%] h-[94%] lg:mr-10 max-md:mt-5 py-2 px-5 ">
-                            {/* bg image  */}
-                            <div className="absolute inset-0 md:pt-40 ">
-                                <Image
-                                    src="/images/HomeSc2.png"
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="right-bottom"
-                                    alt="Background"
-                                    priority
-                                    className="rounded-lg"
-                                />
-                            </div>
-
+                        <div className="relative w-auto text-center h-[90%] py-2 px-10 overflow-y-auto rounded-lg" style={{ backgroundImage: "url(/images/DefaultBg.png)" }}>
                             <div
-                                className={`relative flex flex-col items-center justify-center sm:space-y-1 h-full max-sm:m-4 xl:space-y-1 xl:h-[98%]`}>
+                                className={`relative flex flex-col items-center justify-center`}>
 
-                                <div className="mb-3 md:mt-4">
+                                <div className="mb-3 md:mt-0 mt-5">
                                     <Title
                                         text="Welcome to Cupidco!"
                                         center={true}
@@ -174,190 +162,164 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
                                 </div>
 
                                 {/* Text Fields */}
-                                <div className="flex flex-col gap-1">
-                                    <div className="space-y-2">
+                                <div className="flex flex-col gap-3">
+                                    <div className="space-y-4">
                                         <div className="flex flex-row gap-2">
                                             {/* First Name Field */}
-                                            <TextField
+                                            <InputField
                                                 name="firstName"
                                                 label="First Name"
                                                 type="text"
                                                 id="firstName"
                                                 width="w-full"
-                                                bgColor="bg-transparent"
-                                                height="h-1"
                                                 value={formData.firstName}
                                                 onChange={handleInputChange}
                                             />
 
                                             {/* Last Name Field */}
-                                            <TextField
+                                            <InputField
                                                 name="lastName"
                                                 label="Last Name"
                                                 type="text"
                                                 id="lastName"
                                                 width="w-full"
-                                                bgColor="bg-transparent"
-                                                height="h-1"
                                                 value={formData.lastName}
                                                 onChange={handleInputChange}
                                             />
                                         </div>
 
                                         {/* Date Of birth Field */}
-                                        <TextField
+                                        <InputField
                                             name="dateOfBirth"
                                             label="Date of Birth"
                                             type="text"
                                             id="dateOfBirth"
                                             width="w-full"
-                                            bgColor="bg-transparent"
-                                            height="h-1"
                                             value={formData.dateOfBirth}
                                             onChange={handleInputChange}
                                         />
 
                                         {/* Phone Number Field */}
-                                        <TextField
+                                        <InputField
                                             name="phoneNumber"
                                             label="Phone Number"
                                             type="text"
                                             id="phoneNumber"
                                             width="w-full"
-                                            bgColor="bg-transparent"
-                                            height="h-1"
                                             value={formData.phoneNumber}
                                             onChange={handleInputChange}
                                         />
 
                                         {/* Email Field */}
-                                        <TextField
+                                        <InputField
                                             name="emailAddress"
                                             label="Email"
                                             type="email"
                                             id="emailAddress"
                                             width="w-full"
-                                            bgColor="bg-transparent"
-                                            height="h-1 "
                                             value={formData.emailAddress}
                                             onChange={handleInputChange}
                                         />
-
-                                        {/* Password Field */}
-                                        <div>
-                                            <div className="password-field">
-                                                <TextField
-                                                    name="Password"
-                                                    label="Password"
-                                                    type={passwordVisible1 ? "text" : "password"}
-                                                    id="Password"
-                                                    width="w-full"
-                                                    bgColor="bg-transparent"
-                                                    height="h-1"
-                                                    value={formData.password}
-                                                    onChange={handleInputChange}
-                                                />{" "}
-                                                <div className=" relative mt-[-29px] flex justify-end mr-3 ">
-                                                    {passwordVisible1 ? (
-                                                        <GoEye
-                                                            onClick={togglePasswordVisibility1}
-                                                            className="cursor-pointer"
-                                                        />
-                                                    ) : (
-                                                        <FiEyeOff
-                                                            onClick={togglePasswordVisibility1}
-                                                            className="cursor-pointer"
-                                                        />
-                                                    )}
-                                                </div>
-                                            </div>
-
-                                            {/* Confirm Password Field */}
-                                            <div className="confirm password-field my-5">
-                                                <TextField
-                                                    name="confirmPassword"
-                                                    label="Confirm password"
-                                                    type={passwordVisible2 ? "text" : "password"}
-                                                    id="confirmPassword"
-                                                    width="w-full"
-                                                    bgColor="bg-transparent"
-                                                    height="h-1"
+                                        <InputField
+                                            name="Password"
+                                            label="Password"
+                                            type={passwordVisible1 ? "text" : "password"}
+                                            id="Password"
+                                            width="w-full"
+                                            onChange={handleInputChange}
+                                            backicon={passwordVisible1 ? (
+                                                <GoEye
+                                                    onClick={togglePasswordVisibility1}
+                                                    className="cursor-pointer"
                                                 />
-                                                <div className=" relative mt-[-29px] flex justify-end mr-3 ">
-                                                    {passwordVisible2 ? (
-                                                        <GoEye
-                                                            onClick={togglePasswordVisibility2}
-                                                            className="cursor-pointer"
-                                                        />
-                                                    ) : (
-                                                        <FiEyeOff
-                                                            onClick={togglePasswordVisibility2}
-                                                            className="cursor-pointer"
-                                                        />
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </div>
+                                            ) : (
+                                                <FiEyeOff
+                                                    onClick={togglePasswordVisibility1}
+                                                    className="cursor-pointer"
+                                                />
+                                            )}
+                                        />
 
-                                        {/* Radio Buttons */}
-                                        <div className="flex flex-row md:gap-4 gap-2">
-                                            <Description
-                                                text="Gender : "
-                                                fontSize="text-sm xs:text-xs lg:text-sm md:text-sm xl:text-lg max-xs:text-xs"
-                                                fontWeight="font-medium"
-                                                fontFamily="font-playfair-display"
-                                            />
-                                            <RadioButton
-                                                groupName="gender"
-                                                name="Male"
-                                                value="Male"
-                                                isSelected={formData.gender === "Male"} // Check if the gender is selected as Male
-                                                onChange={() => handleGenderChange("Male")} // Handle selection of Male
-                                                fontSize="text-sm xs:text-xs lg:text-sm md:text-sm xl:text-lg max-xs:text-xs"
-                                            />
-                                            <RadioButton
-                                                groupName="gender"
-                                                name="Female"
-                                                value="Female"
-                                                isSelected={formData.gender === "Female"} // Check if the gender is selected as Female
-                                                onChange={() => handleGenderChange("Female")} // Handle selection of Female
-                                                fontSize="text-sm xs:text-xs lg:text-sm md:text-sm xl:text-lg max-xs:text-xs"
-                                            />
-                                            <RadioButton
-                                                groupName="gender"
-                                                name="Other"
-                                                value="Other"
-                                                isSelected={formData.gender === "Other"} // Check if the gender is selected as Other
-                                                onChange={() => handleGenderChange("Other")} // Handle selection of Other
-                                                fontSize="text-sm xs:text-xs lg:text-sm md:text-sm xl:text-lg max-xs:text-xs"
-                                            />
-                                        </div>
+                                        <InputField
+                                            name="confirmPassword"
+                                            label="Confirm password"
+                                            type={passwordVisible2 ? "text" : "password"}
+                                            id="confirmPassword"
+                                            width="w-full"
+                                            onChange={handleInputChange}
+                                            backicon={passwordVisible2 ? (
+                                                <GoEye
+                                                    onClick={togglePasswordVisibility2}
+                                                    className="cursor-pointer"
+                                                />
+                                            ) : (
+                                                <FiEyeOff
+                                                    onClick={togglePasswordVisibility2}
+                                                    className="cursor-pointer"
+                                                />
+                                            )}
+                                        />
                                     </div>
 
-                                    {/* Agreement */}
-                                    <div className="space-y-3">
-                                        <div className="space-x-1 font-Quicksand text-primary-purple">
-                                            <span className="text-sm xs:text-xs lg:text-xs md:text-xs xl:text-sm font-medium max-xs:text-xs ">
-                                                By signing up you are agreeing to our
-                                            </span>
-                                            <a
-                                                href="/privacy-policy"
-                                                className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-bold "
-                                            >
-                                                Privacy Policy
-                                            </a>
-                                            <span className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-medium ">
-                                                and
-                                            </span>
-                                            <a
-                                                href="/terms-of-use"
-                                                className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-bold "
-                                            >
-                                                Terms of Use.
-                                            </a>
-                                        </div>
+                                    {/* Radio Buttons */}
+                                    <div className="flex flex-row md:gap-4 gap-2">
+                                        <Description
+                                            text="Gender : "
+                                            fontSize="text-sm xl:text-lg max-xs:text-xs"
+                                            fontFamily="font-playfair-display"
+                                        />
+                                        <RadioButton
+                                            groupName="gender"
+                                            name="Male"
+                                            value="Male"
+                                            isSelected={formData.gender === "Male"} // Check if the gender is selected as Male
+                                            onChange={() => handleGenderChange("Male")} // Handle selection of Male
+                                            fontSize="text-sm xl:text-md max-xs:text-xs"
+                                        />
+                                        <RadioButton
+                                            groupName="gender"
+                                            name="Female"
+                                            value="Female"
+                                            isSelected={formData.gender === "Female"} // Check if the gender is selected as Female
+                                            onChange={() => handleGenderChange("Female")} // Handle selection of Female
+                                            fontSize="text-sm xl:text-md max-xs:text-xs"
+                                        />
+                                        <RadioButton
+                                            groupName="gender"
+                                            name="Other"
+                                            value="Other"
+                                            isSelected={formData.gender === "Other"} // Check if the gender is selected as Other
+                                            onChange={() => handleGenderChange("Other")} // Handle selection of Other
+                                            fontSize="text-sm xl:text-md max-xs:text-xs"
+                                        />
+                                    </div>
+                                </div>
 
-                                        {/* Submit Button */}
+                                {/* Agreement */}
+                                <div className="xl:space-y-3 space-y-1">
+                                    <div className="space-x-1 font-Quicksand text-primary-purple">
+                                        <span className="text-sm xs:text-xs lg:text-xs md:text-xs xl:text-sm font-medium max-xs:text-xs ">
+                                            By signing up you are agreeing to our
+                                        </span>
+                                        <a
+                                            href="/privacy-policy"
+                                            className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-bold "
+                                        >
+                                            Privacy Policy
+                                        </a>
+                                        <span className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-medium ">
+                                            and
+                                        </span>
+                                        <a
+                                            href="/terms-of-use"
+                                            className="text-sm max-xs:text-xs xs:text-xs lg:text-xs md:text-xs xl:text-sm font-bold "
+                                        >
+                                            Terms of Use.
+                                        </a>
+                                    </div>
+
+                                    {/* Submit Button */}
+                                    <div>
                                         <PrimaryButton
                                             label="Sign In"
                                             height="py-1 xl:py-2"
@@ -366,60 +328,60 @@ const Register: React.FC<RegisterProps> = ({ isOpen, onClose }) => {
                                             fontSize="lg:text-md xl:text-lg xs:text-xs text-lg max-xs:text-sm"
                                             onClick={handleRegisterUser}
                                         />
+                                    </div>
 
-                                        {/* Login Option */}
-                                        <div className="flex gap-1 justify-center mt-3">
+                                    {/* Login Option */}
+                                    <div className="flex gap-1 justify-center mt-3">
+                                        <Description
+                                            text="Already Have an Account?"
+                                            fontWeight="font-regular"
+                                            fontSize="text-sm max-sm:text-xs"
+                                            center={true}
+                                        />
+                                        <div onClick={openLoginModal} className="cursor-pointer">
                                             <Description
-                                                text="Already Have an Account?"
-                                                fontWeight="font-regular"
-                                                fontSize="text-sm max-sm:text-xs"
-                                                center={true}
-                                            />
-                                            <div onClick={openLoginModal} className="cursor-pointer">
-                                                <Description
-                                                    text=" Sign in"
-                                                    fontWeight="font-bold"
-                                                    fontSize="text-sm max-sm:text-xs"
-                                                    center={true}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <Description
-                                                text="- or -"
-                                                fontWeight="font-regular"
+                                                text=" Sign in"
+                                                fontWeight="font-bold"
                                                 fontSize="text-sm max-sm:text-xs"
                                                 center={true}
                                             />
                                         </div>
+                                    </div>
+                                    <div>
+                                        <Description
+                                            text="- or -"
+                                            fontWeight="font-regular"
+                                            fontSize="text-sm max-sm:text-xs"
+                                            center={true}
+                                        />
+                                    </div>
 
-                                        {/* social media  */}
-                                        <div className="flex gap-3 justify-center mt-2">
-                                            <SocialMedia
-                                                network="google"
-                                                url="www.linkedin.com"
-                                                key={3}
-                                                size="6"
-                                            />
-                                            <SocialMedia
-                                                network="twitter"
-                                                url="www.twitter.com"
-                                                key={4}
-                                                size="6"
-                                            />
-                                            <SocialMedia
-                                                network="facebook"
-                                                url="www.facebook.com"
-                                                key={3}
-                                                size="6"
-                                            />
-                                            <SocialMedia
-                                                network="tiktok"
-                                                url="www.tiktok.com"
-                                                key={4}
-                                                size="6"
-                                            />
-                                        </div>
+                                    {/* social media  */}
+                                    <div className="flex gap-3 justify-center mt-3">
+                                        <SocialMedia
+                                            network="google"
+                                            url="www.linkedin.com"
+                                            key={3}
+                                            size="6"
+                                        />
+                                        <SocialMedia
+                                            network="twitter"
+                                            url="www.twitter.com"
+                                            key={4}
+                                            size="6"
+                                        />
+                                        <SocialMedia
+                                            network="facebook"
+                                            url="www.facebook.com"
+                                            key={3}
+                                            size="6"
+                                        />
+                                        <SocialMedia
+                                            network="tiktok"
+                                            url="www.tiktok.com"
+                                            key={4}
+                                            size="6"
+                                        />
                                     </div>
                                 </div>
                             </div>

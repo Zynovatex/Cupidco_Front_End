@@ -17,14 +17,14 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-10 bg-[#EBADA1] bg-opacity-35 rounded-lg shadow-md md:p-10 p-5 items-center">
-      <div className="w-full h-auto md:w-[200px] md:h-[200px] flex justify-center md:justify-start">
+      <div className="w-full flex justify-center md:justify-start">
         <Image
           src={image}
           width={200}
           height={200}
           alt={`${name}'s review image`}
           objectFit="cover"
-          className="rounded-md"
+          className="rounded-md aspect-auto"
         />
       </div>
       <div className="flex flex-col gap-5 justify-center text-justify">

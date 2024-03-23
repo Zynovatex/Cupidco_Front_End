@@ -17,7 +17,7 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({
 
   const positionClasses = {
     "top-right": "top-0 right-1 translate-x-1/4 translate-y-1/5",
-    "bottom-right": "bottom-0 right-11 translate-x-12/12 -translate-y-11/12",
+    "bottom-right": "bottom-0 right-9 translate-x-12/12 -translate-y-8/12",
   };
 
   const positionClass = positionClasses[position];
@@ -25,7 +25,7 @@ const ProfilePicture: React.FC<ProfilePictureProps> = ({
   return (
     <div className=" w-4 h-4 sm:w-[10%] sm:h-[10%] md:w-[20%] md:[20%] lg:w-[30%] lg:h-[30%]">
       <div className="relative inline-block">
-        <div className="relative w-16 h-16 overflow-hidden rounded-full">
+        <div className="relative w-10 h-10 overflow-hidden rounded-full">
           <img
             src={imagePath}
             alt="Profile"

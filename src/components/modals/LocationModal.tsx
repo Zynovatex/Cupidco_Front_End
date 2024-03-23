@@ -1,5 +1,4 @@
-'use client';
-
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { IoCloseCircle } from "react-icons/io5";
@@ -11,18 +10,17 @@ import ProfilePicture from "../common/profile/ProfilePicture";
 
 interface LocationModalProps {
     isOpen: boolean;
-    location: string;
-    name: string;
     onClose: () => void;
+    name: string;
 }
 
 const LocationModal: React.FC<LocationModalProps> = ({
     isOpen,
     onClose,
-    location,
     name
 }) => {
     const [isClosing, setIsClosing] = useState(false);
+    const [location, setLocation] = useState<string>("");
     const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
     const disableScroll = () => {
@@ -49,6 +47,20 @@ const LocationModal: React.FC<LocationModalProps> = ({
             }
         };
     }, []);
+
+    useEffect(() => {
+        if (isOpen) {
+            // Fetch the user's current location
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setLocation(`${position.coords.latitude},${position.coords.longitude}`);
+                },
+                (error) => {
+                    console.error("Error getting location:", error);
+                }
+            );
+        }
+    }, [isOpen]);
 
     const startClosing = () => {
         setIsClosing(true);
@@ -89,7 +101,7 @@ const LocationModal: React.FC<LocationModalProps> = ({
                     h-auto
                     max-sm:px-6
                     mx-auto max-sm:h-[90%]
-                    sm:h-[90%] md:h-[90%]
+                    sm:h-[93%] md:h-[90%]
                     bg-transparent ${modalAnimation} transition-all overflow-hidden duration-500`}>
 
                     {/* Background Image */}
@@ -114,7 +126,7 @@ const LocationModal: React.FC<LocationModalProps> = ({
                     </button>
 
                     {/* Title */}
-                    <div className="relative bg-[#EBADA1] rounded-xl py-2 w-full flex md:justify-between justify-center mt-5 px-5">
+                    <div className="relative bg-[#EBADA1] bg-opacity-50 rounded-xl py-2 w-full flex md:justify-between justify-center mt-5 px-5 shadow-lg">
                         <div className="hidden md:flex">
                             <Logo width={100} />
                         </div>
@@ -123,22 +135,46 @@ const LocationModal: React.FC<LocationModalProps> = ({
                             center={true}
                             fontSize="text-xl max:sm:text-md md:text-xl lg:text-2xl xl:text-4xl"
                         />
-                        <div className="hidden md:flex">
+
+                        <div className="flex gap-4 justify-center items-center">
+                            <div className="hidden md:flex">
+                                <ProfilePicture active={true} imageName="Avatar.png" position="bottom-right" />
+                            </div>
+                            <div className="hidden md:flex">
+                                <img
+                                    src="/images/locationIcon.png"
+                                    alt="Location Icon"
+                                    className="w-5 h-5"
+                                />
+                            </div>
+
+                            <div className="hidden md:flex">
+                                <ProfilePicture active={true} imageName="Avatar.png" position="bottom-right" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="md:hidden md:p-5 p-3 flex gap-10 flex-row items-center justify-between mb-5 w-full">
+                        <div>
+                            <ProfilePicture active={true} imageName="Avatar.png" position="bottom-right" />
+                        </div>
+
+                        <div className="flex justify-center items-center pr-5">
                             <ProfilePicture active={true} imageName="Avatar.png" position="bottom-right" />
                         </div>
                     </div>
 
                     {/* Contents - Google Map */}
-                    <div className="flex-1 relative h-full mt-5 flex flex-col gap-5">
+                    <div className="relative h-full md:mt-5 flex flex-col gap-5">
                         <iframe
-                            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11737.889138083436!2d79.8862902880493!3d6.789179330366131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2450af2b3b63d%3A0x4bd5b87e09abb3c7!2sMoratuwa!5e0!3m2!1sen!2slk!4v1691243457967!5m2!1sen!2slk`}
+                            src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyAlQHwSV28CGIC6RHk87NJWTIbl_T3n5Os&center=${location}&zoom=15`}
                             allowFullScreen
                             loading="lazy"
                             width="100%"
                             height="60%"
                             aria-hidden="true"
-                            className="rounded-xl">
-                        </iframe>
+                            className="rounded-xl"
+                        ></iframe>
 
                         {/* Description */}
                         <div className="text-center">

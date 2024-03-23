@@ -10,9 +10,9 @@ const Dashboard = () => {
   const cardsPerPage = 16;
 
   const images = [
-    "/images/SliderImage3.png",
-    "/images/ImageGallery2.jpg",
-    "/images/ImageGallery3.jpg",
+    "/images/Sonic.jpg",
+    "/images/SampleImage2.png",
+    "/images/SampleImage3.png",
   ];
 
   const profiles = [
@@ -74,7 +74,6 @@ const Dashboard = () => {
         "Watching Movies",
       ],
     },
-
     // More profiles...
   ];
 

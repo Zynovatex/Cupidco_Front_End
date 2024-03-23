@@ -163,7 +163,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                 title="Like"
               />
               <img
-                src="/images/bookmark.png"
+                src="/images/Heart.png"
                 alt="Heart"
                 className="w-8 h-8"
                 title="Heart"
@@ -175,7 +175,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                 title="BookMark"
               />
               <img
-                src="/images/ProfileIcon3.png"
+                src="/images/SuperLike.png"
                 alt="Super Like"
                 className="w-8 h-8"
                 title="Super Like"
@@ -360,7 +360,6 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
         isOpen={isLocationModalOpen}
         onClose={toggleLocationModal}
         name={locationInfo.name}
-        location={locationInfo.address}
       />
     </div>
   );
