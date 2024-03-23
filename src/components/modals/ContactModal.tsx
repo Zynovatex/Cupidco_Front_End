@@ -8,6 +8,7 @@ import Logo from "../common/logo/Logo";
 import TextArea from "../common/inputs/TextArea";
 import PrimaryButton from "../common/buttons/PrimaryButton";
 import TextField from "../common/inputs/TextField";
+import InputField from "../common/inputs/InputField";
 
 interface LocationModalProps {
   isOpen: boolean;
@@ -67,12 +68,12 @@ const ContactModal: React.FC<LocationModalProps> = ({
   return (
     <>
       <div
-        className={`fixed inset-0 z-50 bg-[#FFB4A2] bg-opacity-30 transition-opacity duration-500 flex justify-center items-center ${isOpen || isClosing ? "opacity-100" : "opacity-0"
+        className={`fixed inset-0 z-50 bg-[#FFB4A2] bg-opacity-30 transition-opacity duration-500 flex justify-center items-center py-3 ${isOpen || isClosing ? "opacity-100" : "opacity-0"
           }`}
         onClick={handleBgClick}
       >
         <div
-          className={`relative rounded-2xl w-[95%] md:w-[70%] h-[90%] md:h-[90%] bg-transparent ${modalAnimation}  transition-all overflow-hidden duration-500 flex justify-center lg:justify-end  items-center`}
+          className={`relative rounded-2xl w-[95%] md:w-[70%] h-[90%] md:h-[90%] bg-transparent ${modalAnimation}  transition-all overflow-hidden duration-500 flex justify-center lg:justify-end  items-center md:px-5 px-0`}
         >
           {/* bg image  */}
           <div className="absolute inset-0 z-0">
@@ -96,10 +97,10 @@ const ContactModal: React.FC<LocationModalProps> = ({
           </button>
 
           {/* login container  */}
-          <div className="w-[90%] text-center lg:w-[50%] relative h-[80%] lg:mr-10 py-5 md:px-10 px-5 ">
+          <div className="w-[90%] text-center relative lg:w-[50%] h-auto py-5 px-5 ">
             {/* bg image  */}
-            <div className="absolute inset-0 pt-40 ">
-              <Image
+            <div className="w-auto p-5  rounded-lg" style={{ backgroundImage: "url(/images/DefaultBg.png)" }}>
+              {/* <Image
                 src="/images/HomeSc2.png"
                 layout="fill"
                 objectFit="cover"
@@ -107,44 +108,44 @@ const ContactModal: React.FC<LocationModalProps> = ({
                 alt="Background"
                 priority
                 className="rounded-lg"
-              />
-            </div>
+              /> */}
 
-            <div className="relative">
-              {/* Logo */}
-              <div className="w-28 mb-3 ">
-                <Logo />
-              </div>
+              <div className="relative">
+                {/* Logo */}
+                <div className="w-28 mb-3 ">
+                  <Logo />
+                </div>
 
-              {/* Title */}
-              <div className="w-full flex justify-center">
-                <Title
-                  text="Contact Us"
-                  center={true}
-                  fontSize="text-2xl md:text-4xl"
-                />
-              </div>
+                {/* Title */}
+                <div className="w-full flex justify-center">
+                  <Title
+                    text="Contact Us"
+                    center={true}
+                    fontSize="text-2xl md:text-4xl"
+                  />
+                </div>
 
-              {/* Contents */}
-              <div className="mt-2 flex flex-col gap-5">
+                {/* Contents */}
+                <div className="mt-2 flex flex-col gap-5">
 
-                {/* Name */}
-                <TextField id="name" bgColor="bg-transparent" label="Full Name" height="h-1"/>
+                  {/* Name */}
+                  <InputField id="name" label="Full Name" name="Name" type="text" />
 
-                {/* Email */}
-                <TextField id="email" bgColor="bg-transparent" label="Email" height="h-1"/>
+                  {/* Email */}
+                  <InputField id="email" label="Email" name="mail" type="email" />
 
-                {/* Opinion */}
-                <TextArea id="opinion" label="Your Opinion" bgColor="bg-transparent" maxHeight="xl:h-[200px] h-[150px]" />
+                  {/* Opinion */}
+                  <TextArea id="opinion" label="Your Opinion" bgColor="bg-transparent" maxHeight="xl:h-[200px] h-[150px]" />
 
-                {/* Button */}
-                <PrimaryButton
-                  label="Send"
-                  fontSize="text-md md:text-md lg:text-xl"
-                  height="py-2"
-                  width="w-full"
-                  radius="rounded-xl"
-                />
+                  {/* Button */}
+                  <PrimaryButton
+                    label="Send"
+                    fontSize="text-md md:text-md lg:text-xl"
+                    height="py-2"
+                    width="w-full"
+                    radius="rounded-xl"
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -26,8 +26,8 @@ const TextField: React.FC<TextFieldProps> = ({
   type = "text",
   disabled,
   formatPrice,
-  fontSizeLabel = "text-sm xl:text-xl",
-  width = "w-[100%]",
+  fontSizeLabel = "text-md",
+  width = "w-full",
   height = "h-12",
   radius = "rounded-lg",
   required,
@@ -54,12 +54,13 @@ const TextField: React.FC<TextFieldProps> = ({
   };
 
   const inputStyle = {
-    boxShadow: isFocused ? `0 0 0 2px #4D194D` : "none",
-    border: isFocused ? "none" : "1.8px solid #4D194D",
+    boxShadow: isFocused ? `0 0 0 1px #4D194D` : "none",
+    border: isFocused ? "none" : "1px solid #4D194D",
   };
 
   return (
-    <div className="relative font-PlayfairDisplay font-normal">
+    <div className="relative font-PlayfairDisplay font-normal
+    text-primary-purple">
       <input
         value={inputValue}
         name={name}
@@ -70,16 +71,15 @@ const TextField: React.FC<TextFieldProps> = ({
         style={inputStyle}
         className={`
           peer
-          p-4
-          pt-6
+          p-5
           ${bgColor}
-          border-[2px]
+          border-[1px]
+          border-[#4D194D]
           transition
           disabled:opacity-40
           disabled:cursor-not-allowed
           focus:outline-none
           focus:shadow-outline
-          border-[#4D194D]
           ${width} ${height} ${radius}
         `}
         onFocus={handleFocus}
@@ -110,7 +110,7 @@ const TextField: React.FC<TextFieldProps> = ({
           ${formatPrice ? "left-9" : "left-4"}
           ${
             isFocused || inputValue || (required && !disabled)
-              ? "scale-85 -translate-y-5 bg-input-bg  px-2"
+              ? "scale-85 -translate-y-5 bg-input-bg px-1"
               : ""
           }
         `}

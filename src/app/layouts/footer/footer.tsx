@@ -8,6 +8,8 @@ import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import { FaComment } from "react-icons/fa";
 import ContactModal from "@/components/modals/ContactModal";
+import SecondaryButton from "@/components/common/buttons/SecondaryButton";
+import Link from "next/link";
 
 export default function Footer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -117,6 +119,16 @@ export default function Footer() {
             text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard."
             fontSize="text-lg text-center md:text-left lg:text-start"
           />
+          <Link href ="/customer-reviews">
+            <SecondaryButton
+              label="Write a review"
+              fontSize="lg:text-xl md:text-lg"
+              width=" w-30  "
+              radius="rounded-lg"
+              height="py-1"
+              iconPosition="left"
+            />
+          </Link>
         </div>
       </div>
 
