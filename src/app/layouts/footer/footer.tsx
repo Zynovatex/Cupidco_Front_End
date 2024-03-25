@@ -44,7 +44,7 @@ export default function Footer() {
           <Description
             text="Data Center"
             fontSize="text-lg"
-            href="/pages/center"
+            href="/data-center"
           />
           <Description
             text="Site Map"
