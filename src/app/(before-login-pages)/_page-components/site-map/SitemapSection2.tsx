@@ -34,7 +34,7 @@ export default function SitemapSection2() {
       </div>
       {/* Content */}
       <div className="container mx-auto p-5 px-4 md:px-6 lg:px-8 z-10 relative space-y-8">
-        <div>
+        <div >
           {/* title  */}
           <Title
             text="Site Map"
@@ -43,14 +43,14 @@ export default function SitemapSection2() {
             fontWeight="font-bold"
           />
         </div>
-        {/* our sitemap Body, titles, descriptions */}
+        {/*  site-map Body, titles, descriptions */}
         <div>
-          {/* description  */}
-          <div className="mb-5">
+          {/* site-map description  */}
+          <div className="mb-5 ">
             <Description text={SiteMap} fontWeight="font-regular" />
           </div>
         </div>
-        {/* our Secure Storage title, description */}
+        {/* Secure Storage title, description */}
         <div>
           {/* title  */}
           <Title
@@ -60,7 +60,7 @@ export default function SitemapSection2() {
             fontWeight="font-bold"
           />
           {/* description  */}
-          <div className="mb-5">
+          <div className="mb-5 mt-5">
             <Description text={SecureStorage} fontWeight="font-regular" />
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function SitemapSection2() {
             fontWeight="font-bold"
           />
           {/* description  */}
-          <div className="mb-5">
+          <div className="mb-5 mt-5">
             <Description text={ProposalPlanning} fontWeight="font-regular" />
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function SitemapSection2() {
             fontWeight="font-bold"
           />
           {/* description  */}
-          <div className="mb-5">
+          <div className="mb-5 mt-5">
             <Description text={MemoryLane} fontWeight="font-regular" />
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function SitemapSection2() {
             fontWeight="font-bold"
           />
           {/* description  */}
-          <div className="mb-5">
+          <div className="mb-5 mt-5">
             <Description text={VendorIntegration} fontWeight="font-regular" />
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function SitemapSection2() {
             fontWeight="font-bold"
           />
           {/* description  */}
-          <div className="mb-5">
+          <div className="mb-5 mt-5">
             <Description text={CollaborationTools} fontWeight="font-regular" />
           </div>
         </div>
@@ -135,7 +135,7 @@ export default function SitemapSection2() {
             fontWeight="font-bold"
           />
           {/* description  */}
-          <div className="mb-5">
+          <div className="mb-5 mt-5">
             <Description text={Accessibility} fontWeight="font-regular" />
           </div>
         </div>
