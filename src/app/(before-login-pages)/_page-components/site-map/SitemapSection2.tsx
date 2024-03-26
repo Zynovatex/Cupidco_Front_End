@@ -144,7 +144,7 @@ export default function SitemapSection2() {
             <Description text={Accessibility} fontWeight="font-regular" />
           </div>
         </div>
-        <div className="w-[90%] md:w-[40%] flex justify-center lg:hidden">
+        <div className="relative w-[50%]  flex mx-auto md:mx-0 lg:hidden ">
           <PrimaryButton
             label="Contact us"
             fontSize="text-md md:text-md lg:text-xl"

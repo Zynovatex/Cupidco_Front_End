@@ -19,7 +19,7 @@ export default function ContactSection1() {
     <div
       className="bg-cover bg-center bg-no-repeat h-screen flex flex-col gap-5 md:gap-10 justify-center items-center py-28 px-16"
       style={{ backgroundImage: "url(/images/ContactusBg.png)" }}
-    >
+     >
       <div className="  shadow-2xl">
         <img src="/images/ContactExample.png" alt="About Us Image" />
       </div>
