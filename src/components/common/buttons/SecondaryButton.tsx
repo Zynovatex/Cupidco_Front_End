@@ -1,6 +1,8 @@
 "use-client";
 
-import React from "react";
+import React, { ReactNode } from "react";
+
+type Icon = ReactNode;
 
 interface ButtonProps {
   label: string;
@@ -9,6 +11,7 @@ interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   fontSize?: string;
+  icon?: Icon;
   iconPosition?: "left" | "right";
   iconColor?: string;
   radius?: string;
@@ -22,6 +25,8 @@ const SecondaryButton: React.FC<ButtonProps> = ({
   fontSize = "text-sm sm:text-md md:text-xl lg:text-2xl",
   onClick,
   disabled,
+  icon: Icon,
+  iconPosition = "left",
   radius = "rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl",
   invert = false, // Default value for invert prop
 }) => {
@@ -34,13 +39,19 @@ const SecondaryButton: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${baseStyles} ${conditionalStyles} ${
-        disabled ? "opacity-70 cursor-not-allowed" : "cursor-pointer"
-      }`}
+      className={`${baseStyles} ${conditionalStyles} ${disabled ? "opacity-70 cursor-not-allowed" : "cursor-pointer"
+        }`}
       onClick={onClick}
       disabled={disabled}
     >
+      {Icon && iconPosition === "left" && (
+        <div className="mr-2 text-sm md:text-lg lg:text-xl">{Icon}</div>
+      )}
+
       <span>{label}</span>
+      {Icon && iconPosition === "right" && (
+        <div className="ml-2 text-sm md:text-lg lg:text-xl">{Icon}</div>
+      )}
     </button>
   );
 };

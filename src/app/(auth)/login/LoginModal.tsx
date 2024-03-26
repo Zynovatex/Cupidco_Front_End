@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { IoArrowBackCircleOutline, IoCloseCircle } from "react-icons/io5";
@@ -152,7 +154,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   const stepContent: { [key: number]: JSX.Element } = {
     1: (
-      <div className="mt-5 w-full">
+      <div className="mt-5 w-full transition-all duration-1000 translate-y-0 ease-linear">
         {/* user name  */}
         <InputField
           label="Username"
@@ -273,7 +275,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     ),
 
     2: (
-      <div>
+      <div className="transition-all duration-1000 translate-y-0 ease-in-out">
         <div className="mt-2">
           <Description
             text="Don't worry! Choose your option below to recover your account!"
@@ -312,7 +314,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     ),
     // Mobile Number Verification Step 1
     3: (
-      <div>
+      <div className="transition-all duration-1000 translate-y-1 ease-in">
         <Title
           text="Mobile Number"
           center={true}
@@ -376,7 +378,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
     // Verify OTP | Mobile Number Verification Step 2
     3.1: (
-      <div>
+      <div className="transition-all duration-1000 translate-y-0 ease-in-out">
         <Title
           text="Please Verify Your Account"
           center={true}
@@ -446,7 +448,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
     // Email Address Verification Step 1
     4: (
-      <div>
+      <div className="transition-all duration-1000 translate-y-1 ease-linear">
         <Title
           text="Email Address"
           center={true}
@@ -501,7 +503,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     ),
     // Verify OTP | Email Address Verification Step 2
     4.1: (
-      <div>
+      <div className="transition-all duration-1000 translate-y-0 ease-in-out">
         <Title
           text="Please Verify Your Account"
           center={true}
@@ -570,7 +572,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     ),
     // Resend OTP | Email Address Verification Step 3
     4.2: (
-      <div className="pt-4 md:pt-8 flex flex-col items-center justify-center space-y-4 xl:space-y-4">
+      <div className="pt-4 md:pt-8 flex flex-col items-center justify-center space-y-4 xl:space-y-4  transition-all duration-1000 translate-y-0 ease-in-out">
         <Title
           text="Please Verify Your Account"
           center={true}
@@ -628,7 +630,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     ),
     // Account Verification
     5: (
-      <div className="w-full">
+      <div className="w-full transition-all duration-1000 translate-y-1 ease-linear">
         <Title
           text="Account Verified!"
           center={true}
@@ -675,14 +677,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
       </div>
     ),
     6: (
-      <div>
+      <div className="mt-1 transition-all duration-1000 translate-y-0 ease-in-out">
         <Title
-          text="Your Password has been Changed Succssfully!"
+          text="Your Password has been Changed Successfully!"
           center={true}
           fontSize="md:text-lg md:text-xl lg:text-2xl"
         />
 
-        <div className="mt-3 ">
+        <div className="mt-5 ">
           <PrimaryButton
             label="Login"
             height=" py-2"
@@ -702,12 +704,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
     <>
       {(isOpen || isClosing) && (
         <div
-          className={`fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-500 flex justify-center items-center py-5 ${isOpen || isClosing ? "opacity-100" : "opacity-0"
+          className={`fixed inset-0 z-50 transition-opacity duration-500 flex justify-center items-center py-5 ${isOpen || isClosing ? "opacity-100" : "opacity-0"
             }`}
           onClick={handleBgClick}
         >
           <div
-            className={`relative md:rounded-2xl w-[100%] md:w-[70%] h-[100%] md:h-[90%] bg-transparent ${modalAnimation} transition-all duration-500 flex justify-center lg:justify-end items-center md:px-10 px-0`}
+            className={`relative md:rounded-2xl w-[100%] md:w-[70%] h-[100%] md:h-[90%] bg-transparent ${modalAnimation} transition-all duration-500 flex justify-center xl:justify-end md:px-10 px-0`}
             onClick={handleFormClick}>
 
             {/* bg image  */}
@@ -732,19 +734,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </button>
 
             {/* login container  */}
-            <div className="w-[90%] text-center lg:w-[50%] relative h-auto py-5 px-5">
+            <div className="w-[90%] text-center xl:w-[50%] relative h-auto py-5 md:px-5 px-0 transition-all duration-[5000] translate-y-card ease-in-out">
               {/* bg image  */}
-              <div>
-                {/* <div className="w-auto p-10 rounded-lg" style={{ backgroundImage: "url(/images/DefaultBg.png)" }}> */}
-                <Image
-                  src="/images/HomeSc2.png"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="right-bottom"
-                  alt="Background"
-                  priority
-                  className="rounded-lg"
-                />
+              <div className="w-auto p-10 rounded-lg" style={{ backgroundImage: "url(/images/DefaultBg.png)" }}>
 
                 <div className="relative">
                   {/* Logo */}
@@ -774,7 +766,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
                   {/* Content */}
                   <div
-                    className={`relative z-10 flex   justify-center `}>
+                    className={`relative justify-center transition-all duration-[5000] translate-y-card ease-in-out`}>
                     {/* Render step content based on current step */}
                     {stepContent[step] || <p>Step not found</p>}
                   </div>

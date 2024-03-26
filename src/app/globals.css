@@ -36,15 +36,3 @@
     @apply font-semibold;
   }
 }
-
-.swiper-pagination-bullet-active {
-  width: 10px;
-  height: 10px; 
-  background-color: #4D194D !important;
-}
-
-.swiper-pagination-bullet {
-  width: 10px; 
-  height: 10px; 
-  background-color: rgba(255, 0, 0, 0.5);
-}

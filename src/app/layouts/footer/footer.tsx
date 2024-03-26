@@ -6,7 +6,7 @@ import Logo from "@/components/common/logo/Logo";
 import SocialMedia from "@/components/common/social-media/SocialMedia";
 import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
-import { FaComment } from "react-icons/fa";
+import { FaComment, FaStar } from "react-icons/fa";
 import ContactModal from "@/components/modals/ContactModal";
 import SecondaryButton from "@/components/common/buttons/SecondaryButton";
 import Link from "next/link";
@@ -121,12 +121,12 @@ export default function Footer() {
           />
           <Link href ="/customer-reviews">
             <SecondaryButton
-              label="Write a review"
-              fontSize="lg:text-xl md:text-lg"
-              width=" w-30  "
+              label="Rate & Review"
+              fontSize="xl:text-lg lg:text-sm"
+              width="w-30"
               radius="rounded-lg"
               height="py-1"
-              iconPosition="left"
+              icon={<FaStar/>}
             />
           </Link>
         </div>

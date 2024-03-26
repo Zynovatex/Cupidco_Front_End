@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SecondaryButton from "../buttons/SecondaryButton";
 import Description from "../texts/Description";
 import Title from "../texts/Title";
@@ -9,7 +9,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/swiper-bundle.css";
 import "swiper/css";
-import { FreeMode, Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
+
 
 type CardComponentProps = {
   overlayTitle: string;
@@ -125,8 +126,12 @@ type CardData = {
   image: string;
 };
 
+type SwiperInstance = any;
+
 const SliderComponent = () => {
   const [cardsData, setCardsData] = useState<CardData[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperInstance | null>(null);
 
   useEffect(() => {
     // Fetch data from API
@@ -148,10 +153,25 @@ const SliderComponent = () => {
     fetchData();
   }, []);  // Empty dependency array ensures the effect runs only once on component mount
 
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(activeIndex);
+    }
+  }, [activeIndex]);
+
+  const handlePaginationClick = (index: number) => {
+    if (swiperRef.current && index !== activeIndex) {
+      swiperRef.current.slideTo(index);
+      setActiveIndex(index);
+    }
+  };
+
   return (
-    <div className="">
+    <div>
       <Swiper
-        loop={true}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         spaceBetween={50}
         slidesPerView={1}
         autoplay={{ delay: 3000 }}
@@ -166,13 +186,14 @@ const SliderComponent = () => {
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 50,
+            spaceBetween: 40,
           },
         }}
-        freeMode={true}
         className="w-[90%]"
-        pagination={{ clickable: true }}
-        modules={[FreeMode, Pagination, Autoplay]}
+        modules={[Autoplay]}
+        onSlideChange={(swiper) => {
+          setActiveIndex(swiper.activeIndex);
+        }}
       >
         {cardsData.map((card, index) => (
           <SwiperSlide key={index}>
@@ -182,13 +203,24 @@ const SliderComponent = () => {
                 gradientTitle={card.gradientTitle}
                 descriptionText={card.descriptionText}
                 buttonText={card.buttonText}
-                onButtonClick={() => console.log(`Button ${index + 1} clicked`)}
+                onButtonClick={() => { }}
                 image={card.image}
               />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Custom Pagination */}
+      <div className="relative bottom-2 left-0 right-0 flex justify-center md:space-x-3 space-x-2 cursor-pointer">
+        {cardsData.map((_, index) => (
+          <div
+            key={index}
+            className={`md:w-4 md:h-4 w-3 h-3 rounded-full transition transform duration-1000 ease-linear ${index === activeIndex ? 'bg-primary-purple' : 'bg-primary-purple opacity-10'}`}
+            onClick={() => handlePaginationClick(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

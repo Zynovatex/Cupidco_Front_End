@@ -60,7 +60,7 @@ const Dashboard = () => {
     {
       images: images,
       name: "John Doe",
-      address: "Colombo",
+      address: "Ampara",
       age: "30",
       isPremium: true,
       aboutMe:
@@ -118,6 +118,7 @@ const Dashboard = () => {
 
         {/* Contents */}
         <div className="relative">
+
           {/* Profile Cards */}
           <div className="relative flex flex-wrap">
             <DashboardCard profiles={profilesToShow} />
@@ -147,6 +148,7 @@ const Dashboard = () => {
                 {index + 1}
               </button>
             ))}
+
             {/* Show ellipsis if there are more than three pages */}
             {totalPages > 3 && currentPage > 3 && (
               <span className="mx-1 px-3 py-1 bg-primary-purple text-white rounded">
@@ -156,6 +158,7 @@ const Dashboard = () => {
             {totalPages > 3 && currentPage <= 3 && (
               <span className="mx-1">...</span>
             )}
+            
             {/* Show the last page number */}
             <button
               onClick={() => setCurrentPage(totalPages)}

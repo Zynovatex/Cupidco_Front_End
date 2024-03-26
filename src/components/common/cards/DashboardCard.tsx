@@ -107,9 +107,11 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
 
   return (
     <div className="flex flex-wrap justify-center gap-10">
+
       {/* Profile */}
       {profiles.map((profile, index) => (
         <div key={index} className="relative w-[300px]">
+
           {/* Image Slider Card */}
           <div className="swiper-container">
             <Swiper
@@ -122,6 +124,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
                   className="flex justify-center items-center relative"
                 >
                   <DashboardSLiderImages image={image} />
+
                   {/* Premium Icon */}
                   {profile.isPremium && (
                     <div className="absolute top-3 right-3 text-primary-purple">
@@ -139,6 +142,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
 
           {/* Bottom Container */}
           <div className="bottom-div relative bottom-0 w-full h-auto bg-white rounded-b-2xl p-2 flex flex-col shadow-lg">
+
             {/* Percentage Circle & Interaction Icons */}
             <div className="percentage-circle absolute flex justify-start items-center transform -translate-y-10 z-10">
               <div className="bg-primary-purple rounded-full w-14 h-14 flex justify-center items-center shadow-xl">
@@ -222,7 +226,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
               >
                 <div className="flex flex-row items-center gap-2">
                   <Description
-                    text={truncateText(profile.address, 7)}
+                    text={truncateText(profile.address, 20)}
                     fontFamily="font-PlayfairDisplay"
                     fontSize="text-md md:text-md lg:text-lg xl:text-xl"
                   />
@@ -235,21 +239,22 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
               </div>
 
               {/* Online status & Info icon */}
-              <div className="online-text flex items-center rounded-full border border-primary-purple px-1">
-                <Description
-                  text="An hour ago"
-                  icon={FaClock}
-                  iconPosition="left"
-                  fontFamily="font-PlayfairDisplay"
-                  fontSize="text-sm md:text-md xl:text-lg"
-                />
-              </div>
-
-              <div
-                className="text-primary-purple cursor-pointer"
-                onClick={() => toggleOverlay(index)}
-              >
-                <FaInfoCircle size={22} />
+              <div className="flex gap-5 items-center">
+                <div className="online-text flex items-center rounded-full border border-primary-purple px-1">
+                  <Description
+                    text="1h ago"
+                    icon={FaClock}
+                    iconPosition="left"
+                    fontFamily="font-PlayfairDisplay"
+                    fontSize="text-sm md:text-md xl:text-lg"
+                  />
+                </div>
+                <div
+                  className="text-primary-purple cursor-pointer"
+                  onClick={() => toggleOverlay(index)}
+                >
+                  <FaInfoCircle size={22} />
+                </div>
               </div>
             </div>
           </div>
@@ -267,6 +272,7 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
               {/* Overlay content */}
               <div className="overlay-content flex flex-col justify-between items-center relative h-full">
                 <div className="p-5 flex flex-col justify-center items-center text-center w-full">
+                  
                   {/* Close & Premium Icons */}
                   <IoCloseCircle
                     size={20}
@@ -357,9 +363,10 @@ const DashboardCard: React.FC<DashboardProps> = ({ profiles }) => {
 
       {/* Location modal */}
       <LocationModal
+        name={locationInfo.name}
+        location={locationInfo.address}
         isOpen={isLocationModalOpen}
         onClose={toggleLocationModal}
-        name={locationInfo.name}
       />
     </div>
   );
