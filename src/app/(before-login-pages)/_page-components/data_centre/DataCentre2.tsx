@@ -27,6 +27,7 @@ const DataCentre2 = () => {
             text="Data Center"
             center={true}
             fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontFamily="font-playfairDisplay"
           />
         </div>
         {/* Description */}
@@ -35,15 +36,18 @@ const DataCentre2 = () => {
             text="Welcome to the heart of our Marriage Proposal App, where all your precious moments and essential details are securely stored and managed. Our Data Center is designed to provide you with a seamless and reliable experience, ensuring that every step of your journey towards the prefect personal is smooth and unforgettable."
             fontWeight="font-regular"
             fontSize="text-sm sm:text-md lg:text-xl"
+            fontFamily="font-playfairDisplay"
           />
           {/* Subtitle */}
           <Title2
             label="Secure Storage"
+            
           />
           <Description
             text="Your privacy and security are our top priorities. Our Data Center employs state-of-the-art encryption and security protocols to safeguard your personal information and proposal plans. Rest assured that your data is protected with the highest level of confidentiality."
             fontWeight="font-regular"
             fontSize="text-sm sm:text-md lg:text-xl"
+            fontFamily="font-playfairDisplay"
           />
           <Title2
             label="Proposal Planning"
@@ -52,6 +56,7 @@ const DataCentre2 = () => {
             text="With our instuitive interface and comprehensive tools, organizing your proposal has never been easier. From setting reminders for important dates to creating perzonalized messages, our Data Center empowers you to plan every aspects of your proposal with precision and creativity."
             fontWeight="font-regular"
             fontSize="text-sm sm:text-md lg:text-xl"
+            fontFamily="font-playfairDisplay"
           />
           <Title2
             label="Memory Lane"
@@ -60,6 +65,7 @@ const DataCentre2 = () => {
             text="Relive the magic of your relationship with our Memory Lane feature. Access all your cherished moments, from your first date to your most recent adventures, conveniently stored in one place. Let the nostalgia inspire you as you embark on this new chapter together."
             fontWeight="font-regular"
             fontSize="text-sm sm:text-md lg:text-xl"
+            fontFamily="font-playfairDisplay"
           />
           <Title2
             label="Vendor Integration"
@@ -68,6 +74,7 @@ const DataCentre2 = () => {
             text="Connect seamlessly with vendors and services to bring your proposal vision to life. Whether you're searching for the perfect ring or booking a romantic dinner, our Data Center streamlines the process, saving you time and stress along the way."
             fontWeight="font-regular"
             fontSize="text-sm sm:text-md lg:text-xl"
+            fontFamily="font-playfairDisplay"
           />
           <Title2
             label="Collaboration Tools"
@@ -76,6 +83,7 @@ const DataCentre2 = () => {
             text="Share your proposal plans with loved ones and enlist their support with our collaboration tools. Collaborate on ideas, gather feedback, and coordinate surprise elements effortlessly, ensuring that your proposal is a collaborative celebration of your love."
             fontWeight="font-regular"
             fontSize="text-sm sm:text-md lg:text-xl"
+            fontFamily="font-playfairDisplay"
           />
           <Title2
             label="24/7 Accessibility"
@@ -84,6 +92,7 @@ const DataCentre2 = () => {
             text="Our Data Center is available whenever and wherever inspiration strikes. Whether you're brainstorming ideas during your lunch break or finalizing details late at night, our platform is accessible 24/7 to accommodate your schedule and preferences."
             fontWeight="font-regular"
             fontSize="text-sm sm:text-md lg:text-xl"
+            fontFamily="font-playfairDisplay"
           />
         </div>
       </div>

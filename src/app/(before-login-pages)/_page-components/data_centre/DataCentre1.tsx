@@ -20,13 +20,17 @@ const DataCentre1 = () => {
             text="Data Center"
             fontSize="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
             center={true}
+            fontFamily="font-playfairDisplay"
           />
         </div>
 
         <div className="flex flex-col items-center mt-6 md:mt-8 lg:mt-12">
           <div className="text-center">
             {/* Use text-center class for center alignment */}
-            <Description text='Welcome to your personalized "Client Area" at Cupidco. This is where you can manage your profile, interact with potential matches, and access resources to enhance your journey towards marriage.' />
+            <Description 
+              text='Welcome to your personalized "Client Area" at Cupidco. This is where you can manage your profile, interact with potential matches, and access resources to enhance your journey towards marriage.' 
+              fontFamily="font-playfairDisplay"
+              />
           </div>
         </div>
       </div>
