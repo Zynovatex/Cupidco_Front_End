@@ -8,20 +8,20 @@ export default function SitemapSection1() {
   return (
     <div className="relative">
       <div
-        className="bg-cover bg-center bg-no-repeat h-screen py-8 px-4 md:py-12 md:px-6 lg:py-20 lg:px-14 flex flex-col items-center justify-center opacity-50"
+        className="bg-cover bg-center bg-no-repeat h-screen py-8 px-4 md:py-12 md:px-6 lg:py-20 lg:px-14 flex flex-col items-center justify-center "
         style={{ backgroundImage: "url(/images/SitemapBackground.jpeg)" }}
       >
         <div>
           <Title
             text="Site Map"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-5xl"
             center={true}
             fontWeight="font-bold"
             uppercase={false}
           />
         </div>
 
-        <div className="text-center md:w-[80%] max-w-screen-2xl">
+        <div className="text-center md:w-[80%] max-w-screen-2xl mt-5 ">
           <Description
             italic={true}
             text='Welcome to your personalize "Client Area" at Cupidco.This is where you can manage your profile.interact with potential matches,and access resources to enhance your journey towards marriage. '

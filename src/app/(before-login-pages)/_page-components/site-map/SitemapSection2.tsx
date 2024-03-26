@@ -2,6 +2,9 @@ import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import React from "react";
 import Image from "next/image";
+import PrimaryButton from "@/components/common/buttons/PrimaryButton";
+import { FaComment } from "react-icons/fa";
+import { IoMdSend } from "react-icons/io";
 
 export default function SitemapSection2() {
   const SiteMap =
@@ -20,7 +23,7 @@ export default function SitemapSection2() {
     "Our Data Center is available whenever and wherever inspiration strikes. Whether you're brainstorming ideas during your lunch break or finalizing details late at night, our platform is accessible 24/7 to accommodate your schedule and preferences.";
 
   return (
-    <div className="relative items-center py-16">
+    <div className="relative items-center py-16 ">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 ">
         <Image
@@ -33,12 +36,12 @@ export default function SitemapSection2() {
         />
       </div>
       {/* Content */}
-      <div className="container mx-auto p-5 px-4 md:px-6 lg:px-8 z-10 relative space-y-8">
-        <div >
+      <div className="container mx-auto -5p px-5 md:px-6 lg:px-8 z-10 relative space-y-8 sm:w-[80%]">
+        <div>
           {/* title  */}
           <Title
             text="Site Map"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-5xl"
             center={true}
             fontWeight="font-bold"
           />
@@ -46,21 +49,23 @@ export default function SitemapSection2() {
         {/*  site-map Body, titles, descriptions */}
         <div>
           {/* site-map description  */}
-          <div className="mb-5 ">
+          <div className="mb-5 text-justify">
             <Description text={SiteMap} fontWeight="font-regular" />
           </div>
         </div>
         {/* Secure Storage title, description */}
         <div>
           {/* title  */}
+
           <Title
             text="Secure Storage"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl"
             center={false}
-            fontWeight="font-bold"
+            fontWeight="font-light"
           />
+
           {/* description  */}
-          <div className="mb-5 mt-5">
+          <div className="mb-5 mt-5 text-justify">
             <Description text={SecureStorage} fontWeight="font-regular" />
           </div>
         </div>
@@ -70,12 +75,12 @@ export default function SitemapSection2() {
           {/* title  */}
           <Title
             text="Proposal Planning"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl"
             center={false}
-            fontWeight="font-bold"
+            fontWeight="font-light"
           />
           {/* description  */}
-          <div className="mb-5 mt-5">
+          <div className="mb-5 mt-5 text-justify">
             <Description text={ProposalPlanning} fontWeight="font-regular" />
           </div>
         </div>
@@ -85,12 +90,12 @@ export default function SitemapSection2() {
           {/* title  */}
           <Title
             text="Memory Lane"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl"
             center={false}
-            fontWeight="font-bold"
+            fontWeight="font-light"
           />
           {/* description  */}
-          <div className="mb-5 mt-5">
+          <div className="mb-5 mt-5 text-justify">
             <Description text={MemoryLane} fontWeight="font-regular" />
           </div>
         </div>
@@ -100,12 +105,12 @@ export default function SitemapSection2() {
           {/* title  */}
           <Title
             text="Vendor Integration"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl"
             center={false}
-            fontWeight="font-bold"
+            fontWeight="font-light"
           />
           {/* description  */}
-          <div className="mb-5 mt-5">
+          <div className="mb-5 mt-5 text-justify">
             <Description text={VendorIntegration} fontWeight="font-regular" />
           </div>
         </div>
@@ -115,12 +120,12 @@ export default function SitemapSection2() {
           {/* title  */}
           <Title
             text="Collaboration Tools"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl"
             center={false}
-            fontWeight="font-bold"
+            fontWeight="font-light"
           />
           {/* description  */}
-          <div className="mb-5 mt-5">
+          <div className="mb-5 mt-5 text-justify">
             <Description text={CollaborationTools} fontWeight="font-regular" />
           </div>
         </div>
@@ -130,14 +135,25 @@ export default function SitemapSection2() {
           {/* title  */}
           <Title
             text="24/7 Accessibility"
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl"
             center={false}
-            fontWeight="font-bold"
+            fontWeight="font-light"
           />
           {/* description  */}
-          <div className="mb-5 mt-5">
+          <div className="mb-5 mt-5 text-justify">
             <Description text={Accessibility} fontWeight="font-regular" />
           </div>
+        </div>
+        <div className="w-[90%] md:w-[40%] flex justify-center lg:hidden">
+          <PrimaryButton
+            label="Contact us"
+            fontSize="text-md md:text-md lg:text-xl"
+            height="py-2"
+            width="w-full"
+            radius="rounded-lg"
+            icon={<IoMdSend />}
+            iconPosition="right"
+          />
         </div>
       </div>
     </div>
