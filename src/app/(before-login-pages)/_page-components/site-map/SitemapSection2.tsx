@@ -36,7 +36,7 @@ export default function SitemapSection2() {
         />
       </div>
       {/* Content */}
-      <div className="container mx-auto -5p px-5 md:px-6 lg:px-8 z-10 relative space-y-8 sm:w-[80%]">
+      <div className="container mx-auto -5p px-5  z-10 relative space-y-8 sm:w-[80%]">
         <div>
           {/* title  */}
           <Title
@@ -144,11 +144,11 @@ export default function SitemapSection2() {
             <Description text={Accessibility} fontWeight="font-regular" />
           </div>
         </div>
-        <div className="relative w-[50%]  flex mx-auto md:mx-0 lg:hidden ">
+        <div className="relative w-[50%]  flex mx-auto md:mx-0 lg:w-[40%] ">
           <PrimaryButton
             label="Contact us"
-            fontSize="text-md md:text-md lg:text-xl"
-            height="py-2"
+            
+            height="py-3"
             width="w-full"
             radius="rounded-lg"
             icon={<IoMdSend />}
