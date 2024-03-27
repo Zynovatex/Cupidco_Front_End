@@ -39,7 +39,7 @@ const Input: React.FC<InputProps> = ({
           value={value}
           disabled={disabled}
           placeholder={placeholder}
-          className={`${width} ${bgColor} ${borderColor} ${borderRadius} font-playfair-display text-[#4D194D] text-md md:text-lg mt-5 ${
+          className={`${width} ${bgColor} ${borderColor} ${borderRadius} font-PlayfairDisplay text-[#4D194D] text-md md:text-lg mt-5 ${
             frontIcon ? "pl-10" : ""
           }`}
         />

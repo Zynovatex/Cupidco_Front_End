@@ -2,7 +2,7 @@
 
 import PrimaryButton from "@/components/common/buttons/PrimaryButton";
 import Description from "@/components/common/texts/Description";
-import MiniForm from "@/components/form/Form";
+import ContactModal from "@/components/modals/ContactModal";
 import { useState } from "react";
 
 export default function ContactSection1() {
@@ -41,7 +41,7 @@ export default function ContactSection1() {
       </div>
       {isOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
-          <MiniForm isOpen={isOpen} onClose={handleCloseForm} />
+          <ContactModal isOpen={isOpen} onClose={handleCloseForm} />
         </div>
       )}
     </div>

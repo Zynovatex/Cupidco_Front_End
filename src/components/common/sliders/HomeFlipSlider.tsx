@@ -7,8 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, EffectFlip } from "swiper/modules";
-import HomeSliderCard from "../cards/HomeSliderCard";
-
+import HomeSliderCard from "../cards/HomeSLiderCard";
+ 
 interface HomeFlipSliderProps {
   images: string[];
 }
@@ -20,15 +20,22 @@ const HomeFlipSlider: React.FC<HomeFlipSliderProps> = ({ images }) => {
         effect={"flip"}
         grabCursor={true}
         modules={[EffectFlip, Autoplay]}
+        cubeEffect={{
+          shadow: true,
+          slideShadows: false,
+        }}
         autoplay={{
-          delay: 1500,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         loop={true}
         className="mySwiper"
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index} className="flex justify-center items-center">
+          <SwiperSlide
+            key={index}
+            className="flex justify-center items-center shadow-2xl"
+          >
             <HomeSliderCard image={image} />
           </SwiperSlide>
         ))}

@@ -12,6 +12,11 @@ const [selectedOptions, setSelectedOptions] = useState<{
 
 
 # fonts 
-Titles - playfair-display
+Titles - PlayfairDisplay
 Descriptions - Vollkorn
 Links - Yrsa
+
+# InputField {src/components/common/inputs/InputField.tsx}
+before:rounded-tl-[15px] before:border-t-1   peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2
+# if you want change border size before focus, use this
+placeholder-shown:border-2

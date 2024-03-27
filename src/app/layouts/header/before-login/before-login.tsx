@@ -51,7 +51,7 @@ const BeforeLogin = () => {
             <Logo />
           </Link>
 
-          <div className="hidden sm:flex font-playfair-display text-primary-purple font-bold">
+          <div className="hidden sm:flex font-PlayfairDisplay text-primary-purple font-bold">
             {navItems.map((item, index) => (
               <Link href={item.path} key={index}>
                 <div className="ml-10 uppercase md:text-sm lg:text-lg hidden md:block lg:block">
@@ -68,7 +68,7 @@ const BeforeLogin = () => {
               <SecondaryButton
                 label={selectedLanguage} // Button label dynamically changes based on selected language
                 fontSize="text-md md:text-sm lg:text-lg"
-                height=" "
+                height=" py-[2px]"
                 width="px-2 md:px-2 lg:px-4"
                 radius="rounded-md"
                 onClick={toggleLanguageMenu}
@@ -92,7 +92,23 @@ const BeforeLogin = () => {
               onClick={toggleLoginModal}
             />
           </div>
-          <div onClick={handleNav} className="md:hidden cursor-pointer pl-24">
+
+          {/* in tablet view and mobile view  */}
+          {/* <div className="md:hidden ml-40 ">
+            <SecondaryButton
+              label={selectedLanguage} // Button label dynamically changes based on selected language
+              fontSize="text-md md:text-sm lg:text-lg"
+              height=" "
+              width="px-2 md:px-2 lg:px-4"
+              radius="rounded-md"
+              onClick={toggleLanguageMenu}
+            />
+          </div> */}
+
+          <div
+            onClick={handleNav}
+            className="md:hidden cursor-pointer pl-4"
+          >
             <AiOutlineMenu size={24} />
           </div>
           <HamburgerMenu isOpen={menuOpen} onClose={closeMenu} />

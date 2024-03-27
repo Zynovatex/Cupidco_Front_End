@@ -53,7 +53,7 @@ const Accordion: React.FC<AccordionProps> = ({
               height={20}
             />
           </div>
-          <span className="font-semibold font-playfair-display">{title}</span>
+          <span className="font-semibold font-PlayfairDisplay">{title}</span>
         </div>
         {isOpen ? (
           <IoIosArrowDropup className="w-6 h-6" />

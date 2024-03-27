@@ -58,7 +58,7 @@ const SuccessStories: React.FC<SuccessStoriesProps> = ({ successStories }) => {
                 text={story.profile1Name}
                 fontSize="max-sm:text-xs sm:text-sm md:text-md lg:text-md xl:text-xl 2xl:text-2xl"
                 fontColor="text-white"
-                fontFamily="font-playfair-display"
+                fontFamily="font-PlayfairDisplay"
               />
             </div>
 
@@ -79,7 +79,7 @@ const SuccessStories: React.FC<SuccessStoriesProps> = ({ successStories }) => {
                 text={story.profile2Name}
                 fontColor="text-white"
                 fontSize="max-sm:text-xs sm:text-sm md:text-md lg:text-md xl:text-xl 2xl:text-2xl"
-                fontFamily="font-playfair-display"
+                fontFamily="font-PlayfairDisplay"
               />
             </div>
           </div>
@@ -89,7 +89,7 @@ const SuccessStories: React.FC<SuccessStoriesProps> = ({ successStories }) => {
             <Description
               fontSize="max-sm:text-xs sm:text-sm md:text-md lg:text-md xl:text-xl 2xl:text-2xl"
               text={story.description}
-              fontFamily="font-playfair-display"
+              fontFamily="font-PlayfairDisplay"
               fontColor="text-white"
             />
           </div>
@@ -99,7 +99,7 @@ const SuccessStories: React.FC<SuccessStoriesProps> = ({ successStories }) => {
             <Description
               fontSize="max-sm:text-xs sm:text-sm md:text-md lg:text-md xl:text-xl 2xl:text-2xl"
               text={story.date}
-              fontFamily="font-playfair-display"
+              fontFamily="font-PlayfairDisplay"
               fontColor="text-white"
             />
           </div>

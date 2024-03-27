@@ -35,7 +35,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({
       </div>
       <input
         type="text"
-        className={`border border-[#4d194d] text-[#4d194d] text-${textSize} px-2 py-1 w-full sm:w-${width} md:w-${width} lg:w-${width} h-${height} bg-white focus:outline-none focus:border-[#4d194d] focus:ring-transparent pl-8 rounded-full font-playfair-display`}
+        className={`border border-[#4d194d] text-[#4d194d] text-${textSize} px-2 py-1 w-full sm:w-${width} md:w-${width} lg:w-${width} h-${height} bg-white focus:outline-none focus:border-[#4d194d] focus:ring-transparent pl-8 rounded-full font-PlayfairDisplay`}
         value={inputValue}
         placeholder={placeholder}
         onChange={handleInputChange}

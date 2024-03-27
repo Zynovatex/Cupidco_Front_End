@@ -73,58 +73,42 @@ const ServicesSection1 = () => {
             objectFit="cover"
             objectPosition="center"
             alt="Background"
-            priority
           />
         </div>
 
         {/* Content */}
-        <div
-          className="
-        container mx-auto p-5 px-4 
-        px-4sm:px-6 lg:px-8 z-10 
-        relative space-y-3 
-      "
-        >
-          {/* Title */}
-          <div className="text-center">
-            <Title
-              text="Our Services"
-              center={true}
-              fontSize="max-sm:text-xl  
-            md:text-2xl 
-            pt-5
-            xl:text-4xl"
-            />
-          </div>
+        {/* Title */}
+        <div className="text-center relative ">
+          <Title
+            text="Our Services"
+            center={true}
+            fontSize="text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-10 md:mt-16"
+          />
+        </div>
 
-          {/* Description */}
-          <div className="text-center p-2 px-9">
-            <Description
-              text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book"
-              center={true}
-              fontWeight="font-regular"
-              fontSize="max-sm:text-md xl:text-xl"
-            />
-          </div>
-          {/* Slider Component */}
-          <div className="py-6">
-            <div className="p-10">
-              <div className="grid grid-cols-2 gap-16 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 sm:grid-cols-1 max-sm:grid-cols-1 ">
-                {cardData.map((card, index) => (
-                  <Link key={index} href={`/service/${index + 1}`}>
-                    {/* Assuming your dynamic route for service details is '/service/[id]' */}
-                    <div>
-                      <ServicesCard
-                        title={card.title}
-                        description={card.description}
-                        imageSrc={card.imageSrc}
-                      />
-                    </div>
-                  </Link>
-                ))}
+        {/* Description */}
+        <div className="text-center pt-5 md:pt-8 px-9 relative md:w-[80%]">
+          <Description
+            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+            center={true}
+            fontWeight="font-regular"
+            fontSize="max-sm:text-md xl:text-xl"
+          />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-14 p-10 md:p-20 lg:p-28">
+          {cardData.map((card, index) => (
+            <Link key={index} href={`/service/${index + 1}`}>
+              {/* Assuming your dynamic route for service details is '/service/[id]' */}
+              <div>
+                <ServicesCard
+                  title={card.title}
+                  description={card.description}
+                  imageSrc={card.imageSrc}
+                />
               </div>
-            </div>
-          </div>
+            </Link>
+          ))}
         </div>
       </div>
     </>
