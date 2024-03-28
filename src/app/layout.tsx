@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "./layouts/footer/footer";
 import Header from "./layouts/header/header";
 
+import AddImage from "@/components/modals/AddImages";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,6 +32,7 @@ export default function RootLayout({
         >
           <div className="flex justify-center  ">
             <div className="max-w-screen-2xl">
+              <AddImage/>
               <Footer />
             </div>
           </div>
