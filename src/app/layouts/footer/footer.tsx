@@ -7,6 +7,7 @@ import Description from "@/components/common/texts/Description";
 import Title from "@/components/common/texts/Title";
 import Link from "next/link";
 import { FaComment } from "react-icons/fa";
+import { IoMdSend } from "react-icons/io";
 
 export default function Footer() {
   return (
@@ -88,18 +89,18 @@ export default function Footer() {
         <div className="w-48 text-center md:absolute max-md:mt-5">
           {/* Merged row below the columns */}
           <div className="font-bold text-xl mb-2 text-primary-purple font-PlayfairDisplay">
-            Leave us a comment
+            Leave us a feedback
           </div>
 
           {/* comment button  */}
           <PrimaryButton
-            label="Comment"
+            label="Feedback"
             fontSize="lg:text-xl md:text-lg"
             width=" w-full  "
             radius="rounded-lg"
             height="py-2"
-            icon={<FaComment />}
-            iconPosition="left"
+            icon={<IoMdSend />}
+            iconPosition="right"
           />
         </div>
       </div>
